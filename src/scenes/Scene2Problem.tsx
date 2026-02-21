@@ -44,7 +44,7 @@ const StatCard: React.FC<StatCardProps> = ({
   const slideIn = spring({
     frame: localFrame,
     fps,
-    config: { damping: 14, stiffness: 70, mass: 1.0 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   const isCountable = countFrom !== undefined && countTo !== undefined;
@@ -151,13 +151,14 @@ export const Scene2Problem: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const fadeIn = interpolate(frame, [0, 15], [0, 1], {
+  // 10-frame crossfade
+  const fadeIn = interpolate(frame, [0, 10], [0, 1], {
     extrapolateRight: "clamp",
     easing: ease,
   });
   const fadeOut = interpolate(
     frame,
-    [durationInFrames - 15, durationInFrames],
+    [durationInFrames - 10, durationInFrames],
     [1, 0],
     { extrapolateLeft: "clamp" }
   );
@@ -166,11 +167,11 @@ export const Scene2Problem: React.FC = () => {
   const titleProgress = spring({
     frame,
     fps,
-    config: { damping: 18, stiffness: 100, mass: 0.6 },
+    config: { damping: 20, stiffness: 180 },
   });
 
-  // Stats enter sequentially
-  const ENTER_FRAMES = [20, 95, 170, 245, 320];
+  // 4 stats enter 8 frames apart (Big Pharma Threshold moved to Scene 2b)
+  const ENTER_FRAMES = [0, 8, 16, 24];
 
   const stats = [
     {
@@ -218,15 +219,6 @@ export const Scene2Problem: React.FC = () => {
       countPrefix: "$",
       countSuffix: " Trillion",
     },
-    {
-      icon: "🏭",
-      label: "The Big Pharma Threshold",
-      value: "$1B+ TAM to engage",
-      subtext:
-        "Most rare disease markets: ~$150M. Far below Big Pharma's minimum viable interest.",
-      accentColor: "#a855f7",
-      enterFrame: ENTER_FRAMES[4],
-    },
   ];
 
   return (
@@ -235,8 +227,9 @@ export const Scene2Problem: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 52,
+          top: 68,
           left: 68,
+          right: 68,
           opacity: titleProgress,
           transform: `translateY(${(1 - titleProgress) * -20}px)`,
         }}
@@ -270,19 +263,21 @@ export const Scene2Problem: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats grid — 2 columns */}
+      {/* Stats grid — 2×2, fully contained within screen */}
       <div
         style={{
           position: "absolute",
-          top: 220,
+          top: 260,
           left: 68,
           right: 68,
+          bottom: 68,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
+          gridTemplateRows: "1fr 1fr",
           gap: 20,
         }}
       >
-        {stats.slice(0, 4).map((stat, i) => (
+        {stats.map((stat, i) => (
           <StatCard
             key={i}
             icon={stat.icon}
@@ -299,27 +294,6 @@ export const Scene2Problem: React.FC = () => {
             countSuffix={stat.countSuffix}
           />
         ))}
-      </div>
-
-      {/* Stat 5 — full width */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 52,
-          left: 68,
-          right: 68,
-        }}
-      >
-        <StatCard
-          icon={stats[4].icon}
-          label={stats[4].label}
-          value={stats[4].value}
-          subtext={stats[4].subtext}
-          accentColor={stats[4].accentColor}
-          frame={frame}
-          enterFrame={stats[4].enterFrame}
-          fps={fps}
-        />
       </div>
     </div>
   );

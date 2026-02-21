@@ -18,41 +18,44 @@ export const Scene1Title: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const fadeIn = interpolate(frame, [0, 12], [0, 1], {
+  // 10-frame crossfade in/out
+  const fadeIn = interpolate(frame, [0, 10], [0, 1], {
     extrapolateRight: "clamp",
     easing: ease,
   });
 
-  const fadeOut = interpolate(frame, [durationInFrames - 12, durationInFrames], [1, 0], {
+  const fadeOut = interpolate(frame, [durationInFrames - 10, durationInFrames], [1, 0], {
     extrapolateLeft: "clamp",
   });
 
   const sceneOpacity = Math.min(fadeIn, fadeOut);
 
-  const logoProgress = spring({ frame, fps, config: { damping: 20, stiffness: 120, mass: 0.5 } });
+  // Logo
+  const logoProgress = spring({ frame, fps, config: { damping: 20, stiffness: 180 } });
 
+  // 8-frame staggered entrance for headline elements
   const headlineProgress = spring({
-    frame: frame - 8,
+    frame: frame - 0,
     fps,
-    config: { damping: 14, stiffness: 80, mass: 0.9 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   const problemProgress = spring({
-    frame: frame - 16,
+    frame: frame - 8,
     fps,
-    config: { damping: 14, stiffness: 80, mass: 0.9 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   const subheadProgress = spring({
-    frame: frame - 28,
+    frame: frame - 16,
     fps,
-    config: { damping: 18, stiffness: 80, mass: 0.8 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   const tagProgress = spring({
-    frame: frame - 40,
+    frame: frame - 24,
     fps,
-    config: { damping: 20, stiffness: 80, mass: 0.7 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   return (
@@ -117,12 +120,16 @@ export const Scene1Title: React.FC = () => {
         </span>
       </div>
 
-      {/* Hero headline */}
+      {/* Hero headline — vertically centered in screen */}
       <div
         style={{
           position: "absolute",
-          left: 68,
-          top: 220,
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          paddingLeft: 120,
+          paddingRight: 120,
         }}
       >
         {/* "The" */}
@@ -146,7 +153,7 @@ export const Scene1Title: React.FC = () => {
         <div
           style={{
             color: "#ffffff",
-            fontSize: 120,
+            fontSize: 140,
             fontWeight: 900,
             fontFamily: poppins,
             fontStyle: "italic",
@@ -164,7 +171,7 @@ export const Scene1Title: React.FC = () => {
         <div
           style={{
             color: "#a855f7",
-            fontSize: 120,
+            fontSize: 140,
             fontWeight: 900,
             fontFamily: poppins,
             fontStyle: "italic",
