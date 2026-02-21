@@ -38,7 +38,7 @@ const Bar: React.FC<BarProps> = ({
   });
 
   return (
-    <div style={{ marginBottom: 32 }}>
+    <div style={{ marginBottom: 28 }}>
       <div
         style={{
           display: "flex",
@@ -165,19 +165,20 @@ const MiniCard: React.FC<MiniCardProps> = ({ icon, text, accentColor, progress }
   </div>
 );
 
-const MAX_BAR_WIDTH = 820;
+const MAX_BAR_WIDTH = 780;
 
 export const Scene4AARS2: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const fadeIn = interpolate(frame, [0, 15], [0, 1], {
+  // 10-frame crossfade
+  const fadeIn = interpolate(frame, [0, 10], [0, 1], {
     extrapolateRight: "clamp",
     easing: ease,
   });
   const fadeOut = interpolate(
     frame,
-    [durationInFrames - 15, durationInFrames],
+    [durationInFrames - 10, durationInFrames],
     [1, 0],
     { extrapolateLeft: "clamp" }
   );
@@ -186,33 +187,34 @@ export const Scene4AARS2: React.FC = () => {
   const titleProgress = spring({
     frame,
     fps,
-    config: { damping: 18, stiffness: 100, mass: 0.6 },
+    config: { damping: 20, stiffness: 180 },
   });
 
-  const industryBarProgress = interpolate(frame, [30, 90], [0, 1], {
+  const industryBarProgress = interpolate(frame, [8, 38], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: ease,
   });
 
-  const curetopiaBarProgress = interpolate(frame, [70, 130], [0, 1], {
+  const curetopiaBarProgress = interpolate(frame, [16, 46], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: ease,
   });
 
-  const savingsProgress = interpolate(frame, [140, 180], [0, 1], {
+  const savingsProgress = interpolate(frame, [24, 54], [0, 1], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
     easing: ease,
   });
 
-  const CARD_ENTER = [200, 270, 340, 410];
+  // 8-frame stagger for cards
+  const CARD_ENTER = [0, 8, 16, 24];
   const cardProgresses = CARD_ENTER.map((f) =>
     spring({
       frame: frame - f,
       fps,
-      config: { damping: 16, stiffness: 80, mass: 0.8 },
+      config: { damping: 20, stiffness: 180 },
     })
   );
 
@@ -225,16 +227,18 @@ export const Scene4AARS2: React.FC = () => {
 
   return (
     <div style={{ position: "absolute", inset: 0, opacity: sceneOpacity }}>
-      {/* Left panel — headline + chart */}
+      {/* Left panel — headline + chart, with safe bottom padding */}
       <div
         style={{
           position: "absolute",
-          top: 52,
+          top: 68,
           left: 68,
-          width: 900,
+          width: 840,
+          bottom: 80,
+          overflow: "hidden",
         }}
       >
-        {/* Tag */}
+        {/* Tag + Headline */}
         <div
           style={{
             opacity: titleProgress,
@@ -288,7 +292,7 @@ export const Scene4AARS2: React.FC = () => {
               fontSize: 20,
               fontWeight: 400,
               fontFamily: poppins,
-              marginBottom: 40,
+              marginBottom: 32,
             }}
           >
             A fatal infant disease. Zero treatments. Until now.
@@ -309,7 +313,7 @@ export const Scene4AARS2: React.FC = () => {
               fontFamily: poppins,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
-              marginBottom: 20,
+              marginBottom: 16,
             }}
           >
             Cost to Phase 3 — Industry vs. Curetopia
@@ -342,8 +346,8 @@ export const Scene4AARS2: React.FC = () => {
             style={{
               opacity: savingsProgress,
               transform: `scale(${interpolate(savingsProgress, [0, 1], [0.8, 1])})`,
-              marginTop: 16,
-              padding: "16px 24px",
+              marginTop: 12,
+              padding: "14px 24px",
               background: "linear-gradient(135deg, rgba(34,197,94,0.15), rgba(163,230,53,0.1))",
               border: "1px solid rgba(34,197,94,0.4)",
               borderRadius: 12,
@@ -373,6 +377,40 @@ export const Scene4AARS2: React.FC = () => {
               vs. traditional pharma
             </span>
           </div>
+
+          {/* Perlstein quote — fills empty space below savings callout */}
+          <div
+            style={{
+              opacity: savingsProgress,
+              marginTop: 24,
+              paddingLeft: 16,
+              borderLeft: "2px solid rgba(196,181,253,0.35)",
+            }}
+          >
+            <div
+              style={{
+                color: "#c4b5fd",
+                fontSize: 15,
+                fontStyle: "italic",
+                fontFamily: poppins,
+                lineHeight: 1.6,
+              }}
+            >
+              "We delivered results on a timeline and with capital efficiency that is unheard of in TradBio."
+            </div>
+            <div
+              style={{
+                color: "#9ca3af",
+                fontSize: 13,
+                fontWeight: 600,
+                fontFamily: poppins,
+                marginTop: 8,
+                letterSpacing: "0.05em",
+              }}
+            >
+              — Ethan Perlstein, CEO Curetopia
+            </div>
+          </div>
         </div>
       </div>
 
@@ -380,9 +418,9 @@ export const Scene4AARS2: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 52,
+          top: 68,
           right: 68,
-          width: 820,
+          width: 860,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 20,

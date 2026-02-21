@@ -11,9 +11,8 @@ import { poppins } from "../fonts";
 const ease = Easing.bezier(0.16, 1, 0.3, 1);
 
 // Horizontal flow positions — evenly distributed across 1920px
-// Step center x positions: 180, 540, 960, 1380, 1740
 const STEP_CX = [180, 540, 960, 1380, 1740];
-const STEP_CY = 520;
+const STEP_CY = 560;
 const ICON_R = 64; // radius of icon circle
 
 interface FlowStepProps {
@@ -168,41 +167,42 @@ const Connector: React.FC<ConnectorProps> = ({ x1, x2, cy, progress, accentColor
   );
 };
 
+// 8-frame stagger for 5 steps
 const STEPS = [
   {
     icon: "🧬",
     title: "Community Funds Research",
     subtitle: "via $CURES token",
     accentColor: "#a855f7",
-    enterFrame: 20,
+    enterFrame: 0,
   },
   {
     icon: "🍺",
     title: "Yeast-Avatar Drug Screening",
     subtitle: "8,500 compounds tested",
     accentColor: "#ec4899",
-    enterFrame: 110,
+    enterFrame: 8,
   },
   {
     icon: "👨‍👩‍👧",
     title: "Patient Families",
     subtitle: "Run N-of-1 studies",
     accentColor: "#f97316",
-    enterFrame: 200,
+    enterFrame: 16,
   },
   {
     icon: "⚡",
     title: "FDA Fast-Track",
     subtitle: "Priority Review Voucher + Orphan Drug",
     accentColor: "#22c55e",
-    enterFrame: 290,
+    enterFrame: 24,
   },
   {
     icon: "💰",
     title: "Revenue → Treasury",
     subtitle: "Funds next rare disease",
     accentColor: "#a855f7",
-    enterFrame: 380,
+    enterFrame: 32,
   },
 ];
 
@@ -210,13 +210,14 @@ export const Scene3Solution: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const fadeIn = interpolate(frame, [0, 15], [0, 1], {
+  // 10-frame crossfade
+  const fadeIn = interpolate(frame, [0, 10], [0, 1], {
     extrapolateRight: "clamp",
     easing: ease,
   });
   const fadeOut = interpolate(
     frame,
-    [durationInFrames - 15, durationInFrames],
+    [durationInFrames - 10, durationInFrames],
     [1, 0],
     { extrapolateLeft: "clamp" }
   );
@@ -225,21 +226,22 @@ export const Scene3Solution: React.FC = () => {
   const titleProgress = spring({
     frame,
     fps,
-    config: { damping: 18, stiffness: 100, mass: 0.6 },
+    config: { damping: 20, stiffness: 180 },
   });
 
   const stepProgresses = STEPS.map((step) =>
     spring({
       frame: frame - step.enterFrame,
       fps,
-      config: { damping: 14, stiffness: 70, mass: 1.0 },
+      config: { damping: 20, stiffness: 180 },
     })
   );
 
+  // Connectors animate between step enter frames
   const connectorProgresses = STEPS.slice(0, 4).map((_, i) =>
     interpolate(
       frame,
-      [STEPS[i].enterFrame + 20, STEPS[i + 1].enterFrame],
+      [STEPS[i].enterFrame + 8, STEPS[i + 1].enterFrame + 20],
       [0, 1],
       {
         extrapolateLeft: "clamp",
@@ -251,12 +253,13 @@ export const Scene3Solution: React.FC = () => {
 
   return (
     <div style={{ position: "absolute", inset: 0, opacity: sceneOpacity }}>
-      {/* Header */}
+      {/* Header — properly padded from edges */}
       <div
         style={{
           position: "absolute",
-          top: 52,
-          left: 68,
+          top: 80,
+          left: 120,
+          right: 120,
           opacity: titleProgress,
           transform: `translateY(${(1 - titleProgress) * -20}px)`,
         }}
@@ -360,28 +363,6 @@ export const Scene3Solution: React.FC = () => {
           progress={stepProgresses[i]}
         />
       ))}
-
-      {/* Bottom tagline */}
-      <div
-        style={{
-          position: "absolute",
-          bottom: 48,
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          opacity: interpolate(frame, [STEPS[4].enterFrame + 30, STEPS[4].enterFrame + 60], [0, 1], {
-            extrapolateLeft: "clamp",
-            extrapolateRight: "clamp",
-          }),
-          color: "#c4b5fd",
-          fontSize: 20,
-          fontWeight: 400,
-          fontFamily: poppins,
-          letterSpacing: "0.12em",
-        }}
-      >
-        ✦ Community Medicine. Onchain. ✦
-      </div>
     </div>
   );
 };
