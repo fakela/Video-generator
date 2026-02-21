@@ -231,9 +231,9 @@ export const Scene4AARS2: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 68,
-          left: 68,
-          width: 840,
+          top: 80,
+          left: 100,
+          width: 820,
           bottom: 80,
           overflow: "hidden",
         }}
@@ -418,9 +418,9 @@ export const Scene4AARS2: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 68,
-          right: 68,
-          width: 860,
+          top: 80,
+          right: 100,
+          width: 820,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gap: 20,

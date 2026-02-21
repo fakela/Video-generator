@@ -53,7 +53,7 @@ export const Scene5bTrillion: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 68,
+          top: 80,
           left: 0,
           right: 0,
           textAlign: "center",
@@ -92,7 +92,7 @@ export const Scene5bTrillion: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 210,
+          top: 225,
           left: 0,
           right: 0,
           textAlign: "center",
@@ -123,13 +123,13 @@ export const Scene5bTrillion: React.FC = () => {
         </div>
       </div>
 
-      {/* Dot matrix — fully contained between y=280 and y=900 */}
+      {/* Dot matrix — fully contained between y=295 and y=900 */}
       <div
         style={{
           position: "absolute",
-          top: 278,
-          left: 68,
-          right: 68,
+          top: 295,
+          left: 100,
+          right: 100,
           bottom: 160,
           background: "linear-gradient(135deg, rgba(59,7,100,0.85) 0%, rgba(26,5,50,0.9) 100%)",
           border: "1px solid rgba(168,85,247,0.4)",

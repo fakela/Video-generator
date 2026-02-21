@@ -83,8 +83,8 @@ export const Scene1Title: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 52,
-          left: 68,
+          top: 70,
+          left: 100,
           display: "flex",
           alignItems: "center",
           gap: 14,
@@ -120,7 +120,7 @@ export const Scene1Title: React.FC = () => {
         </span>
       </div>
 
-      {/* Hero headline — vertically centered in screen */}
+      {/* Hero headline — fully centered on screen */}
       <div
         style={{
           position: "absolute",
@@ -128,8 +128,10 @@ export const Scene1Title: React.FC = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          paddingLeft: 120,
-          paddingRight: 120,
+          alignItems: "center",
+          textAlign: "center",
+          paddingLeft: 100,
+          paddingRight: 100,
         }}
       >
         {/* "The" */}
@@ -153,14 +155,14 @@ export const Scene1Title: React.FC = () => {
         <div
           style={{
             color: "#ffffff",
-            fontSize: 140,
+            fontSize: 160,
             fontWeight: 900,
             fontFamily: poppins,
             fontStyle: "italic",
             lineHeight: 1.0,
             opacity: headlineProgress,
-            transform: `translateY(${(1 - headlineProgress) * 60}px)`,
-            textShadow: "0 0 60px rgba(168,85,247,0.9), 0 0 120px rgba(168,85,247,0.4)",
+            transform: `scale(${interpolate(headlineProgress, [0, 1], [0.7, 1])}) translateY(${(1 - headlineProgress) * 60}px)`,
+            textShadow: "0 0 80px rgba(168,85,247,0.9), 0 0 160px rgba(168,85,247,0.5)",
             letterSpacing: "-0.02em",
           }}
         >
@@ -171,36 +173,36 @@ export const Scene1Title: React.FC = () => {
         <div
           style={{
             color: "#a855f7",
-            fontSize: 140,
+            fontSize: 160,
             fontWeight: 900,
             fontFamily: poppins,
             fontStyle: "italic",
             lineHeight: 1.0,
             opacity: problemProgress,
-            transform: `translateY(${(1 - problemProgress) * 60}px)`,
-            textShadow: "0 0 60px rgba(168,85,247,0.8), 0 0 100px rgba(236,72,153,0.4)",
+            transform: `scale(${interpolate(problemProgress, [0, 1], [0.7, 1])}) translateY(${(1 - problemProgress) * 60}px)`,
+            textShadow: "0 0 80px rgba(168,85,247,0.8), 0 0 120px rgba(236,72,153,0.5)",
             letterSpacing: "-0.02em",
           }}
         >
           Problem
         </div>
 
-        {/* Divider */}
+        {/* Divider — centered */}
         <div
           style={{
-            marginTop: 32,
-            width: interpolate(subheadProgress, [0, 1], [0, 480]),
+            marginTop: 36,
+            width: interpolate(subheadProgress, [0, 1], [0, 560]),
             height: 3,
-            background: "linear-gradient(90deg, #a855f7, #ec4899, transparent)",
+            background: "linear-gradient(90deg, transparent, #a855f7, #ec4899, transparent)",
             borderRadius: 2,
-            boxShadow: "0 0 12px rgba(168,85,247,0.6)",
+            boxShadow: "0 0 16px rgba(168,85,247,0.7)",
           }}
         />
 
         {/* Subheadline */}
         <div
           style={{
-            marginTop: 24,
+            marginTop: 28,
             color: "#f0abfc",
             fontSize: 48,
             fontWeight: 600,
@@ -218,7 +220,7 @@ export const Scene1Title: React.FC = () => {
           style={{
             marginTop: 20,
             color: "#9ca3af",
-            fontSize: 24,
+            fontSize: 22,
             fontWeight: 400,
             fontFamily: poppins,
             letterSpacing: "0.2em",

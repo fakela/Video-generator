@@ -42,7 +42,7 @@ export const Scene2bBigPharma: React.FC = () => {
         alignItems: "center",
         justifyContent: "center",
         opacity: sceneOpacity,
-        padding: "0 120px",
+        padding: "70px 120px",
         textAlign: "center",
       }}
     >

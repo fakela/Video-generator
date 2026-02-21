@@ -233,7 +233,7 @@ export const Scene3Solution: React.FC = () => {
     spring({
       frame: frame - step.enterFrame,
       fps,
-      config: { damping: 20, stiffness: 180 },
+      config: { damping: 16, stiffness: 220 },
     })
   );
 

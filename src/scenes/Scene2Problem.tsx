@@ -118,11 +118,13 @@ const StatCard: React.FC<StatCardProps> = ({
           <div
             style={{
               color: isCountable ? "#f0abfc" : "#ffffff",
-              fontSize: isCountable ? 48 : 36,
+              fontSize: isCountable ? 56 : 40,
               fontWeight: 900,
               fontFamily: poppins,
               lineHeight: 1.1,
-              textShadow: `0 0 20px ${accentColor}80`,
+              textShadow: `0 0 24px ${accentColor}80`,
+              transform: `scale(${interpolate(slideIn, [0, 1], [0.7, 1])})`,
+              display: "inline-block",
             }}
           >
             {isCountable ? displayCount : value}
@@ -227,9 +229,9 @@ export const Scene2Problem: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 68,
-          left: 68,
-          right: 68,
+          top: 80,
+          left: 100,
+          right: 100,
           opacity: titleProgress,
           transform: `translateY(${(1 - titleProgress) * -20}px)`,
         }}
@@ -267,14 +269,14 @@ export const Scene2Problem: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 260,
-          left: 68,
-          right: 68,
-          bottom: 68,
+          top: 250,
+          left: 100,
+          right: 100,
+          bottom: 80,
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
           gridTemplateRows: "1fr 1fr",
-          gap: 20,
+          gap: 24,
         }}
       >
         {stats.map((stat, i) => (

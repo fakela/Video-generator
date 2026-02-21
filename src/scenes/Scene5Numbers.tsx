@@ -59,7 +59,7 @@ const CounterCard: React.FC<CounterCardProps> = ({
     <div
       style={{
         opacity: slideIn,
-        transform: `translateY(${(1 - slideIn) * 50}px)`,
+        transform: `scale(${interpolate(slideIn, [0, 1], [0.85, 1])}) translateY(${(1 - slideIn) * 50}px)`,
         background:
           "linear-gradient(135deg, rgba(59,7,100,0.85) 0%, rgba(26,5,50,0.9) 100%)",
         border: `1px solid ${accentColor}50`,
@@ -201,9 +201,9 @@ export const Scene5Numbers: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          top: 68,
-          left: 68,
-          right: 68,
+          top: 80,
+          left: 100,
+          right: 100,
           opacity: titleProgress,
           transform: `translateY(${(1 - titleProgress) * -16}px)`,
         }}
@@ -240,12 +240,12 @@ export const Scene5Numbers: React.FC = () => {
         style={{
           position: "absolute",
           top: 220,
-          left: 68,
-          right: 68,
-          bottom: 68,
+          left: 100,
+          right: 100,
+          bottom: 80,
           display: "grid",
           gridTemplateColumns: "1fr 1fr 1fr 1fr",
-          gap: 20,
+          gap: 24,
           alignContent: "center",
         }}
       >
