@@ -117,7 +117,7 @@ export const Scene21Raise: React.FC = () => {
             zIndex: 1,
           }}
         >
-          Raised in a single community auction.
+          14,208 SOL raised in a single community auction.
         </div>
 
         {/* "March 2025. In brutal market conditions." — letter-spacing */}
