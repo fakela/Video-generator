@@ -31,12 +31,22 @@ export const Scene18Result2: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // Description — blur-in (filter blur 12 -> 0) starting at frame 52
+  // "Owned by the Curetopia community." — blur-in at frame 52
   const blurAmount = interpolate(frame, [52, 82], [12, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
   const descOpacity = interpolate(frame, [52, 82], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // "Not locked behind Big Pharma." — fade up at frame 72
+  const pharmaOpacity = interpolate(frame, [72, 92], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const pharmaTranslateY = interpolate(frame, [72, 92], [20, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -106,10 +116,10 @@ export const Scene18Result2: React.FC = () => {
           patent
         </div>
 
-        {/* Description with blur-in */}
+        {/* "Owned by the Curetopia community." blur-in */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 36,
             color: "#c4b5fd",
             fontFamily: poppins,
             marginTop: 20,
@@ -119,7 +129,23 @@ export const Scene18Result2: React.FC = () => {
             zIndex: 1,
           }}
         >
-          Filed to protect community-developed IP.
+          Owned by the Curetopia community.
+        </div>
+
+        {/* "Not locked behind Big Pharma." */}
+        <div
+          style={{
+            fontSize: 34,
+            color: "#ef4444",
+            fontWeight: 600,
+            fontFamily: poppins,
+            opacity: pharmaOpacity,
+            transform: `translateY(${pharmaTranslateY}px)`,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          Not locked behind Big Pharma.
         </div>
       </div>
     </SceneWrapper>

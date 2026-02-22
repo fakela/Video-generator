@@ -90,8 +90,9 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 28,
+                  fontSize: 32,
                   color: "#ffffff",
+                  fontWeight: 600,
                   fontFamily: poppins,
                 }}
               >
@@ -99,9 +100,9 @@ export const Scene16CostGap: React.FC = () => {
               </div>
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 40,
                   color: "#ef4444",
-                  fontWeight: 700,
+                  fontWeight: 900,
                   fontFamily: poppins,
                 }}
               >
@@ -110,10 +111,11 @@ export const Scene16CostGap: React.FC = () => {
             </div>
             <div
               style={{
-                height: 56,
-                background: "#ef4444",
-                borderRadius: 10,
+                height: 80,
+                background: "linear-gradient(90deg, #ef4444, #dc2626)",
+                borderRadius: 12,
                 width: `${industryBarWidth}%`,
+                boxShadow: "0 0 30px rgba(239,68,68,0.4)",
               }}
             />
           </div>
@@ -129,8 +131,9 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 28,
+                  fontSize: 32,
                   color: "#ffffff",
+                  fontWeight: 600,
                   fontFamily: poppins,
                 }}
               >
@@ -138,9 +141,9 @@ export const Scene16CostGap: React.FC = () => {
               </div>
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 40,
                   color: "#22c55e",
-                  fontWeight: 700,
+                  fontWeight: 900,
                   fontFamily: poppins,
                 }}
               >
@@ -149,10 +152,11 @@ export const Scene16CostGap: React.FC = () => {
             </div>
             <div
               style={{
-                height: 56,
-                background: "#22c55e",
-                borderRadius: 10,
+                height: 80,
+                background: "linear-gradient(90deg, #22c55e, #16a34a)",
+                borderRadius: 12,
                 width: `${curetopiaBarWidth}%`,
+                boxShadow: "0 0 20px rgba(34,197,94,0.3)",
               }}
             />
           </div>

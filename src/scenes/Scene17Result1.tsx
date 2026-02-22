@@ -97,7 +97,7 @@ export const Scene17Result1: React.FC = () => {
             zIndex: 1,
           }}
         >
-          From 8,500 repurposable compounds screened via yeast models.
+          Discovered for AARS2 Deficiency. From 84,000 tests.
         </div>
       </div>
     </SceneWrapper>

@@ -36,12 +36,8 @@ export const Scene23Pipeline: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 4. "$RAPTOR → RaptorCo" — fade up at frame 72
-  const raptorOpacity = interpolate(frame, [72, 92], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-  const raptorTranslateY = interpolate(frame, [72, 92], [30, 0], {
+  // 4. "Scaled from one mutation to a full pipeline." — fade at frame 75
+  const sub3Opacity = interpolate(frame, [75, 95], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -107,16 +103,15 @@ export const Scene23Pipeline: React.FC = () => {
         <div
           style={{
             fontSize: 28,
-            color: "#fbbf24",
+            color: "#22c55e",
             fontWeight: 600,
             fontFamily: poppins,
             textAlign: "center",
-            marginTop: 24,
-            opacity: raptorOpacity,
-            transform: `translateY(${raptorTranslateY}px)`,
+            marginTop: 20,
+            opacity: sub3Opacity,
           }}
         >
-          $RAPTOR → RaptorCo — the first Coin-to-Company spin-out in history.
+          Scaled from one mutation to a full pipeline.
         </div>
       </div>
     </SceneWrapper>

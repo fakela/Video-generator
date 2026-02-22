@@ -44,6 +44,21 @@ export const Scene15AARS2: React.FC = () => {
           textAlign: "center",
         }}
       >
+        {/* Context line */}
+        <div
+          style={{
+            fontSize: 24,
+            color: "#c4b5fd",
+            fontFamily: poppins,
+            textAlign: "center",
+            opacity: pillOpacity,
+            transform: `translateX(${pillTranslateX}px)`,
+            marginBottom: 4,
+          }}
+        >
+          Curetopia's first real-world case:
+        </div>
+
         {/* PROJECT 001 pill */}
         <div
           style={{
