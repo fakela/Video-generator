@@ -3,8 +3,7 @@ import { AbsoluteFill, Audio } from "remotion";
 import { TransitionSeries } from "@remotion/transitions";
 import { linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { flip } from "@remotion/transitions/flip";
-import { clockWipe } from "@remotion/transitions/clock-wipe";
+import { wipe } from "@remotion/transitions/wipe";
 
 import { Scene1Title } from "./scenes/Scene1Title";
 import { Scene2Scale } from "./scenes/Scene2Scale";
@@ -51,7 +50,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene2Scale />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={clockWipe()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
 
         {/* Scene 3 — AFFECTED */}
         <TransitionSeries.Sequence durationInFrames={120}>
@@ -75,7 +74,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={170}>
           <Scene6BigPharma />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={clockWipe()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
         {/* Scene 7 — INTRODUCING */}
         <TransitionSeries.Sequence durationInFrames={120}>
@@ -117,13 +116,13 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene13Step5 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={clockWipe()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
         {/* Scene 14 — COMMUNITY */}
         <TransitionSeries.Sequence durationInFrames={90}>
           <Scene14Community />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={flip()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
 
         {/* Scene 15 — AARS2 */}
         <TransitionSeries.Sequence durationInFrames={150}>
@@ -135,7 +134,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene16CostGap />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={clockWipe()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
 
         {/* Scene 17 — RESULT 1 */}
         <TransitionSeries.Sequence durationInFrames={90}>
@@ -159,7 +158,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={90}>
           <Scene20Result4 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={clockWipe()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
         {/* Scene 21 — THE RAISE */}
         <TransitionSeries.Sequence durationInFrames={120}>
@@ -183,7 +182,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene24Opportunity />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={flip()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
 
         {/* Scene 25 — CTA */}
         <TransitionSeries.Sequence durationInFrames={180}>

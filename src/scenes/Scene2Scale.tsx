@@ -87,7 +87,7 @@ export const Scene2Scale: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 180,
+            fontSize: 200,
             fontWeight: 900,
             color: "#ffffff",
             textAlign: "center",
@@ -102,7 +102,7 @@ export const Scene2Scale: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 44,
+            fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
@@ -117,7 +117,7 @@ export const Scene2Scale: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 42,
             fontWeight: 400,
             color: "#c4b5fd",
             textAlign: "center",

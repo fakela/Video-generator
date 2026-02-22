@@ -70,7 +70,7 @@ export const Scene3Affected: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 180,
+            fontSize: 200,
             fontWeight: 900,
             color: "#ffffff",
             textAlign: "center",
@@ -86,14 +86,14 @@ export const Scene3Affected: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 44,
+            fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "center",
-            gap: 12,
+            gap: 14,
           }}
         >
           {words.map((word, i) => {
@@ -129,7 +129,7 @@ export const Scene3Affected: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 44,
             fontWeight: 400,
             color: "#c4b5fd",
             textAlign: "center",

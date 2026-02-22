@@ -65,7 +65,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 200,
+            fontSize: 220,
             fontWeight: 900,
             color: "#ef4444",
             textAlign: "center",
@@ -81,7 +81,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 44,
+            fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
@@ -96,7 +96,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 44,
             fontWeight: 700,
             color: "#c4b5fd",
             textAlign: "center",
