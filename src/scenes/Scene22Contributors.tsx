@@ -7,37 +7,57 @@ export const Scene22Contributors: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "1,000+" — count up from 0 to 1000 at frame 10 over 40 frames, with spring punch
-  const countProgress = interpolate(frame, [10, 50], [0, 1], {
+  // Pulsing glow behind number
+  const glowPulse = Math.sin(frame * 0.07) * 0.2 + 0.8;
+  const glowScale = Math.sin(frame * 0.04) * 0.1 + 1.0;
+
+  // "1,000+" — number counter from 0 to 1000, frame 5 to 45, with spring punch
+  const countProgress = interpolate(frame, [5, 45], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
   const displayNum = Math.round(1000 * countProgress);
 
   const punch = spring({
-    frame: frame - 10,
+    frame: frame - 5,
     fps,
-    config: { damping: 12, stiffness: 200 },
+    config: { damping: 8, stiffness: 140 },
   });
-  const punchScale = interpolate(punch, [0, 1], [0.7, 1]);
-  const punchOpacity = interpolate(punch, [0, 1], [0, 1]);
-
-  // 2. "Individual contributors came together." — fade up at frame 45
-  const sub1Opacity = interpolate(frame, [45, 65], [0, 1], {
+  const punchScale = interpolate(punch, [0, 1], [0.3, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub1TranslateY = interpolate(frame, [45, 65], [30, 0], {
+  const punchOpacity = interpolate(punch, [0, 1], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 3. Three words staggered fade in
+  // "contributors" — fade + scale at frame 40
+  const contribSpring = spring({
+    frame: frame - 40,
+    fps,
+    config: { damping: 14, stiffness: 140 },
+  });
+  const contribScale = interpolate(contribSpring, [0, 1], [0.8, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const contribOpacity = interpolate(contribSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // Staggered word reveal for the description
   const words = [
-    { text: "Patients.", delay: 65 },
-    { text: "Researchers.", delay: 75 },
-    { text: "Believers.", delay: 85 },
+    "From",
+    "40+",
+    "countries.",
+    "Scientists,",
+    "patients,",
+    "developers.",
   ];
+  const wordStartFrame = 65;
+  const wordInterval = 5;
 
   return (
     <SceneWrapper>
@@ -51,72 +71,101 @@ export const Scene22Contributors: React.FC = () => {
           width: "100%",
           fontFamily: poppins,
           textAlign: "center",
+          gap: 16,
+          position: "relative",
         }}
       >
+        {/* Pulsing glow behind number */}
         <div
           style={{
-            fontSize: 120,
-            fontWeight: 900,
+            position: "absolute",
+            width: 600,
+            height: 600,
+            top: "50%",
+            left: "50%",
+            borderRadius: "50%",
+            transform: `translate(-50%, -55%) scale(${glowScale})`,
+            background:
+              "radial-gradient(circle, rgba(168,85,247,0.35) 0%, rgba(168,85,247,0.1) 40%, transparent 70%)",
+            opacity: glowPulse,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* "1,000+" — number counter with spring punch */}
+        <div
+          style={{
+            fontSize: 180,
+            fontWeight: 700,
             color: "#ffffff",
             fontFamily: poppins,
-            textAlign: "center",
+            lineHeight: 1,
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 0 40px rgba(168,85,247,0.4), 0 0 80px rgba(168,85,247,0.15)",
           }}
         >
           {displayNum.toLocaleString()}+
         </div>
 
+        {/* "contributors" — fade + scale */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 56,
+            fontWeight: 700,
             color: "#ffffff",
             fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 20,
-            opacity: sub1Opacity,
-            transform: `translateY(${sub1TranslateY}px)`,
+            transform: `scale(${contribScale})`,
+            opacity: contribOpacity,
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          Individual contributors came together.
+          contributors
         </div>
 
+        {/* Staggered word reveal */}
         <div
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: 20,
-            marginTop: 24,
+            flexWrap: "wrap",
             justifyContent: "center",
+            gap: 12,
+            marginTop: 20,
+            maxWidth: 900,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           {words.map((word, i) => {
+            const wordDelay = wordStartFrame + i * wordInterval;
             const wordOpacity = interpolate(
               frame,
-              [word.delay, word.delay + 20],
+              [wordDelay, wordDelay + 12],
               [0, 1],
               { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
             );
-            const wordTranslateY = interpolate(
+            const wordY = interpolate(
               frame,
-              [word.delay, word.delay + 20],
-              [30, 0],
+              [wordDelay, wordDelay + 12],
+              [24, 0],
               { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
             );
             return (
               <div
                 key={i}
                 style={{
-                  fontSize: 24,
-                  fontWeight: 600,
-                  color: "#a855f7",
+                  fontSize: 36,
+                  color: "#c4b5fd",
                   fontFamily: poppins,
-                  textAlign: "center",
                   opacity: wordOpacity,
-                  transform: `translateY(${wordTranslateY}px)`,
+                  transform: `translateY(${wordY}px)`,
                 }}
               >
-                {word.text}
+                {word}
               </div>
             );
           })}

@@ -7,21 +7,69 @@ export const Scene12Step4: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Icon bounce (frame 5)
-  const bounce = spring({ frame: frame - 5, fps, config: { damping: 8, stiffness: 150 } });
-  const iconScale = interpolate(bounce, [0, 1], [0, 1]);
+  // Emoji: wobble animation (rotation oscillates +/-15deg settling to 0)
+  const wobbleSpring = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 4, stiffness: 120 },
+  });
+  const wobbleDecay = interpolate(wobbleSpring, [0, 1], [1, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const wobbleAngle = Math.sin(frame * 0.5) * 15 * wobbleDecay;
+  const emojiOpacity = interpolate(frame, [5, 12], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const emojiScale = interpolate(wobbleSpring, [0, 1], [0.3, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // "Step 4" fade up (frame 20)
-  const step4Opacity = interpolate(frame, [20, 40], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const step4TranslateY = interpolate(frame, [20, 40], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // "STEP 4" label: fade + scale
+  const labelProgress = spring({
+    frame: frame - 18,
+    fps,
+    config: { damping: 12, stiffness: 100 },
+  });
+  const labelOpacity = interpolate(labelProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const labelScale = interpolate(labelProgress, [0, 1], [0.4, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Title fade up (frame 30)
-  const titleOpacity = interpolate(frame, [30, 50], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const titleTranslateY = interpolate(frame, [30, 50], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Title: spring punch from 0.4
+  const titleSpring = spring({
+    frame: frame - 28,
+    fps,
+    config: { damping: 7, stiffness: 140, overshootClamping: false },
+  });
+  const titleScale = interpolate(titleSpring, [0, 1], [0.4, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Description fade up (frame 50)
-  const descOpacity = interpolate(frame, [50, 70], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descTranslateY = interpolate(frame, [50, 70], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Description: blur-in
+  const descProgress = interpolate(frame, [48, 73], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descBlur = interpolate(descProgress, [0, 1], [10, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descOpacity = interpolate(descProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -31,62 +79,69 @@ export const Scene12Step4: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 12,
+          gap: 20,
           width: "100%",
           height: "100%",
           fontFamily: poppins,
           textAlign: "center",
         }}
       >
+        {/* Emoji with wobble */}
         <div
           style={{
-            fontSize: 72,
-            transform: `scale(${iconScale})`,
+            fontSize: 100,
+            opacity: emojiOpacity,
+            transform: `rotate(${wobbleAngle}deg) scale(${emojiScale})`,
           }}
         >
-          ⚡
+          🧪
         </div>
+
+        {/* STEP 4 label */}
         <div
           style={{
-            fontSize: 16,
+            fontSize: 28,
             color: "#c4b5fd",
-            letterSpacing: 4,
+            letterSpacing: 6,
             textTransform: "uppercase",
             fontWeight: 600,
             fontFamily: poppins,
-            textAlign: "center",
-            opacity: step4Opacity,
-            transform: `translateY(${step4TranslateY}px)`,
+            opacity: labelOpacity,
+            transform: `scale(${labelScale})`,
           }}
         >
-          Step 4
+          STEP 4
         </div>
+
+        {/* Title: spring punch */}
         <div
           style={{
-            fontSize: 48,
+            fontSize: 72,
             color: "#ffffff",
             fontWeight: 800,
             fontFamily: poppins,
-            textAlign: "center",
             opacity: titleOpacity,
-            transform: `translateY(${titleTranslateY}px)`,
+            transform: `scale(${titleScale})`,
           }}
         >
-          FDA Fast-Track
+          Compounds Tested & Validated
         </div>
+
+        {/* Description: blur-in */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 36,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,
-            textAlign: "center",
-            maxWidth: 700,
+            maxWidth: 900,
+            lineHeight: 1.4,
             opacity: descOpacity,
-            transform: `translateY(${descTranslateY}px)`,
+            filter: `blur(${descBlur}px)`,
           }}
         >
-          Rare disease drugs qualify for Priority Review Vouchers and Orphan Drug Designation. The regulatory path is clearer and faster.
+          Drug candidates move through preclinical testing with full community
+          oversight.
         </div>
       </div>
     </SceneWrapper>

@@ -7,20 +7,36 @@ export const Scene3Affected: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Softer glow (blue-purple, lower opacity)
+  // Softer glow
   const glowPulse = Math.sin(frame * 0.05) * 0.1 + 0.25;
 
-  // 1. "1 in 10" (frame 10) — slower zoom
-  const statPunch = spring({ frame: frame - 10, fps, config: { damping: 18, stiffness: 100 } });
-  const statScale = interpolate(statPunch, [0, 1], [0.8, 1]);
+  // 1. "1 in 10" — 3D rotateX animation (from -90deg to 0)
+  const statSpring = spring({
+    frame: frame - 10,
+    fps,
+    config: { damping: 10, stiffness: 120 },
+  });
+  const statRotateX = interpolate(statSpring, [0, 1], [-90, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const statOpacity = interpolate(frame, [10, 18], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 2. Description (frame 40) — fade up
-  const descOpacity = interpolate(frame, [40, 60], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descY = interpolate(frame, [40, 60], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 2. "people worldwide live with a rare disease" — staggered word appearance
+  const words = "people worldwide live with a rare disease".split(" ");
 
-  // 3. "That's 800 million..." (frame 65) — fade up
-  const subOpacity = interpolate(frame, [65, 85], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const subY = interpolate(frame, [65, 85], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 3. Sub text — fade + translateY
+  const subOpacity = interpolate(frame, [75, 95], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const subY = interpolate(frame, [75, 95], [25, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -50,40 +66,70 @@ export const Scene3Affected: React.FC = () => {
           zIndex: 1,
         }}
       >
-        {/* 1. "1 in 10" */}
+        {/* 1. "1 in 10" — 3D rotateX */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 140,
+            fontSize: 180,
             fontWeight: 900,
             color: "#ffffff",
             textAlign: "center",
-            transform: `scale(${statScale})`,
+            opacity: statOpacity,
+            transform: `perspective(800px) rotateX(${statRotateX}deg)`,
+            transformOrigin: "center bottom",
           }}
         >
           1 in 10
         </div>
 
-        {/* 2. Description */}
+        {/* 2. Staggered word appearance */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 32,
+            fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
-            opacity: descOpacity,
-            transform: `translateY(${descY}px)`,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: 12,
           }}
         >
-          People on Earth are living with a rare disease.
+          {words.map((word, i) => {
+            const wordStart = 40 + i * 4;
+            const wordOpacity = interpolate(
+              frame,
+              [wordStart, wordStart + 8],
+              [0, 1],
+              { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+            );
+            const wordY = interpolate(
+              frame,
+              [wordStart, wordStart + 8],
+              [15, 0],
+              { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+            );
+            return (
+              <span
+                key={i}
+                style={{
+                  opacity: wordOpacity,
+                  transform: `translateY(${wordY}px)`,
+                  display: "inline-block",
+                }}
+              >
+                {word}
+              </span>
+            );
+          })}
         </div>
 
         {/* 3. Sub text */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 22,
+            fontSize: 36,
             fontWeight: 400,
             color: "#c4b5fd",
             textAlign: "center",
@@ -92,7 +138,7 @@ export const Scene3Affected: React.FC = () => {
             marginTop: 20,
           }}
         >
-          That's 800 million people. Waiting.
+          That&rsquo;s 800 million people. Waiting.
         </div>
       </div>
     </SceneWrapper>

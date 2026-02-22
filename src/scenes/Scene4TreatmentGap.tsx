@@ -7,17 +7,47 @@ export const Scene4TreatmentGap: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "95%" (frame 8) — hard slam
-  const statPunch = spring({ frame: frame - 8, fps, config: { damping: 10, stiffness: 250 } });
-  const statScale = interpolate(statPunch, [0, 1], [0.7, 1]);
+  // 1. "95%" — dramatic scale punch from 0.2 with color transition (red pulse)
+  const statSpring = spring({
+    frame: frame - 8,
+    fps,
+    config: { damping: 6, stiffness: 150 },
+  });
+  const statScale = interpolate(statSpring, [0, 1], [0.2, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const statOpacity = interpolate(frame, [8, 14], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  // Red pulse glow that throbs
+  const redPulse = Math.sin(frame * 0.12) * 10 + 15;
 
-  // 2. Description (frame 35) — fade up
-  const descOpacity = interpolate(frame, [35, 55], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descY = interpolate(frame, [35, 55], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 2. "of rare diseases have no approved treatment" — fade + translateY
+  const descOpacity = interpolate(frame, [38, 58], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descY = interpolate(frame, [38, 58], [30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 3. "Not a single option..." (frame 65) — fade up with pause
-  const subOpacity = interpolate(frame, [65, 85], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const subY = interpolate(frame, [65, 85], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 3. "Not even one option." — spring punch scale
+  const subSpring = spring({
+    frame: frame - 68,
+    fps,
+    config: { damping: 8, stiffness: 180 },
+  });
+  const subScale = interpolate(subSpring, [0, 1], [0.3, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const subOpacity = interpolate(frame, [68, 74], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -31,15 +61,17 @@ export const Scene4TreatmentGap: React.FC = () => {
           height: "100%",
         }}
       >
-        {/* 1. "95%" */}
+        {/* 1. "95%" — dramatic scale punch + red pulse glow */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 160,
+            fontSize: 200,
             fontWeight: 900,
             color: "#ef4444",
             textAlign: "center",
             transform: `scale(${statScale})`,
+            opacity: statOpacity,
+            textShadow: `0 0 ${redPulse}px rgba(239, 68, 68, 0.7), 0 0 ${redPulse * 2}px rgba(239, 68, 68, 0.3)`,
           }}
         >
           95%
@@ -49,7 +81,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 30,
+            fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
@@ -57,23 +89,23 @@ export const Scene4TreatmentGap: React.FC = () => {
             transform: `translateY(${descY}px)`,
           }}
         >
-          Of rare disease patients have zero approved treatments.
+          of rare diseases have no approved treatment
         </div>
 
-        {/* 3. Sub text */}
+        {/* 3. "Not even one option." — spring punch */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 22,
-            fontWeight: 400,
+            fontSize: 36,
+            fontWeight: 700,
             color: "#c4b5fd",
             textAlign: "center",
             opacity: subOpacity,
-            transform: `translateY(${subY}px)`,
+            transform: `scale(${subScale})`,
             marginTop: 20,
           }}
         >
-          Not a single option. Not even close.
+          Not even one option.
         </div>
       </div>
     </SceneWrapper>

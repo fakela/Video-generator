@@ -10,17 +10,50 @@ export const Scene2Scale: React.FC = () => {
   // Pulsing radial glow
   const glowPulse = Math.sin(frame * 0.06) * 0.15 + 0.35;
 
-  // 1. "10,000+" (frame 10) — spring punch
-  const statPunch = spring({ frame: frame - 10, fps, config: { damping: 12, stiffness: 200 } });
-  const statScale = interpolate(statPunch, [0, 1], [0.7, 1]);
+  // 1. "10,000+" — number counter animation + scale punch from 0.3
+  const counterProgress = interpolate(frame, [10, 55], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const displayNumber = Math.round(counterProgress * 10000);
+  const formattedNumber =
+    displayNumber >= 10000
+      ? "10,000+"
+      : displayNumber.toLocaleString();
 
-  // 2. Description (frame 35) — fade up
-  const descOpacity = interpolate(frame, [35, 55], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descY = interpolate(frame, [35, 55], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  const statSpring = spring({
+    frame: frame - 10,
+    fps,
+    config: { damping: 7, stiffness: 130 },
+  });
+  const statScale = interpolate(statSpring, [0, 1], [0.3, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const statOpacity = interpolate(frame, [10, 16], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 3. "95% have no..." (frame 60) — fade up
-  const subOpacity = interpolate(frame, [60, 80], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const subY = interpolate(frame, [60, 80], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 2. Description — blur-in animation (blur 12px to 0)
+  const descBlur = interpolate(frame, [45, 70], [12, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descOpacity = interpolate(frame, [45, 70], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // 3. Sub text — fade + scale from 0.9
+  const subOpacity = interpolate(frame, [65, 85], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const subScale = interpolate(frame, [65, 85], [0.9, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -31,8 +64,8 @@ export const Scene2Scale: React.FC = () => {
           top: "50%",
           left: "50%",
           transform: "translate(-50%, -50%)",
-          width: 800,
-          height: 800,
+          width: 900,
+          height: 900,
           background: `radial-gradient(circle, rgba(168,85,247,${glowPulse}) 0%, transparent 70%)`,
           pointerEvents: "none",
         }}
@@ -50,45 +83,46 @@ export const Scene2Scale: React.FC = () => {
           zIndex: 1,
         }}
       >
-        {/* 1. "10,000+" */}
+        {/* 1. "10,000+" — counter + scale punch */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 140,
+            fontSize: 180,
             fontWeight: 900,
             color: "#ffffff",
             textAlign: "center",
             transform: `scale(${statScale})`,
+            opacity: statOpacity,
           }}
         >
-          10,000+
+          {formattedNumber}
         </div>
 
-        {/* 2. Description */}
+        {/* 2. Description — blur-in */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 32,
+            fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
             opacity: descOpacity,
-            transform: `translateY(${descY}px)`,
+            filter: `blur(${descBlur}px)`,
           }}
         >
-          Rare diseases have been identified worldwide
+          Rare diseases identified worldwide
         </div>
 
-        {/* 3. Sub text */}
+        {/* 3. Sub text — fade + scale */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 22,
+            fontSize: 36,
             fontWeight: 400,
             color: "#c4b5fd",
             textAlign: "center",
             opacity: subOpacity,
-            transform: `translateY(${subY}px)`,
+            transform: `scale(${subScale})`,
             marginTop: 20,
           }}
         >

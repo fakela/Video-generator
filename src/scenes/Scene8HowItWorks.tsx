@@ -7,17 +7,41 @@ export const Scene8HowItWorks: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "How Curetopia Works" (frame 10) — fade up
-  const titleOpacity = interpolate(frame, [10, 30], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const titleY = interpolate(frame, [10, 30], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 1. "How Curetopia Works" — 3D rotateY animation (like a door opening, from 90 to 0)
+  const titleSpring = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 12, stiffness: 100 },
+  });
+  const titleRotateY = interpolate(titleSpring, [0, 1], [90, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleOpacity = interpolate(frame, [5, 15], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 2. "From community funding..." (frame 30) — fade up
-  const descOpacity = interpolate(frame, [30, 50], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descY = interpolate(frame, [30, 50], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 2. "From community funding to FDA approval." — fade in
+  const descOpacity = interpolate(frame, [30, 50], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 3. "20x cheaper..." (frame 50) — spring punch
-  const statPunch = spring({ frame: frame - 50, fps, config: { damping: 12, stiffness: 200 } });
-  const statScale = interpolate(statPunch, [0, 1], [0.7, 1]);
+  // 3. "5 steps. Zero bureaucracy." — scale punch from 0.3
+  const punchSpring = spring({
+    frame: frame - 55,
+    fps,
+    config: { damping: 7, stiffness: 150 },
+  });
+  const punchScale = interpolate(punchSpring, [0, 1], [0.3, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const punchOpacity = interpolate(frame, [55, 62], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -31,16 +55,17 @@ export const Scene8HowItWorks: React.FC = () => {
           height: "100%",
         }}
       >
-        {/* 1. Title */}
+        {/* 1. Title — 3D rotateY door opening */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 64,
+            fontSize: 80,
             fontWeight: 800,
             color: "#ffffff",
             textAlign: "center",
             opacity: titleOpacity,
-            transform: `translateY(${titleY}px)`,
+            transform: `perspective(1000px) rotateY(${titleRotateY}deg)`,
+            transformOrigin: "left center",
           }}
         >
           How Curetopia Works
@@ -50,19 +75,18 @@ export const Scene8HowItWorks: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 26,
+            fontSize: 40,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
             opacity: descOpacity,
-            transform: `translateY(${descY}px)`,
             marginTop: 16,
           }}
         >
           From community funding to FDA approval.
         </div>
 
-        {/* 3. Cost stat */}
+        {/* 3. "5 steps. Zero bureaucracy." — scale punch */}
         <div
           style={{
             fontFamily: poppins,
@@ -70,11 +94,12 @@ export const Scene8HowItWorks: React.FC = () => {
             fontWeight: 700,
             color: "#22c55e",
             textAlign: "center",
-            transform: `scale(${statScale})`,
+            opacity: punchOpacity,
+            transform: `scale(${punchScale})`,
             marginTop: 24,
           }}
         >
-          20× cheaper than Big Pharma.
+          5 steps. Zero bureaucracy.
         </div>
       </div>
     </SceneWrapper>

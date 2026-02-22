@@ -7,21 +7,60 @@ export const Scene10Step2: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Icon bounce (frame 5)
-  const bounce = spring({ frame: frame - 5, fps, config: { damping: 8, stiffness: 150 } });
-  const iconScale = interpolate(bounce, [0, 1], [0, 1]);
+  // Emoji: scale bounce with elastic spring (damping: 6)
+  const emojiSpring = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 6, stiffness: 150, overshootClamping: false },
+  });
+  const emojiScale = interpolate(emojiSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const emojiOpacity = interpolate(emojiSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // "Step 2" fade up (frame 20)
-  const step2Opacity = interpolate(frame, [20, 40], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const step2TranslateY = interpolate(frame, [20, 40], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // "STEP 2" label: fade + letterSpacing animation
+  const labelProgress = spring({
+    frame: frame - 18,
+    fps,
+    config: { damping: 12, stiffness: 100 },
+  });
+  const labelOpacity = interpolate(labelProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const labelLetterSpacing = interpolate(labelProgress, [0, 1], [24, 6], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Title fade up (frame 30)
-  const titleOpacity = interpolate(frame, [30, 50], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const titleTranslateY = interpolate(frame, [30, 50], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Title: 3D rotateX from -30deg to 0
+  const titleProgress = spring({
+    frame: frame - 28,
+    fps,
+    config: { damping: 10, stiffness: 120 },
+  });
+  const titleRotateX = interpolate(titleProgress, [0, 1], [-30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleOpacity = interpolate(titleProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleScale = interpolate(titleProgress, [0, 1], [0.9, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Description fade up (frame 50)
-  const descOpacity = interpolate(frame, [50, 70], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descTranslateY = interpolate(frame, [50, 70], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Description: staggered word reveal
+  const words =
+    "Open calls go to researchers worldwide. The best proposals get funded\u2014fast.".split(
+      " "
+    );
 
   return (
     <SceneWrapper>
@@ -31,62 +70,96 @@ export const Scene10Step2: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 12,
+          gap: 20,
           width: "100%",
           height: "100%",
           fontFamily: poppins,
           textAlign: "center",
         }}
       >
+        {/* Emoji */}
         <div
           style={{
-            fontSize: 72,
-            transform: `scale(${iconScale})`,
+            fontSize: 100,
+            transform: `scale(${emojiScale})`,
+            opacity: emojiOpacity,
           }}
         >
           🔬
         </div>
+
+        {/* STEP 2 label */}
         <div
           style={{
-            fontSize: 16,
+            fontSize: 28,
             color: "#c4b5fd",
-            letterSpacing: 4,
+            letterSpacing: labelLetterSpacing,
             textTransform: "uppercase",
             fontWeight: 600,
             fontFamily: poppins,
-            textAlign: "center",
-            opacity: step2Opacity,
-            transform: `translateY(${step2TranslateY}px)`,
+            opacity: labelOpacity,
           }}
         >
-          Step 2
+          STEP 2
         </div>
+
+        {/* Title with 3D rotateX */}
         <div
           style={{
-            fontSize: 48,
+            fontSize: 72,
             color: "#ffffff",
             fontWeight: 800,
             fontFamily: poppins,
-            textAlign: "center",
             opacity: titleOpacity,
-            transform: `translateY(${titleTranslateY}px)`,
+            transform: `perspective(800px) rotateX(${titleRotateX}deg) scale(${titleScale})`,
+            transformOrigin: "center bottom",
           }}
         >
-          Yeast-Avatar Drug Screening
+          Scientists Apply to Solve It
         </div>
+
+        {/* Staggered word reveal */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 36,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,
-            textAlign: "center",
-            maxWidth: 700,
-            opacity: descOpacity,
-            transform: `translateY(${descTranslateY}px)`,
+            maxWidth: 900,
+            lineHeight: 1.4,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "0 10px",
           }}
         >
-          Partner lab Perlara screens 8,500 existing compounds against yeast models of the disease. Fast. Cheap. Targeted.
+          {words.map((word, i) => {
+            const wordDelay = 48 + i * 3;
+            const wordOpacity = interpolate(
+              frame,
+              [wordDelay, wordDelay + 8],
+              [0, 1],
+              { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+            );
+            const wordTranslateY = interpolate(
+              frame,
+              [wordDelay, wordDelay + 8],
+              [20, 0],
+              { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+            );
+            return (
+              <span
+                key={i}
+                style={{
+                  opacity: wordOpacity,
+                  transform: `translateY(${wordTranslateY}px)`,
+                  display: "inline-block",
+                }}
+              >
+                {word}
+              </span>
+            );
+          })}
         </div>
       </div>
     </SceneWrapper>
