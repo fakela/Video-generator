@@ -18,7 +18,7 @@ export const Scene17Result1: React.FC = () => {
   const subOpacity = interpolate(frame, [35, 55], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
   const subTranslateY = interpolate(frame, [35, 55], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
-  // "From a screen of 8,500 compounds." fade up (frame 55)
+  // "From 8,500 repurposable compounds..." fade up (frame 55)
   const detailOpacity = interpolate(frame, [55, 75], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
   const detailTranslateY = interpolate(frame, [55, 75], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
@@ -30,7 +30,7 @@ export const Scene17Result1: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 12,
+          gap: 16,
           width: "100%",
           height: "100%",
           fontFamily: poppins,
@@ -55,7 +55,7 @@ export const Scene17Result1: React.FC = () => {
         {/* Main stat */}
         <div
           style={{
-            fontSize: 80,
+            fontSize: 140,
             fontWeight: 900,
             color: "#ffffff",
             fontFamily: poppins,
@@ -71,7 +71,7 @@ export const Scene17Result1: React.FC = () => {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#ffffff",
             fontFamily: poppins,
             textAlign: "center",
@@ -87,7 +87,7 @@ export const Scene17Result1: React.FC = () => {
         {/* Detail */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 30,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -97,7 +97,7 @@ export const Scene17Result1: React.FC = () => {
             zIndex: 1,
           }}
         >
-          From a screen of 8,500 compounds.
+          From 8,500 repurposable compounds screened via yeast models.
         </div>
       </div>
     </SceneWrapper>

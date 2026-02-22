@@ -14,7 +14,7 @@ export const Scene5Market: React.FC = () => {
   });
   const dollarAmount = Math.round(counterProgress * 1000);
   const displayText =
-    dollarAmount >= 1000 ? "$1 Trillion" : `$${dollarAmount}B`;
+    dollarAmount >= 1000 ? "$1 Trillion+" : `$${dollarAmount}B`;
 
   const statSpring = spring({
     frame: frame - 10,

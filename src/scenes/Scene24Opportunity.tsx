@@ -7,7 +7,7 @@ export const Scene24Opportunity: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "The $1.5 Trillion Opportunity" — fade up at frame 5
+  // 1. "The Untapped Opportunity" — fade up at frame 5
   const titleOpacity = interpolate(frame, [5, 25], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -55,6 +55,7 @@ export const Scene24Opportunity: React.FC = () => {
   });
   const trillionScale = interpolate(trillionPunch, [0, 1], [0.7, 1]);
   const trillionOpacity = interpolate(trillionPunch, [0, 1], [0, 1]);
+  const goldGlow = Math.sin(frame * 0.08) * 8 + 16;
 
   return (
     <SceneWrapper>
@@ -72,7 +73,7 @@ export const Scene24Opportunity: React.FC = () => {
       >
         <div
           style={{
-            fontSize: 52,
+            fontSize: 72,
             fontWeight: 800,
             color: "#ffffff",
             fontFamily: poppins,
@@ -81,12 +82,12 @@ export const Scene24Opportunity: React.FC = () => {
             transform: `translateY(${titleTranslateY}px)`,
           }}
         >
-          The $1.5 Trillion Opportunity
+          The Untapped Opportunity
         </div>
 
         <div
           style={{
-            fontSize: 22,
+            fontSize: 32,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -105,7 +106,7 @@ export const Scene24Opportunity: React.FC = () => {
             justifyContent: "center",
             gap: 6,
             maxWidth: 700,
-            marginTop: 30,
+            marginTop: 24,
           }}
         >
           {dots.map((dotOpacity, index) => (
@@ -124,7 +125,7 @@ export const Scene24Opportunity: React.FC = () => {
 
         <div
           style={{
-            fontSize: 18,
+            fontSize: 28,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -133,19 +134,20 @@ export const Scene24Opportunity: React.FC = () => {
             transform: `translateY(${sub2TranslateY}px)`,
           }}
         >
-          10,000 diseases x $150M average market
+          10,000 diseases × $150M average market
         </div>
 
         <div
           style={{
-            fontSize: 48,
-            fontWeight: 800,
+            fontSize: 120,
+            fontWeight: 900,
             color: "#fbbf24",
             fontFamily: poppins,
             textAlign: "center",
-            marginTop: 16,
+            marginTop: 12,
             transform: `scale(${trillionScale})`,
             opacity: trillionOpacity,
+            textShadow: `0 0 ${goldGlow}px rgba(251, 191, 36, 0.6), 0 0 ${goldGlow * 2}px rgba(251, 191, 36, 0.3)`,
           }}
         >
           $1.5 Trillion

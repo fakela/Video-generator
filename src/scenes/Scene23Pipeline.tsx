@@ -7,7 +7,7 @@ export const Scene23Pipeline: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "20+" — spring punch at frame 10
+  // 1. "10" — spring punch at frame 10
   const punch = spring({
     frame: frame - 10,
     fps,
@@ -16,7 +16,7 @@ export const Scene23Pipeline: React.FC = () => {
   const punchScale = interpolate(punch, [0, 1], [0.7, 1]);
   const punchOpacity = interpolate(punch, [0, 1], [0, 1]);
 
-  // 2. "Rare diseases now in the active pipeline." — fade up at frame 35
+  // 2. "Disease programs built in 6 months." — fade up at frame 35
   const sub1Opacity = interpolate(frame, [35, 55], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -26,12 +26,22 @@ export const Scene23Pipeline: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 3. "Each one a community. Each one waiting." — fade up at frame 55
+  // 3. "11 ARS mutations modelled and ready." — fade up at frame 55
   const sub2Opacity = interpolate(frame, [55, 75], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
   const sub2TranslateY = interpolate(frame, [55, 75], [30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // 4. "$RAPTOR → RaptorCo" — fade up at frame 72
+  const raptorOpacity = interpolate(frame, [72, 92], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const raptorTranslateY = interpolate(frame, [72, 92], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -52,44 +62,61 @@ export const Scene23Pipeline: React.FC = () => {
       >
         <div
           style={{
-            fontSize: 120,
+            fontSize: 200,
             fontWeight: 900,
             color: "#c084fc",
             fontFamily: poppins,
             textAlign: "center",
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
+            lineHeight: 1,
           }}
         >
-          20+
+          10
+        </div>
+
+        <div
+          style={{
+            fontSize: 48,
+            color: "#ffffff",
+            fontWeight: 600,
+            fontFamily: poppins,
+            textAlign: "center",
+            marginTop: 16,
+            opacity: sub1Opacity,
+            transform: `translateY(${sub1TranslateY}px)`,
+          }}
+        >
+          Disease programs built in 6 months.
+        </div>
+
+        <div
+          style={{
+            fontSize: 32,
+            color: "#c4b5fd",
+            fontFamily: poppins,
+            textAlign: "center",
+            marginTop: 14,
+            opacity: sub2Opacity,
+            transform: `translateY(${sub2TranslateY}px)`,
+          }}
+        >
+          11 ARS mutations modelled and ready.
         </div>
 
         <div
           style={{
             fontSize: 28,
-            color: "#ffffff",
+            color: "#fbbf24",
+            fontWeight: 600,
             fontFamily: poppins,
             textAlign: "center",
-            marginTop: 20,
-            opacity: sub1Opacity,
-            transform: `translateY(${sub1TranslateY}px)`,
+            marginTop: 24,
+            opacity: raptorOpacity,
+            transform: `translateY(${raptorTranslateY}px)`,
           }}
         >
-          Rare diseases now in the active pipeline.
-        </div>
-
-        <div
-          style={{
-            fontSize: 20,
-            color: "#c4b5fd",
-            fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 16,
-            opacity: sub2Opacity,
-            transform: `translateY(${sub2TranslateY}px)`,
-          }}
-        >
-          Each one a community. Each one waiting.
+          $RAPTOR → RaptorCo — the first Coin-to-Company spin-out in history.
         </div>
       </div>
     </SceneWrapper>

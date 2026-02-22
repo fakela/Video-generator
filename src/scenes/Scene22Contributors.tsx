@@ -123,7 +123,7 @@ export const Scene22Contributors: React.FC = () => {
             zIndex: 1,
           }}
         >
-          contributors
+          pioneers
         </div>
 
         {/* Staggered word reveal */}

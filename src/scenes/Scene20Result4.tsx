@@ -7,12 +7,12 @@ export const Scene20Result4: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "8,500" — number counter animation from 0 to 8500, frame 5 to 50
+  // 1. "84,000" — number counter animation from 0 to 84000, frame 5 to 50
   const countProgress = interpolate(frame, [5, 50], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const displayNum = Math.round(8500 * countProgress).toLocaleString();
+  const displayNum = Math.round(84000 * countProgress).toLocaleString();
 
   const numberSpring = spring({
     frame: frame - 5,
@@ -24,7 +24,7 @@ export const Scene20Result4: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 2. "compounds" — scale punch at frame 45
+  // 2. "tests completed" — scale punch at frame 45
   const compoundSpring = spring({
     frame: frame - 45,
     fps,
@@ -39,22 +39,22 @@ export const Scene20Result4: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 3. "screened computationally" — blur-in starting at frame 65
+  // 3. "28 validated drug hits" — blur-in starting at frame 65
   const blurAmount = interpolate(frame, [65, 92], [12, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const screenedOpacity = interpolate(frame, [65, 92], [0, 1], {
+  const hitsOpacity = interpolate(frame, [65, 92], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 4. "AI-driven drug discovery at community scale." — fade in at frame 90
-  const aiOpacity = interpolate(frame, [90, 115], [0, 1], {
+  // 4. "Published openly onchain." — fade in at frame 90
+  const taglineOpacity = interpolate(frame, [90, 115], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const aiScale = interpolate(frame, [90, 115], [0.9, 1], {
+  const taglineScale = interpolate(frame, [90, 115], [0.9, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -90,7 +90,7 @@ export const Scene20Result4: React.FC = () => {
           }}
         />
 
-        {/* "8,500" — number counter */}
+        {/* "84,000" — number counter */}
         <div
           style={{
             fontSize: 180,
@@ -107,7 +107,7 @@ export const Scene20Result4: React.FC = () => {
           {displayNum}
         </div>
 
-        {/* "compounds" — scale punch */}
+        {/* "tests completed" — scale punch */}
         <div
           style={{
             fontSize: 56,
@@ -120,39 +120,40 @@ export const Scene20Result4: React.FC = () => {
             zIndex: 1,
           }}
         >
-          compounds
+          tests completed
         </div>
 
-        {/* "screened computationally" — blur-in */}
+        {/* "28 validated drug hits" — blur-in */}
         <div
           style={{
-            fontSize: 40,
-            color: "#c4b5fd",
+            fontSize: 48,
+            color: "#22c55e",
+            fontWeight: 700,
             fontFamily: poppins,
             marginTop: 12,
             filter: `blur(${blurAmount}px)`,
-            opacity: screenedOpacity,
+            opacity: hitsOpacity,
             position: "relative",
             zIndex: 1,
           }}
         >
-          screened computationally
+          28 validated drug hits
         </div>
 
-        {/* "AI-driven drug discovery at community scale." — fade in */}
+        {/* "Published openly onchain." — fade in */}
         <div
           style={{
             fontSize: 36,
             color: "#a855f7",
             fontFamily: poppins,
             marginTop: 8,
-            opacity: aiOpacity,
-            transform: `scale(${aiScale})`,
+            opacity: taglineOpacity,
+            transform: `scale(${taglineScale})`,
             position: "relative",
             zIndex: 1,
           }}
         >
-          AI-driven drug discovery at community scale.
+          Published openly onchain. Science at the speed of the internet.
         </div>
       </div>
     </SceneWrapper>

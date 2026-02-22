@@ -41,12 +41,12 @@ export const Scene19Result3: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // "Active. Right now." — letter-spacing animation 16 -> 3 starting at frame 55
-  const letterSpacing = interpolate(frame, [55, 90], [16, 3], {
+  // "$SASHA — the world's first Curestream" — fade up at frame 55
+  const sashaOpacity = interpolate(frame, [55, 75], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const activeOpacity = interpolate(frame, [55, 75], [0, 1], {
+  const sashaTranslateY = interpolate(frame, [55, 75], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -118,20 +118,36 @@ export const Scene19Result3: React.FC = () => {
           pioneer families
         </div>
 
-        {/* "Active. Right now." — letter-spacing animation */}
+        {/* "$SASHA — the world's first Curestream" */}
         <div
           style={{
-            fontSize: 40,
-            color: "#c4b5fd",
+            fontSize: 36,
+            color: "#22c55e",
+            fontWeight: 600,
             fontFamily: poppins,
             marginTop: 16,
-            letterSpacing: letterSpacing,
-            opacity: activeOpacity,
+            opacity: sashaOpacity,
+            transform: `translateY(${sashaTranslateY}px)`,
             position: "relative",
             zIndex: 1,
           }}
         >
-          Active. Right now.
+          $SASHA — the world's first Curestream.
+        </div>
+
+        <div
+          style={{
+            fontSize: 26,
+            color: "#c4b5fd",
+            fontFamily: poppins,
+            marginTop: 4,
+            opacity: sashaOpacity,
+            transform: `translateY(${sashaTranslateY}px)`,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          Proof this model works for every rare kid.
         </div>
       </div>
     </SceneWrapper>
