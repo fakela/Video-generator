@@ -18,13 +18,20 @@ import { Scene10Step2 } from "./scenes/Scene10Step2";
 import { Scene11Step3 } from "./scenes/Scene11Step3";
 import { Scene12Step4 } from "./scenes/Scene12Step4";
 import { Scene13Step5 } from "./scenes/Scene13Step5";
+import { SceneStep6PatientFamilies } from "./scenes/SceneStep6PatientFamilies";
+import { SceneStep7Revenue } from "./scenes/SceneStep7Revenue";
 import { Scene14Community } from "./scenes/Scene14Community";
 import { Scene15AARS2 } from "./scenes/Scene15AARS2";
+import { ScenePerlara } from "./scenes/ScenePerlara";
 import { Scene16CostGap } from "./scenes/Scene16CostGap";
+import { SceneResultsIntro } from "./scenes/SceneResultsIntro";
 import { Scene17Result1 } from "./scenes/Scene17Result1";
 import { Scene18Result2 } from "./scenes/Scene18Result2";
-import { Scene19Result3 } from "./scenes/Scene19Result3";
 import { Scene20Result4 } from "./scenes/Scene20Result4";
+import { SceneSpinoutsIntro } from "./scenes/SceneSpinoutsIntro";
+import { SceneRaptor } from "./scenes/SceneRaptor";
+import { SceneSasha } from "./scenes/SceneSasha";
+import { SceneReceipts } from "./scenes/SceneReceipts";
 import { Scene21Raise } from "./scenes/Scene21Raise";
 import { Scene22Contributors } from "./scenes/Scene22Contributors";
 import { Scene23Pipeline } from "./scenes/Scene23Pipeline";
@@ -40,6 +47,8 @@ export const CuretopiaCase: React.FC = () => {
     <AbsoluteFill>
       <Audio src={audio} volume={0.4} />
       <TransitionSeries>
+        {/* ═══ ACT 1: THE PROBLEM ═══ */}
+
         {/* Scene 1 — TITLE */}
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene1Title />
@@ -75,6 +84,8 @@ export const CuretopiaCase: React.FC = () => {
           <Scene6BigPharma />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+
+        {/* ═══ ACT 2: THE SOLUTION ═══ */}
 
         {/* Scene 7 — INTRODUCING */}
         <TransitionSeries.Sequence durationInFrames={120}>
@@ -116,75 +127,127 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene13Step5 />
         </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+
+        {/* STEP 6 — PATIENT FAMILIES */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <SceneStep6PatientFamilies />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+
+        {/* STEP 7 — REVENUE FLOWS BACK */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <SceneStep7Revenue />
+        </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
-        {/* Scene 14 — COMMUNITY */}
+        {/* ═══ ACT 3: REAL-WORLD PROOF — AARS2 ═══ */}
+
+        {/* COMMUNITY MEDICINE. ONCHAIN. */}
         <TransitionSeries.Sequence durationInFrames={90}>
           <Scene14Community />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
 
-        {/* Scene 15 — AARS2 */}
+        {/* PROJECT 001 — AARS2 */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene15AARS2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* Scene 16 — COST GAP */}
+        {/* PERLARA — YEAST-AVATAR DRUG SCREENING */}
+        <TransitionSeries.Sequence durationInFrames={130}>
+          <ScenePerlara />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* COST GAP */}
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene16CostGap />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
-        {/* Scene 17 — RESULT 1 */}
-        <TransitionSeries.Sequence durationInFrames={90}>
+        {/* ═══ ACT 4: THE RESULTS ═══ */}
+
+        {/* RESULTS INTRO */}
+        <TransitionSeries.Sequence durationInFrames={80}>
+          <SceneResultsIntro />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* 2 DRUG CANDIDATES */}
+        <TransitionSeries.Sequence durationInFrames={120}>
           <Scene17Result1 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* Scene 18 — RESULT 2 */}
-        <TransitionSeries.Sequence durationInFrames={90}>
+        {/* PROVISIONAL PATENT */}
+        <TransitionSeries.Sequence durationInFrames={110}>
           <Scene18Result2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* Scene 19 — RESULT 3 */}
-        <TransitionSeries.Sequence durationInFrames={90}>
-          <Scene19Result3 />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
-
-        {/* Scene 20 — RESULT 4 */}
-        <TransitionSeries.Sequence durationInFrames={90}>
+        {/* 28 DRUG HITS / 84K TESTS */}
+        <TransitionSeries.Sequence durationInFrames={150}>
           <Scene20Result4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
-        {/* Scene 21 — THE RAISE */}
+        {/* ═══ ACT 5: $RAPTOR & $SASHA ═══ */}
+
+        {/* SPINOUTS INTRO */}
+        <TransitionSeries.Sequence durationInFrames={80}>
+          <SceneSpinoutsIntro />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* $RAPTOR → RAPTORCO */}
+        <TransitionSeries.Sequence durationInFrames={130}>
+          <SceneRaptor />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* $SASHA — PROOF OF CURES */}
+        <TransitionSeries.Sequence durationInFrames={150}>
+          <SceneSasha />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+
+        {/* ═══ ACT 6: THE RECEIPTS ═══ */}
+
+        {/* THE RECEIPTS */}
+        <TransitionSeries.Sequence durationInFrames={140}>
+          <SceneReceipts />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* $1.77M RAISE */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene21Raise />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* Scene 22 — CONTRIBUTORS */}
+        {/* 1,000+ PIONEERS */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene22Contributors />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* Scene 23 — PIPELINE */}
-        <TransitionSeries.Sequence durationInFrames={100}>
+        {/* 10 DISEASE PROGRAMS */}
+        <TransitionSeries.Sequence durationInFrames={120}>
           <Scene23Pipeline />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
 
-        {/* Scene 24 — OPPORTUNITY */}
+        {/* ═══ ACT 7: FINALE ═══ */}
+
+        {/* THE OPPORTUNITY */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene24Opportunity />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
 
-        {/* Scene 25 — CTA */}
+        {/* CTA */}
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene25CTA />
         </TransitionSeries.Sequence>
