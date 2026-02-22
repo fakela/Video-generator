@@ -7,24 +7,64 @@ export const Scene9Step1: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // Icon bounce (frame 5)
-  const bounce = spring({ frame: frame - 5, fps, config: { damping: 8, stiffness: 150 } });
-  const iconScale = interpolate(bounce, [0, 1], [0, 1.15]);
-  const iconSettle = spring({ frame: frame - 5, fps, config: { damping: 12, stiffness: 100 } });
-  const finalIconScale = frame < 5 ? 0 : interpolate(iconSettle, [0, 1], [0, 1]);
-  const iconScaleValue = frame < 20 ? iconScale : finalIconScale;
+  // Emoji rotate-in: rotate from -180deg to 0
+  const emojiProgress = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 10, stiffness: 120 },
+  });
+  const emojiRotation = interpolate(emojiProgress, [0, 1], [-180, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const emojiOpacity = interpolate(emojiProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // "Step 1" fade up (frame 20)
-  const step1Opacity = interpolate(frame, [20, 40], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const step1TranslateY = interpolate(frame, [20, 40], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // "STEP 1" label: fade + scale
+  const labelProgress = spring({
+    frame: frame - 15,
+    fps,
+    config: { damping: 12, stiffness: 100 },
+  });
+  const labelScale = interpolate(labelProgress, [0, 1], [0.3, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const labelOpacity = interpolate(labelProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Title fade up (frame 30)
-  const titleOpacity = interpolate(frame, [30, 50], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const titleTranslateY = interpolate(frame, [30, 50], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Title: spring punch from 0.5
+  const titleSpring = spring({
+    frame: frame - 25,
+    fps,
+    config: { damping: 7, stiffness: 140, overshootClamping: false },
+  });
+  const titleScale = interpolate(titleSpring, [0, 1], [0.5, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Description fade up (frame 50)
-  const descOpacity = interpolate(frame, [50, 70], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const descTranslateY = interpolate(frame, [50, 70], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // Description: blur-in (blur 10 -> 0)
+  const descProgress = interpolate(frame, [45, 70], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descBlur = interpolate(descProgress, [0, 1], [10, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descOpacity = interpolate(descProgress, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -34,62 +74,69 @@ export const Scene9Step1: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 12,
+          gap: 20,
           width: "100%",
           height: "100%",
           fontFamily: poppins,
           textAlign: "center",
         }}
       >
+        {/* Emoji */}
         <div
           style={{
-            fontSize: 72,
-            transform: `scale(${iconScaleValue})`,
+            fontSize: 100,
+            transform: `rotate(${emojiRotation}deg)`,
+            opacity: emojiOpacity,
           }}
         >
           🧬
         </div>
+
+        {/* STEP 1 label */}
         <div
           style={{
-            fontSize: 16,
+            fontSize: 28,
             color: "#c4b5fd",
-            letterSpacing: 4,
+            letterSpacing: 6,
             textTransform: "uppercase",
             fontWeight: 600,
             fontFamily: poppins,
-            textAlign: "center",
-            opacity: step1Opacity,
-            transform: `translateY(${step1TranslateY}px)`,
+            opacity: labelOpacity,
+            transform: `scale(${labelScale})`,
           }}
         >
-          Step 1
+          STEP 1
         </div>
+
+        {/* Title */}
         <div
           style={{
-            fontSize: 48,
+            fontSize: 72,
             color: "#ffffff",
             fontWeight: 800,
             fontFamily: poppins,
-            textAlign: "center",
             opacity: titleOpacity,
-            transform: `translateY(${titleTranslateY}px)`,
+            transform: `scale(${titleScale})`,
           }}
         >
           Community Funds Research
         </div>
+
+        {/* Description with blur-in */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 36,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,
-            textAlign: "center",
-            maxWidth: 700,
+            maxWidth: 900,
             opacity: descOpacity,
-            transform: `translateY(${descTranslateY}px)`,
+            filter: `blur(${descBlur}px)`,
+            lineHeight: 1.4,
           }}
         >
-          Token holders vote on which diseases to target. $CURES tokens fund the science directly.
+          Token holders vote on which diseases to target. $CURES tokens fund the
+          science directly.
         </div>
       </div>
     </SceneWrapper>

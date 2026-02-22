@@ -7,21 +7,41 @@ export const Scene6BigPharma: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. Line 1 (frame 10) — fade up
-  const line1Opacity = interpolate(frame, [10, 30], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const line1Y = interpolate(frame, [10, 30], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 1. Title — fade + translateY
+  const titleOpacity = interpolate(frame, [5, 25], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleY = interpolate(frame, [5, 25], [30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // 2. Line 2 (frame 30) — fade up
-  const line2Opacity = interpolate(frame, [30, 50], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const line2Y = interpolate(frame, [30, 50], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  // 2. Three lines with X marks — staggered clip-path reveal
+  const lines = [
+    "Too small a patient population",
+    "Too long a development timeline",
+    "Too little profit potential",
+  ];
 
-  // 3. Line 3 (frame 50) — fade up
-  const line3Opacity = interpolate(frame, [50, 70], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-  const line3Y = interpolate(frame, [50, 70], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
-
-  // 4. "We will." (frame 85) — spring punch
-  const weWillPunch = spring({ frame: frame - 85, fps, config: { damping: 10, stiffness: 200 } });
-  const weWillScale = interpolate(weWillPunch, [0, 1], [0.7, 1]);
+  // 3. "We will." — explosive spring scale from 0.2 with green glow
+  const weWillSpring = spring({
+    frame: frame - 100,
+    fps,
+    config: { damping: 6, stiffness: 120 },
+  });
+  const weWillScale = interpolate(weWillSpring, [0, 1], [0.2, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const weWillOpacity = interpolate(frame, [100, 108], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const weWillGlow = interpolate(frame, [100, 130], [0, 20], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -33,66 +53,92 @@ export const Scene6BigPharma: React.FC = () => {
           justifyContent: "center",
           width: "100%",
           height: "100%",
+          gap: 16,
         }}
       >
-        {/* 1. Line 1 */}
+        {/* 1. Title */}
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 28,
-            fontWeight: 400,
+            fontSize: 72,
+            fontWeight: 700,
             color: "#ffffff",
             textAlign: "center",
-            opacity: line1Opacity,
-            transform: `translateY(${line1Y}px)`,
-            marginBottom: 12,
+            opacity: titleOpacity,
+            transform: `translateY(${titleY}px)`,
+            marginBottom: 20,
           }}
         >
-          Big Pharma needs a $1B+ market to even look at a disease.
+          Why Big Pharma Won't Help
         </div>
 
-        {/* 2. Line 2 */}
-        <div
-          style={{
-            fontFamily: poppins,
-            fontSize: 28,
-            fontWeight: 400,
-            color: "#ffffff",
-            textAlign: "center",
-            opacity: line2Opacity,
-            transform: `translateY(${line2Y}px)`,
-            marginBottom: 12,
-          }}
-        >
-          The average rare disease market? $150M.
-        </div>
+        {/* 2. Three lines with X marks — staggered appearance */}
+        {lines.map((line, i) => {
+          const lineStart = 30 + i * 22;
+          const lineClip = interpolate(
+            frame,
+            [lineStart, lineStart + 18],
+            [0, 100],
+            { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+          );
+          const emojiOpacity = interpolate(
+            frame,
+            [lineStart + 10, lineStart + 16],
+            [0, 1],
+            { extrapolateRight: "clamp", extrapolateLeft: "clamp" }
+          );
+          const emojiScale = spring({
+            frame: frame - (lineStart + 10),
+            fps,
+            config: { damping: 8, stiffness: 200 },
+          });
+          return (
+            <div
+              key={i}
+              style={{
+                fontFamily: poppins,
+                fontSize: 36,
+                fontWeight: 400,
+                color: "#ffffff",
+                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+              }}
+            >
+              <span
+                style={{
+                  opacity: emojiOpacity,
+                  transform: `scale(${emojiScale})`,
+                  display: "inline-block",
+                  fontSize: 36,
+                }}
+              >
+                {"\u274C"}
+              </span>
+              <span
+                style={{
+                  clipPath: `inset(0 ${100 - lineClip}% 0 0)`,
+                }}
+              >
+                {line}
+              </span>
+            </div>
+          );
+        })}
 
-        {/* 3. Line 3 */}
-        <div
-          style={{
-            fontFamily: poppins,
-            fontSize: 28,
-            fontWeight: 600,
-            color: "#ffffff",
-            textAlign: "center",
-            opacity: line3Opacity,
-            transform: `translateY(${line3Y}px)`,
-            marginBottom: 12,
-          }}
-        >
-          They won't come.
-        </div>
-
-        {/* 4. "We will." */}
+        {/* 3. "We will." — explosive spring scale + green glow */}
         <div
           style={{
             fontFamily: poppins,
             fontSize: 100,
             fontWeight: 900,
-            color: "#c084fc",
+            color: "#22c55e",
             textAlign: "center",
+            opacity: weWillOpacity,
             transform: `scale(${weWillScale})`,
-            marginTop: 20,
+            textShadow: `0 0 ${weWillGlow}px rgba(34, 197, 94, 0.7), 0 0 ${weWillGlow * 2}px rgba(34, 197, 94, 0.3)`,
+            marginTop: 24,
           }}
         >
           We will.

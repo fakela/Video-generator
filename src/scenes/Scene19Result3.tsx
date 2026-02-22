@@ -7,33 +7,49 @@ export const Scene19Result3: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "2 pioneer families" — spring zoom in at frame 10
-  const titleSpring = spring({
-    frame: frame - 10,
-    fps,
-    config: { damping: 12, stiffness: 200 },
-  });
-  const titleScale = interpolate(titleSpring, [0, 1], [0.8, 1]);
-  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1]);
+  // Pulsing glow behind number
+  const glowPulse = Math.sin(frame * 0.08) * 0.2 + 0.8;
+  const glowScale = Math.sin(frame * 0.05) * 0.1 + 1.0;
 
-  // 2. "running parallel N-of-1 studies" — fade up at frame 35
-  const sub1Opacity = interpolate(frame, [35, 55], [0, 1], {
+  // "2" — spring punch scale from 0.2 starting at frame 5
+  const numberSpring = spring({
+    frame: frame - 5,
+    fps,
+    config: { damping: 8, stiffness: 140 },
+  });
+  const numberScale = interpolate(numberSpring, [0, 1], [0.2, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub1TranslateY = interpolate(frame, [35, 55], [30, 0], {
+  const numberOpacity = interpolate(numberSpring, [0, 1], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 3. "Active. Right now." — spring punch at frame 55
-  const activePunch = spring({
-    frame: frame - 55,
+  // "pioneer families" — fade + scale from 0.8 at frame 30
+  const familiesSpring = spring({
+    frame: frame - 30,
     fps,
-    config: { damping: 12, stiffness: 200 },
+    config: { damping: 14, stiffness: 140 },
   });
-  const activeScale = interpolate(activePunch, [0, 1], [0.7, 1]);
-  const activeOpacity = interpolate(activePunch, [0, 1], [0, 1]);
+  const familiesScale = interpolate(familiesSpring, [0, 1], [0.8, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const familiesOpacity = interpolate(familiesSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // "Active. Right now." — letter-spacing animation 16 -> 3 starting at frame 55
+  const letterSpacing = interpolate(frame, [55, 90], [16, 3], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const activeOpacity = interpolate(frame, [55, 75], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   return (
     <SceneWrapper>
@@ -47,46 +63,72 @@ export const Scene19Result3: React.FC = () => {
           width: "100%",
           fontFamily: poppins,
           textAlign: "center",
+          gap: 16,
+          position: "relative",
         }}
       >
+        {/* Pulsing glow behind number */}
         <div
           style={{
-            fontSize: 80,
-            fontWeight: 900,
-            color: "#ffffff",
-            fontFamily: poppins,
-            textAlign: "center",
-            transform: `scale(${titleScale})`,
-            opacity: titleOpacity,
+            position: "absolute",
+            width: 550,
+            height: 550,
+            top: "50%",
+            left: "50%",
+            borderRadius: "50%",
+            transform: `translate(-50%, -50%) scale(${glowScale})`,
+            background:
+              "radial-gradient(circle, rgba(251,191,36,0.35) 0%, rgba(251,191,36,0.1) 40%, transparent 70%)",
+            opacity: glowPulse,
+            pointerEvents: "none",
           }}
-        >
-          2 pioneer families
-        </div>
+        />
 
+        {/* "2" — big gold number with spring punch */}
         <div
           style={{
-            fontSize: 28,
-            color: "#ffffff",
-            fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 20,
-            opacity: sub1Opacity,
-            transform: `translateY(${sub1TranslateY}px)`,
-          }}
-        >
-          running parallel N-of-1 studies
-        </div>
-
-        <div
-          style={{
-            fontSize: 24,
+            fontSize: 200,
             fontWeight: 700,
-            color: "#22c55e",
+            color: "#fbbf24",
             fontFamily: poppins,
-            textAlign: "center",
+            lineHeight: 1,
+            transform: `scale(${numberScale})`,
+            opacity: numberOpacity,
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 0 40px rgba(251,191,36,0.5), 0 0 80px rgba(251,191,36,0.2)",
+          }}
+        >
+          2
+        </div>
+
+        {/* "pioneer families" — fade + scale */}
+        <div
+          style={{
+            fontSize: 56,
+            fontWeight: 700,
+            color: "#ffffff",
+            fontFamily: poppins,
+            transform: `scale(${familiesScale})`,
+            opacity: familiesOpacity,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          pioneer families
+        </div>
+
+        {/* "Active. Right now." — letter-spacing animation */}
+        <div
+          style={{
+            fontSize: 40,
+            color: "#c4b5fd",
+            fontFamily: poppins,
             marginTop: 16,
-            transform: `scale(${activeScale})`,
+            letterSpacing: letterSpacing,
             opacity: activeOpacity,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           Active. Right now.

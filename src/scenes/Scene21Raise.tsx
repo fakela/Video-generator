@@ -7,37 +7,51 @@ export const Scene21Raise: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "$1.77M" — count up from $0 to $1.77M at frame 10, with spring punch
-  const countProgress = interpolate(frame, [10, 50], [0, 1], {
+  // Gold radial glow behind the number
+  const glowPulse = Math.sin(frame * 0.06) * 0.12 + 0.3;
+
+  // "$1.77M" — counter from $0.00M to $1.77M, frame 8 to 50, with spring punch
+  const countProgress = interpolate(frame, [8, 50], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
   const displayValue = (1.77 * countProgress).toFixed(2);
 
   const punch = spring({
-    frame: frame - 10,
+    frame: frame - 8,
     fps,
-    config: { damping: 12, stiffness: 200 },
+    config: { damping: 8, stiffness: 140 },
   });
-  const punchScale = interpolate(punch, [0, 1], [0.7, 1]);
-  const punchOpacity = interpolate(punch, [0, 1], [0, 1]);
-
-  // 2. "Raised in a single community auction." — fade up at frame 45
-  const sub1Opacity = interpolate(frame, [45, 65], [0, 1], {
+  const punchScale = interpolate(punch, [0, 1], [0.4, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub1TranslateY = interpolate(frame, [45, 65], [30, 0], {
+  const punchOpacity = interpolate(punch, [0, 1], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 3. "March 2025. In brutal market conditions." — fade up at frame 70
-  const sub2Opacity = interpolate(frame, [70, 90], [0, 1], {
+  // "Raised in a single community auction." — scale from 0.8 at frame 50
+  const raisedSpring = spring({
+    frame: frame - 50,
+    fps,
+    config: { damping: 14, stiffness: 140 },
+  });
+  const raisedScale = interpolate(raisedSpring, [0, 1], [0.8, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub2TranslateY = interpolate(frame, [70, 90], [30, 0], {
+  const raisedOpacity = interpolate(raisedSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // "March 2025. In brutal market conditions." — letter-spacing animation
+  const marchLetterSpacing = interpolate(frame, [75, 112], [14, 2], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const marchOpacity = interpolate(frame, [75, 95], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -54,45 +68,69 @@ export const Scene21Raise: React.FC = () => {
           width: "100%",
           fontFamily: poppins,
           textAlign: "center",
+          gap: 16,
+          position: "relative",
         }}
       >
+        {/* Gold radial glow behind number */}
         <div
           style={{
-            fontSize: 120,
+            position: "absolute",
+            width: 800,
+            height: 800,
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -55%)",
+            background: `radial-gradient(circle, rgba(251,191,36,${glowPulse}) 0%, rgba(251,191,36,${glowPulse * 0.3}) 35%, transparent 65%)`,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* "$1.77M" — gold counter with spring punch */}
+        <div
+          style={{
+            fontSize: 180,
             fontWeight: 900,
             color: "#fbbf24",
             fontFamily: poppins,
-            textAlign: "center",
+            lineHeight: 1,
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 0 40px rgba(251,191,36,0.5), 0 0 80px rgba(251,191,36,0.2)",
           }}
         >
           ${displayValue}M
         </div>
 
+        {/* "Raised in a single community auction." — scale from 0.8 */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 44,
             color: "#ffffff",
             fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 20,
-            opacity: sub1Opacity,
-            transform: `translateY(${sub1TranslateY}px)`,
+            marginTop: 12,
+            transform: `scale(${raisedScale})`,
+            opacity: raisedOpacity,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           Raised in a single community auction.
         </div>
 
+        {/* "March 2025. In brutal market conditions." — letter-spacing */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 36,
             color: "#c4b5fd",
             fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 16,
-            opacity: sub2Opacity,
-            transform: `translateY(${sub2TranslateY}px)`,
+            marginTop: 12,
+            letterSpacing: marchLetterSpacing,
+            opacity: marchOpacity,
+            position: "relative",
+            zIndex: 1,
           }}
         >
           March 2025. In brutal market conditions.

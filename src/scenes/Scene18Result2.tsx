@@ -7,31 +7,36 @@ export const Scene18Result2: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "Provisional patent" — spring zoom in at frame 10
-  const titleSpring = spring({
-    frame: frame - 10,
-    fps,
-    config: { damping: 14, stiffness: 180 },
-  });
-  const titleScale = interpolate(titleSpring, [0, 1], [0.8, 1]);
-  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1]);
+  // Purple radial glow pulsing behind title
+  const glowPulse = Math.sin(frame * 0.05) * 0.15 + 0.4;
+  const glowScale = Math.sin(frame * 0.03) * 0.08 + 1.0;
 
-  // 2. "filed for AARS2 discovery" — fade up at frame 35
-  const sub1Opacity = interpolate(frame, [35, 55], [0, 1], {
+  // "Provisional" — 3D rotateY from 60deg to 0 starting at frame 8
+  const provisionalRotateY = interpolate(frame, [8, 42], [60, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub1TranslateY = interpolate(frame, [35, 55], [30, 0], {
+  const provisionalOpacity = interpolate(frame, [8, 28], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 3. "Owned by the Curetopia community." — fade up at frame 55
-  const sub2Opacity = interpolate(frame, [55, 75], [0, 1], {
+  // "patent" — 3D rotateY from 60deg to 0, slightly delayed (frame 22)
+  const patentRotateY = interpolate(frame, [22, 56], [60, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const sub2TranslateY = interpolate(frame, [55, 75], [30, 0], {
+  const patentOpacity = interpolate(frame, [22, 42], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // Description — blur-in (filter blur 12 -> 0) starting at frame 52
+  const blurAmount = interpolate(frame, [52, 82], [12, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const descOpacity = interpolate(frame, [52, 82], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -48,48 +53,73 @@ export const Scene18Result2: React.FC = () => {
           width: "100%",
           fontFamily: poppins,
           textAlign: "center",
+          gap: 16,
+          position: "relative",
         }}
       >
+        {/* Purple radial glow behind title */}
         <div
           style={{
-            fontSize: 80,
-            fontWeight: 900,
+            position: "absolute",
+            width: 900,
+            height: 900,
+            top: "50%",
+            left: "50%",
+            borderRadius: "50%",
+            transform: `translate(-50%, -50%) scale(${glowScale})`,
+            background: `radial-gradient(circle, rgba(168,85,247,${glowPulse}) 0%, rgba(139,92,246,${glowPulse * 0.4}) 35%, transparent 65%)`,
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* "Provisional" — 3D rotateY */}
+        <div
+          style={{
+            fontSize: 72,
+            fontWeight: 700,
             color: "#ffffff",
             fontFamily: poppins,
-            textAlign: "center",
-            transform: `scale(${titleScale})`,
-            opacity: titleOpacity,
+            transform: `perspective(800px) rotateY(${provisionalRotateY}deg)`,
+            opacity: provisionalOpacity,
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 0 30px rgba(168,85,247,0.4)",
           }}
         >
-          Provisional patent
+          Provisional
         </div>
 
+        {/* "patent" — delayed 3D rotateY */}
         <div
           style={{
-            fontSize: 28,
-            color: "#ffffff",
+            fontSize: 72,
+            fontWeight: 700,
+            color: "#a855f7",
             fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 20,
-            opacity: sub1Opacity,
-            transform: `translateY(${sub1TranslateY}px)`,
+            transform: `perspective(800px) rotateY(${patentRotateY}deg)`,
+            opacity: patentOpacity,
+            position: "relative",
+            zIndex: 1,
+            textShadow: "0 0 30px rgba(168,85,247,0.5)",
           }}
         >
-          filed for AARS2 discovery
+          patent
         </div>
 
+        {/* Description with blur-in */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
-            textAlign: "center",
-            marginTop: 16,
-            opacity: sub2Opacity,
-            transform: `translateY(${sub2TranslateY}px)`,
+            marginTop: 20,
+            opacity: descOpacity,
+            filter: `blur(${blurAmount}px)`,
+            position: "relative",
+            zIndex: 1,
           }}
         >
-          Owned by the Curetopia community.
+          Filed to protect community-developed IP.
         </div>
       </div>
     </SceneWrapper>
