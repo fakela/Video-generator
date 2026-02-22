@@ -1,235 +1,152 @@
 import React from "react";
-import { useCurrentFrame, useVideoConfig, spring, interpolate, Easing } from "remotion";
+import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
+import { SceneWrapper } from "../components/SceneWrapper";
 import { poppins } from "../fonts";
-
-// Asteroid-like CSS shapes for visual depth
-const ASTEROIDS = [
-  { x: 1460, y: 80,  w: 110, h: 72,  rotation: 18,  color: "#2d1b69", glow: "rgba(168,85,247,0.4)" },
-  { x: 1650, y: 340, w: 70,  h: 48,  rotation: -22, color: "#1a0d42", glow: "rgba(168,85,247,0.2)" },
-  { x: 1550, y: 560, w: 90,  h: 60,  rotation: 35,  color: "#2d1b69", glow: "rgba(236,72,153,0.3)" },
-  { x: 1760, y: 180, w: 50,  h: 35,  rotation: -8,  color: "#3b0764", glow: "rgba(168,85,247,0.25)" },
-  { x: 1400, y: 420, w: 60,  h: 42,  rotation: 55,  color: "#1e1040", glow: "rgba(236,72,153,0.2)" },
-  { x: 1700, y: 700, w: 80,  h: 55,  rotation: -30, color: "#2d1b69", glow: "rgba(168,85,247,0.3)" },
-];
-
-const ease = Easing.bezier(0.16, 1, 0.3, 1);
 
 export const Scene1Title: React.FC = () => {
   const frame = useCurrentFrame();
-  const { fps, durationInFrames } = useVideoConfig();
+  const { fps } = useVideoConfig();
 
-  // 10-frame crossfade in/out
-  const fadeIn = interpolate(frame, [0, 10], [0, 1], {
-    extrapolateRight: "clamp",
-    easing: ease,
-  });
+  // 1. Curetopia logo (frame 0) — pulsing opacity
+  const logoPulse = Math.sin(frame * 0.08) * 0.2 + 0.8;
 
-  const fadeOut = interpolate(frame, [durationInFrames - 10, durationInFrames], [1, 0], {
-    extrapolateLeft: "clamp",
-  });
+  // 2. "What If" (frame 15) — fade up
+  const whatIfOpacity = interpolate(frame, [15, 35], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  const whatIfY = interpolate(frame, [15, 35], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
-  const sceneOpacity = Math.min(fadeIn, fadeOut);
+  // 3. "'Too Rare'" (frame 35) — spring punch
+  const tooRarePunch = spring({ frame: frame - 35, fps, config: { damping: 12, stiffness: 200 } });
+  const tooRareScale = interpolate(tooRarePunch, [0, 1], [0.7, 1]);
 
-  // Logo
-  const logoProgress = spring({ frame, fps, config: { damping: 20, stiffness: 180 } });
+  // 4. "Wasn't the End of the Story?" (frame 55) — slide up
+  const storyOpacity = interpolate(frame, [55, 75], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  const storyY = interpolate(frame, [55, 75], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
-  // 8-frame staggered entrance for headline elements
-  const headlineProgress = spring({
-    frame: frame - 0,
-    fps,
-    config: { damping: 20, stiffness: 180 },
-  });
+  // 5. Gradient divider (frame 75) — line draw
+  const lineWidth = interpolate(frame, [75, 105], [0, 60], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
-  const problemProgress = spring({
-    frame: frame - 8,
-    fps,
-    config: { damping: 20, stiffness: 180 },
-  });
+  // 6. "Curetopia is rewriting it." (frame 95) — fade up
+  const rewriteOpacity = interpolate(frame, [95, 115], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  const rewriteY = interpolate(frame, [95, 115], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
-  const subheadProgress = spring({
-    frame: frame - 16,
-    fps,
-    config: { damping: 20, stiffness: 180 },
-  });
-
-  const tagProgress = spring({
-    frame: frame - 24,
-    fps,
-    config: { damping: 20, stiffness: 180 },
-  });
+  // 7. Tags line (frame 115) — fade up
+  const tagsOpacity = interpolate(frame, [115, 135], [0, 1], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
+  const tagsY = interpolate(frame, [115, 135], [30, 0], { extrapolateRight: "clamp", extrapolateLeft: "clamp" });
 
   return (
-    <div style={{ position: "absolute", inset: 0, opacity: sceneOpacity }}>
-      {/* Asteroid shapes */}
-      {ASTEROIDS.map((a, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            left: a.x,
-            top: a.y,
-            width: a.w,
-            height: a.h,
-            backgroundColor: a.color,
-            borderRadius: "40% 60% 55% 45% / 50% 45% 60% 40%",
-            transform: `rotate(${a.rotation}deg)`,
-            boxShadow: `inset -8px -4px 16px rgba(0,0,0,0.6), 0 0 20px ${a.glow}`,
-            opacity: 0.85,
-          }}
-        />
-      ))}
-
-      {/* Logo — top left */}
+    <SceneWrapper>
       <div
         style={{
-          position: "absolute",
-          top: 52,
-          left: 68,
-          display: "flex",
-          alignItems: "center",
-          gap: 14,
-          opacity: logoProgress,
-          transform: `translateY(${(1 - logoProgress) * -18}px)`,
-        }}
-      >
-        <div
-          style={{
-            width: 44,
-            height: 44,
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #a855f7 0%, #ec4899 100%)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 22,
-            boxShadow: "0 0 24px rgba(168,85,247,0.7), 0 0 48px rgba(168,85,247,0.3)",
-          }}
-        >
-          🧬
-        </div>
-        <span
-          style={{
-            color: "#ffffff",
-            fontSize: 26,
-            fontWeight: 700,
-            fontFamily: poppins,
-            letterSpacing: "0.15em",
-          }}
-        >
-          CURETOPIA
-        </span>
-      </div>
-
-      {/* Hero headline — vertically centered in screen */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
-          paddingLeft: 120,
-          paddingRight: 120,
+          gap: 8,
+          width: "100%",
+          height: "100%",
         }}
       >
-        {/* "The" */}
+        {/* 1. Curetopia logo */}
         <div
           style={{
-            color: "#c4b5fd",
-            fontSize: 56,
-            fontWeight: 700,
             fontFamily: poppins,
-            fontStyle: "italic",
-            lineHeight: 1,
-            opacity: headlineProgress,
-            transform: `translateY(${(1 - headlineProgress) * 50}px)`,
-            letterSpacing: "0.05em",
-          }}
-        >
-          The
-        </div>
-
-        {/* "$400K" */}
-        <div
-          style={{
-            color: "#ffffff",
-            fontSize: 140,
-            fontWeight: 900,
-            fontFamily: poppins,
-            fontStyle: "italic",
-            lineHeight: 1.0,
-            opacity: headlineProgress,
-            transform: `translateY(${(1 - headlineProgress) * 60}px)`,
-            textShadow: "0 0 60px rgba(168,85,247,0.9), 0 0 120px rgba(168,85,247,0.4)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          $400K
-        </div>
-
-        {/* "Problem" */}
-        <div
-          style={{
+            fontSize: 28,
+            letterSpacing: 8,
             color: "#a855f7",
-            fontSize: 140,
-            fontWeight: 900,
-            fontFamily: poppins,
-            fontStyle: "italic",
-            lineHeight: 1.0,
-            opacity: problemProgress,
-            transform: `translateY(${(1 - problemProgress) * 60}px)`,
-            textShadow: "0 0 60px rgba(168,85,247,0.8), 0 0 100px rgba(236,72,153,0.4)",
-            letterSpacing: "-0.02em",
+            fontWeight: 700,
+            textAlign: "center",
+            opacity: logoPulse,
           }}
         >
-          Problem
+          🧬 CURETOPIA
         </div>
 
-        {/* Divider */}
+        {/* 2. "What If" */}
         <div
           style={{
-            marginTop: 32,
-            width: interpolate(subheadProgress, [0, 1], [0, 480]),
-            height: 3,
-            background: "linear-gradient(90deg, #a855f7, #ec4899, transparent)",
-            borderRadius: 2,
-            boxShadow: "0 0 12px rgba(168,85,247,0.6)",
+            fontFamily: poppins,
+            fontSize: 32,
+            fontStyle: "italic",
+            color: "#c4b5fd",
+            textAlign: "center",
+            opacity: whatIfOpacity,
+            transform: `translateY(${whatIfY}px)`,
+          }}
+        >
+          What If
+        </div>
+
+        {/* 3. "'Too Rare'" */}
+        <div
+          style={{
+            fontFamily: poppins,
+            fontSize: 120,
+            fontWeight: 900,
+            color: "#ffffff",
+            textAlign: "center",
+            transform: `scale(${tooRareScale})`,
+          }}
+        >
+          'Too Rare'
+        </div>
+
+        {/* 4. "Wasn't the End of the Story?" */}
+        <div
+          style={{
+            fontFamily: poppins,
+            fontSize: 52,
+            fontWeight: 700,
+            color: "#ffffff",
+            textAlign: "center",
+            opacity: storyOpacity,
+            transform: `translateY(${storyY}px)`,
+          }}
+        >
+          Wasn't the End of the Story?
+        </div>
+
+        {/* 5. Gradient divider */}
+        <div
+          style={{
+            width: `${lineWidth}%`,
+            height: 2,
+            background: "linear-gradient(90deg, #ec4899, #a855f7)",
+            marginTop: 24,
+            marginBottom: 24,
           }}
         />
 
-        {/* Subheadline */}
+        {/* 6. "Curetopia is rewriting it." */}
         <div
           style={{
-            marginTop: 24,
-            color: "#f0abfc",
-            fontSize: 48,
-            fontWeight: 600,
             fontFamily: poppins,
-            letterSpacing: "0.08em",
-            opacity: subheadProgress,
-            transform: `translateY(${(1 - subheadProgress) * 30}px)`,
+            fontSize: 36,
+            fontWeight: 600,
+            color: "#a855f7",
+            textAlign: "center",
+            opacity: rewriteOpacity,
+            transform: `translateY(${rewriteY}px)`,
           }}
         >
-          Our 10x Solution
+          Curetopia is rewriting it.
         </div>
 
-        {/* Tag line */}
+        {/* 7. Tags */}
         <div
           style={{
-            marginTop: 20,
-            color: "#9ca3af",
-            fontSize: 24,
-            fontWeight: 400,
             fontFamily: poppins,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            opacity: tagProgress,
-            transform: `translateY(${(1 - tagProgress) * 20}px)`,
+            fontSize: 14,
+            letterSpacing: 6,
+            fontWeight: 600,
+            color: "#c4b5fd",
+            textAlign: "center",
+            opacity: tagsOpacity,
+            transform: `translateY(${tagsY}px)`,
           }}
         >
-          Decentralized Science · Rare Disease · BioDAO
+          DECENTRALIZED SCIENCE · RARE DISEASE · BIODAO
         </div>
       </div>
-    </div>
+    </SceneWrapper>
   );
 };

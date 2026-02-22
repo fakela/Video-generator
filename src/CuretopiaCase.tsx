@@ -1,83 +1,221 @@
 import React from "react";
-import { AbsoluteFill, Audio, Sequence } from "remotion";
-import { SpaceBackground } from "./components/SpaceBackground";
-import { Scene1Title } from "./scenes/Scene1Title";
-import { Scene2Problem } from "./scenes/Scene2Problem";
-import { Scene2bBigPharma } from "./scenes/Scene2b";
-import { Scene3Solution } from "./scenes/Scene3Solution";
-import { Scene3bCommunity } from "./scenes/Scene3b";
-import { Scene4AARS2 } from "./scenes/Scene4AARS2";
-import { Scene5Numbers } from "./scenes/Scene5Numbers";
-import { Scene5bTrillion } from "./scenes/Scene5b";
-import { Scene6CTA } from "./scenes/Scene6CTA";
+import { AbsoluteFill, Audio } from "remotion";
+import { TransitionSeries } from "@remotion/transitions";
+import { springTiming } from "@remotion/transitions";
+import { fade } from "@remotion/transitions/fade";
+import { slide } from "@remotion/transitions/slide";
+import { wipe } from "@remotion/transitions/wipe";
 
-/**
- * CuretopiaCase — 90s video at 30fps = 2700 frames
- *
- * Scene timing (synced to voiceover):
- *   Scene 1  — Title                frame 0–150      (0:00–0:05)
- *   Scene 2a — Problem stats        frame 150–540    (0:05–0:18)
- *   Scene 2b — Big Pharma Threshold frame 540–750    (0:18–0:25)
- *   Scene 3a — Pipeline flow        frame 750–1260   (0:25–0:42)
- *   Scene 3b — Community Medicine   frame 1260–1380  (0:42–0:46)
- *   Scene 4  — AARS2 split screen   frame 1380–1950  (0:46–1:05)
- *   Scene 5a — Traction stats       frame 1950–2250  (1:05–1:15)
- *   Scene 5b — $1.5 Trillion        frame 2250–2460  (1:15–1:22)
- *   Scene 6  — CTA                  frame 2460–2700  (1:22–1:30)
- */
+import { Scene1Title } from "./scenes/Scene1Title";
+import { Scene2Scale } from "./scenes/Scene2Scale";
+import { Scene3Affected } from "./scenes/Scene3Affected";
+import { Scene4TreatmentGap } from "./scenes/Scene4TreatmentGap";
+import { Scene5Market } from "./scenes/Scene5Market";
+import { Scene6BigPharma } from "./scenes/Scene6BigPharma";
+import { Scene7Introducing } from "./scenes/Scene7Introducing";
+import { Scene8HowItWorks } from "./scenes/Scene8HowItWorks";
+import { Scene9Step1 } from "./scenes/Scene9Step1";
+import { Scene10Step2 } from "./scenes/Scene10Step2";
+import { Scene11Step3 } from "./scenes/Scene11Step3";
+import { Scene12Step4 } from "./scenes/Scene12Step4";
+import { Scene13Step5 } from "./scenes/Scene13Step5";
+import { Scene14Community } from "./scenes/Scene14Community";
+import { Scene15AARS2 } from "./scenes/Scene15AARS2";
+import { Scene16CostGap } from "./scenes/Scene16CostGap";
+import { Scene17Result1 } from "./scenes/Scene17Result1";
+import { Scene18Result2 } from "./scenes/Scene18Result2";
+import { Scene19Result3 } from "./scenes/Scene19Result3";
+import { Scene20Result4 } from "./scenes/Scene20Result4";
+import { Scene21Raise } from "./scenes/Scene21Raise";
+import { Scene22Contributors } from "./scenes/Scene22Contributors";
+import { Scene23Pipeline } from "./scenes/Scene23Pipeline";
+import { Scene24Opportunity } from "./scenes/Scene24Opportunity";
+import { Scene25CTA } from "./scenes/Scene25CTA";
+
+const audio = require("../nastelbom-corporate.mp3");
+
+const springConfig = { damping: 18, stiffness: 120 };
+const t = () => springTiming({ config: springConfig });
+
 export const CuretopiaCase: React.FC = () => {
   return (
     <AbsoluteFill>
-      {/* Voiceover audio — plays for full 90 seconds */}
-      <Audio src={require("./voiceover.mp3")} />
+      <Audio src={audio} volume={0.4} />
 
-      {/* Persistent space background — stars twinkle through all scenes */}
-      <SpaceBackground nebulaX={55} nebulaY={42} intensity={1} />
+      <TransitionSeries>
+        {/* Scene 1 — TITLE */}
+        <TransitionSeries.Sequence durationInFrames={180}>
+          <Scene1Title />
+        </TransitionSeries.Sequence>
 
-      {/* Scene 1 — Title (0–5s, frames 0–150) */}
-      <Sequence from={0} durationInFrames={150}>
-        <Scene1Title />
-      </Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-      {/* Scene 2a — The Problem stats (5–18s, frames 150–540) */}
-      <Sequence from={150} durationInFrames={390}>
-        <Scene2Problem />
-      </Sequence>
+        {/* Scene 2 — THE SCALE OF THE PROBLEM */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene2Scale />
+        </TransitionSeries.Sequence>
 
-      {/* Scene 2b — Big Pharma Threshold (18–25s, frames 540–750) */}
-      <Sequence from={540} durationInFrames={210}>
-        <Scene2bBigPharma />
-      </Sequence>
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
 
-      {/* Scene 3a — Pipeline flow (25–42s, frames 750–1260) */}
-      <Sequence from={750} durationInFrames={510}>
-        <Scene3Solution />
-      </Sequence>
+        {/* Scene 3 — WHO IS AFFECTED */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene3Affected />
+        </TransitionSeries.Sequence>
 
-      {/* Scene 3b — Community Medicine (42–46s, frames 1260–1380) */}
-      <Sequence from={1260} durationInFrames={120}>
-        <Scene3bCommunity />
-      </Sequence>
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
 
-      {/* Scene 4 — AARS2 Proof Point (46–65s, frames 1380–1950) */}
-      <Sequence from={1380} durationInFrames={570}>
-        <Scene4AARS2 />
-      </Sequence>
+        {/* Scene 4 — THE TREATMENT GAP */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene4TreatmentGap />
+        </TransitionSeries.Sequence>
 
-      {/* Scene 5a — Traction stats (65–75s, frames 1950–2250) */}
-      <Sequence from={1950} durationInFrames={300}>
-        <Scene5Numbers />
-      </Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-      {/* Scene 5b — $1.5 Trillion (75–82s, frames 2250–2460) */}
-      <Sequence from={2250} durationInFrames={210}>
-        <Scene5bTrillion />
-      </Sequence>
+        {/* Scene 5 — THE MARKET NO ONE IS CHASING */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene5Market />
+        </TransitionSeries.Sequence>
 
-      {/* Scene 6 — CTA (82–90s, frames 2460–2700) */}
-      <Sequence from={2460} durationInFrames={240}>
-        <Scene6CTA />
-      </Sequence>
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 6 — WHY BIG PHARMA WON'T HELP */}
+        <TransitionSeries.Sequence durationInFrames={170}>
+          <Scene6BigPharma />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 7 — INTRODUCING CURETOPIA */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene7Introducing />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 8 — HOW IT WORKS INTRO */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene8HowItWorks />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 9 — STEP 1 */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <Scene9Step1 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 10 — STEP 2 */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <Scene10Step2 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 11 — STEP 3 */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <Scene11Step3 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 12 — STEP 4 */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <Scene12Step4 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 13 — STEP 5 */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <Scene13Step5 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 14 — COMMUNITY MEDICINE MOMENT */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene14Community />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 15 — AARS2 INTRO */}
+        <TransitionSeries.Sequence durationInFrames={150}>
+          <Scene15AARS2 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 16 — THE COST GAP */}
+        <TransitionSeries.Sequence durationInFrames={180}>
+          <Scene16CostGap />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 17 — RESULT 1 */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene17Result1 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 18 — RESULT 2 */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene18Result2 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 19 — RESULT 3 */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene19Result3 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 20 — RESULT 4 */}
+        <TransitionSeries.Sequence durationInFrames={90}>
+          <Scene20Result4 />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 21 — THE RAISE */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene21Raise />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 22 — CONTRIBUTORS */}
+        <TransitionSeries.Sequence durationInFrames={120}>
+          <Scene22Contributors />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* Scene 23 — PIPELINE SCALE */}
+        <TransitionSeries.Sequence durationInFrames={100}>
+          <Scene23Pipeline />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={slide()} timing={t()} />
+
+        {/* Scene 24 — THE OPPORTUNITY */}
+        <TransitionSeries.Sequence durationInFrames={150}>
+          <Scene24Opportunity />
+        </TransitionSeries.Sequence>
+
+        <TransitionSeries.Transition presentation={wipe()} timing={t()} />
+
+        {/* Scene 25 — CTA */}
+        <TransitionSeries.Sequence durationInFrames={180}>
+          <Scene25CTA />
+        </TransitionSeries.Sequence>
+      </TransitionSeries>
     </AbsoluteFill>
   );
 };
