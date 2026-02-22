@@ -1,6 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
+import { CuretopiaLogo } from "../components/CuretopiaLogo";
 import { poppins } from "../fonts";
 
 export const Scene25CTA: React.FC = () => {
@@ -51,7 +52,7 @@ export const Scene25CTA: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 6. Logo + curetopia.xyz — fade up at frame 150, pulsing opacity
+  // 6. Logo + curetopia.xyz — fade up at frame 150
   const logoOpacity = interpolate(frame, [150, 170], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -60,9 +61,6 @@ export const Scene25CTA: React.FC = () => {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const pulseOpacity = frame >= 150
-    ? 0.7 + 0.3 * Math.sin((frame - 150) * 0.15)
-    : 0;
 
   return (
     <SceneWrapper>
@@ -81,7 +79,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 1. Join the mission */}
         <div
           style={{
-            fontSize: 72,
+            fontSize: 88,
             fontWeight: 800,
             color: "#ffffff",
             fontFamily: poppins,
@@ -96,7 +94,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 2. Contribute and earn */}
         <div
           style={{
-            fontSize: 24,
+            fontSize: 34,
             fontWeight: 400,
             color: "#ffffff",
             fontFamily: poppins,
@@ -114,8 +112,8 @@ export const Scene25CTA: React.FC = () => {
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: 20,
-            marginTop: 32,
+            gap: 28,
+            marginTop: 36,
             justifyContent: "center",
           }}
         >
@@ -133,8 +131,8 @@ export const Scene25CTA: React.FC = () => {
                 style={{
                   background: "rgba(168,85,247,0.1)",
                   border: "1px solid rgba(168,85,247,0.3)",
-                  borderRadius: 16,
-                  padding: "20px 28px",
+                  borderRadius: 18,
+                  padding: "24px 36px",
                   display: "flex",
                   flexDirection: "column",
                   alignItems: "center",
@@ -143,7 +141,7 @@ export const Scene25CTA: React.FC = () => {
               >
                 <div
                   style={{
-                    fontSize: 32,
+                    fontSize: 44,
                     textAlign: "center",
                   }}
                 >
@@ -151,12 +149,12 @@ export const Scene25CTA: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    fontSize: 14,
+                    fontSize: 22,
                     fontWeight: 600,
                     color: "#ffffff",
                     fontFamily: poppins,
                     textAlign: "center",
-                    marginTop: 8,
+                    marginTop: 10,
                   }}
                 >
                   {card.label}
@@ -180,8 +178,8 @@ export const Scene25CTA: React.FC = () => {
         {/* 5. COMMUNITY MEDICINE. ONCHAIN. */}
         <div
           style={{
-            fontSize: 14,
-            letterSpacing: 6,
+            fontSize: 22,
+            letterSpacing: 8,
             fontWeight: 600,
             color: "#c4b5fd",
             fontFamily: poppins,
@@ -205,22 +203,14 @@ export const Scene25CTA: React.FC = () => {
             transform: `translateY(${logoTranslateY}px)`,
           }}
         >
+          <CuretopiaLogo size={80} />
           <div
             style={{
-              fontSize: 36,
-              textAlign: "center",
-              opacity: pulseOpacity,
-            }}
-          >
-            {"\uD83E\uDDEC"}
-          </div>
-          <div
-            style={{
-              fontSize: 18,
+              fontSize: 28,
               color: "#a855f7",
               fontFamily: poppins,
               textAlign: "center",
-              marginTop: 8,
+              marginTop: 10,
             }}
           >
             curetopia.xyz

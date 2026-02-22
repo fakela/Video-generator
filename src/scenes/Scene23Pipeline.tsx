@@ -16,7 +16,7 @@ export const Scene23Pipeline: React.FC = () => {
   const punchScale = interpolate(punch, [0, 1], [0.7, 1]);
   const punchOpacity = interpolate(punch, [0, 1], [0, 1]);
 
-  // 2. "Rare diseases now in the active pipeline." — fade up at frame 35
+  // 2. "Related ARS diseases..." — fade up at frame 35
   const sub1Opacity = interpolate(frame, [35, 55], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -26,7 +26,7 @@ export const Scene23Pipeline: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 3. "Each one a community. Each one waiting." — fade up at frame 55
+  // 3. "Scaling from AARS2..." — fade up at frame 55
   const sub2Opacity = interpolate(frame, [55, 75], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -52,7 +52,7 @@ export const Scene23Pipeline: React.FC = () => {
       >
         <div
           style={{
-            fontSize: 120,
+            fontSize: 180,
             fontWeight: 900,
             color: "#c084fc",
             fontFamily: poppins,
@@ -66,7 +66,7 @@ export const Scene23Pipeline: React.FC = () => {
 
         <div
           style={{
-            fontSize: 28,
+            fontSize: 42,
             color: "#ffffff",
             fontFamily: poppins,
             textAlign: "center",
@@ -75,12 +75,12 @@ export const Scene23Pipeline: React.FC = () => {
             transform: `translateY(${sub1TranslateY}px)`,
           }}
         >
-          Rare diseases now in the active pipeline.
+          Related ARS diseases entering the drug screening pipeline.
         </div>
 
         <div
           style={{
-            fontSize: 20,
+            fontSize: 30,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -89,7 +89,7 @@ export const Scene23Pipeline: React.FC = () => {
             transform: `translateY(${sub2TranslateY}px)`,
           }}
         >
-          Each one a community. Each one waiting.
+          Scaling from AARS2 across the aminoacyl-tRNA synthetase family.
         </div>
       </div>
     </SceneWrapper>

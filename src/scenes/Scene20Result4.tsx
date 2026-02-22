@@ -24,7 +24,7 @@ export const Scene20Result4: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 2. "compounds" — scale punch at frame 45
+  // 2. "repurposable compounds" — scale punch at frame 45
   const compoundSpring = spring({
     frame: frame - 45,
     fps,
@@ -39,7 +39,7 @@ export const Scene20Result4: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 3. "screened computationally" — blur-in starting at frame 65
+  // 3. "screened via yeast models" — blur-in starting at frame 65
   const blurAmount = interpolate(frame, [65, 92], [12, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -49,12 +49,12 @@ export const Scene20Result4: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 4. "AI-driven drug discovery at community scale." — fade in at frame 90
-  const aiOpacity = interpolate(frame, [90, 115], [0, 1], {
+  // 4. "Yeast-powered drug repurposing at community scale." — fade in at frame 90
+  const taglineOpacity = interpolate(frame, [90, 115], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const aiScale = interpolate(frame, [90, 115], [0.9, 1], {
+  const taglineScale = interpolate(frame, [90, 115], [0.9, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -107,7 +107,7 @@ export const Scene20Result4: React.FC = () => {
           {displayNum}
         </div>
 
-        {/* "compounds" — scale punch */}
+        {/* "repurposable compounds" — scale punch */}
         <div
           style={{
             fontSize: 56,
@@ -120,10 +120,10 @@ export const Scene20Result4: React.FC = () => {
             zIndex: 1,
           }}
         >
-          compounds
+          repurposable compounds
         </div>
 
-        {/* "screened computationally" — blur-in */}
+        {/* "screened via yeast models" — blur-in */}
         <div
           style={{
             fontSize: 40,
@@ -136,23 +136,23 @@ export const Scene20Result4: React.FC = () => {
             zIndex: 1,
           }}
         >
-          screened computationally
+          screened via yeast models
         </div>
 
-        {/* "AI-driven drug discovery at community scale." — fade in */}
+        {/* "Yeast-powered drug repurposing at community scale." — fade in */}
         <div
           style={{
             fontSize: 36,
             color: "#a855f7",
             fontFamily: poppins,
             marginTop: 8,
-            opacity: aiOpacity,
-            transform: `scale(${aiScale})`,
+            opacity: taglineOpacity,
+            transform: `scale(${taglineScale})`,
             position: "relative",
             zIndex: 1,
           }}
         >
-          AI-driven drug discovery at community scale.
+          Yeast-powered drug repurposing at community scale.
         </div>
       </div>
     </SceneWrapper>

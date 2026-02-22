@@ -49,7 +49,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Title */}
         <div
           style={{
-            fontSize: 42,
+            fontSize: 64,
             color: "#ffffff",
             fontWeight: 700,
             fontFamily: poppins,
@@ -65,7 +65,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 28,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -78,33 +78,31 @@ export const Scene16CostGap: React.FC = () => {
         </div>
 
         {/* Bars section */}
-        <div style={{ maxWidth: 900, width: "100%" }}>
+        <div style={{ maxWidth: 1000, width: "90%" }}>
           {/* Industry Standard bar */}
-          <div style={{ marginBottom: 24, opacity: industryLabelOpacity }}>
+          <div style={{ marginBottom: 28, opacity: industryLabelOpacity }}>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                marginBottom: 8,
+                marginBottom: 10,
               }}
             >
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 28,
                   color: "#ffffff",
                   fontFamily: poppins,
-                  textAlign: "center",
                 }}
               >
                 Industry Standard
               </div>
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 32,
                   color: "#ef4444",
                   fontWeight: 700,
                   fontFamily: poppins,
-                  textAlign: "center",
                 }}
               >
                 $100M+
@@ -112,40 +110,38 @@ export const Scene16CostGap: React.FC = () => {
             </div>
             <div
               style={{
-                height: 48,
+                height: 56,
                 background: "#ef4444",
-                borderRadius: 8,
+                borderRadius: 10,
                 width: `${industryBarWidth}%`,
               }}
             />
           </div>
 
           {/* Curetopia bar */}
-          <div style={{ marginBottom: 24, opacity: curetopieLabelOpacity }}>
+          <div style={{ marginBottom: 28, opacity: curetopieLabelOpacity }}>
             <div
               style={{
                 display: "flex",
                 justifyContent: "space-between",
-                marginBottom: 8,
+                marginBottom: 10,
               }}
             >
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 28,
                   color: "#ffffff",
                   fontFamily: poppins,
-                  textAlign: "center",
                 }}
               >
                 Curetopia
               </div>
               <div
                 style={{
-                  fontSize: 18,
+                  fontSize: 32,
                   color: "#22c55e",
                   fontWeight: 700,
                   fontFamily: poppins,
-                  textAlign: "center",
                 }}
               >
                 $5M
@@ -153,9 +149,9 @@ export const Scene16CostGap: React.FC = () => {
             </div>
             <div
               style={{
-                height: 48,
+                height: 56,
                 background: "#22c55e",
-                borderRadius: 8,
+                borderRadius: 10,
                 width: `${curetopiaBarWidth}%`,
               }}
             />
@@ -165,18 +161,18 @@ export const Scene16CostGap: React.FC = () => {
         {/* 20x cheaper badge */}
         <div
           style={{
-            fontSize: 32,
+            fontSize: 48,
             color: "#22c55e",
             fontWeight: 700,
             fontFamily: poppins,
             textAlign: "center",
             background: "rgba(34,197,94,0.15)",
             border: "2px solid #22c55e",
-            padding: "8px 32px",
-            borderRadius: 12,
+            padding: "10px 40px",
+            borderRadius: 14,
             opacity: badgeOpacity,
             transform: `scale(${badgeScale})`,
-            marginTop: 16,
+            marginTop: 20,
             marginBottom: 16,
           }}
         >
@@ -186,7 +182,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Footer text */}
         <div
           style={{
-            fontSize: 20,
+            fontSize: 28,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",

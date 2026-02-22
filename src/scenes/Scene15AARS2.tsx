@@ -37,7 +37,7 @@ export const Scene15AARS2: React.FC = () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          gap: 12,
+          gap: 16,
           width: "100%",
           height: "100%",
           fontFamily: poppins,
@@ -47,13 +47,13 @@ export const Scene15AARS2: React.FC = () => {
         {/* PROJECT 001 pill */}
         <div
           style={{
-            fontSize: 14,
+            fontSize: 18,
             color: "#ffffff",
             fontWeight: 700,
             background: "#a855f7",
-            padding: "6px 20px",
-            borderRadius: 20,
-            letterSpacing: 3,
+            padding: "8px 28px",
+            borderRadius: 24,
+            letterSpacing: 4,
             fontFamily: poppins,
             textAlign: "center",
             opacity: pillOpacity,
@@ -66,7 +66,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* AARS2 Deficiency */}
         <div
           style={{
-            fontSize: 80,
+            fontSize: 100,
             color: "#ffffff",
             fontWeight: 900,
             fontFamily: poppins,
@@ -81,7 +81,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Fatal mitochondrial disease */}
         <div
           style={{
-            fontSize: 26,
+            fontSize: 36,
             color: "#ffffff",
             fontFamily: poppins,
             textAlign: "center",
@@ -89,27 +89,28 @@ export const Scene15AARS2: React.FC = () => {
             transform: `translateY(${desc1TranslateY}px)`,
           }}
         >
-          A fatal mitochondrial disease affecting infants.
+          A fatal mitochondrial disease causing progressive leukoencephalopathy.
         </div>
 
         {/* Zero approved treatments */}
         <div
           style={{
-            fontSize: 22,
-            color: "#ffffff",
+            fontSize: 32,
+            color: "#ef4444",
+            fontWeight: 600,
             fontFamily: poppins,
             textAlign: "center",
             opacity: desc2Opacity,
             transform: `translateY(${desc2TranslateY}px)`,
           }}
         >
-          Zero approved treatments exist worldwide.
+          Zero approved treatments. Zero options.
         </div>
 
         {/* Until Curetopia */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 52,
             color: "#22c55e",
             fontWeight: 700,
             fontFamily: poppins,
