@@ -71,7 +71,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
 
         <div
           style={{
-            fontSize: 18,
+            fontSize: 36,
             color: "#c4b5fd",
             fontWeight: 700,
             letterSpacing: 6,
@@ -98,7 +98,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
 
         <div
           style={{
-            fontSize: 32,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             maxWidth: 900,

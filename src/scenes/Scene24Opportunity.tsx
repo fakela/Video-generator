@@ -87,7 +87,7 @@ export const Scene24Opportunity: React.FC = () => {
 
         <div
           style={{
-            fontSize: 32,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -125,7 +125,7 @@ export const Scene24Opportunity: React.FC = () => {
 
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",

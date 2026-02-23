@@ -77,7 +77,7 @@ export const ScenePerlara: React.FC = () => {
         {/* Partner lab description */}
         <div
           style={{
-            fontSize: 34,
+            fontSize: 44,
             color: "#ffffff",
             fontFamily: poppins,
             maxWidth: 1000,
@@ -92,7 +92,7 @@ export const ScenePerlara: React.FC = () => {
         {/* Scaling stats */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#fbbf24",
             fontWeight: 700,
             fontFamily: poppins,
@@ -106,7 +106,7 @@ export const ScenePerlara: React.FC = () => {
         {/* Punch line */}
         <div
           style={{
-            fontSize: 32,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             fontStyle: "italic",

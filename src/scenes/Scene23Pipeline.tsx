@@ -88,7 +88,7 @@ export const Scene23Pipeline: React.FC = () => {
 
         <div
           style={{
-            fontSize: 32,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -102,7 +102,7 @@ export const Scene23Pipeline: React.FC = () => {
 
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#22c55e",
             fontWeight: 600,
             fontFamily: poppins,

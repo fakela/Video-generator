@@ -123,7 +123,7 @@ export const SceneSasha: React.FC = () => {
         {/* "The world's first Curestream..." */}
         <div
           style={{
-            fontSize: 30,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             maxWidth: 900,
@@ -140,7 +140,7 @@ export const SceneSasha: React.FC = () => {
         {/* "She is the first." */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#ffffff",
             fontFamily: poppins,
             marginTop: 16,

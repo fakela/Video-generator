@@ -71,7 +71,7 @@ export const Scene17Result1: React.FC = () => {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#ffffff",
             fontFamily: poppins,
             textAlign: "center",
@@ -87,7 +87,7 @@ export const Scene17Result1: React.FC = () => {
         {/* Detail */}
         <div
           style={{
-            fontSize: 30,
+            fontSize: 42,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",

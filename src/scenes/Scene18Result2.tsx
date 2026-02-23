@@ -119,7 +119,7 @@ export const Scene18Result2: React.FC = () => {
         {/* "Owned by the Curetopia community." blur-in */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontFamily: poppins,
             marginTop: 20,
@@ -135,7 +135,7 @@ export const Scene18Result2: React.FC = () => {
         {/* "Not locked behind Big Pharma." */}
         <div
           style={{
-            fontSize: 34,
+            fontSize: 44,
             color: "#ef4444",
             fontWeight: 600,
             fontFamily: poppins,

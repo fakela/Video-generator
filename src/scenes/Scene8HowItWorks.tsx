@@ -75,7 +75,7 @@ export const Scene8HowItWorks: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 40,
+            fontSize: 48,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
@@ -90,7 +90,7 @@ export const Scene8HowItWorks: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 48,
             fontWeight: 700,
             color: "#22c55e",
             textAlign: "center",

@@ -143,7 +143,7 @@ export const Scene20Result4: React.FC = () => {
         {/* "Published openly onchain." — fade in */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#a855f7",
             fontFamily: poppins,
             marginTop: 8,

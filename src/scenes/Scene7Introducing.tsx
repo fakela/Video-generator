@@ -110,7 +110,7 @@ export const Scene7Introducing: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 40,
+            fontSize: 48,
             fontWeight: 400,
             color: "#ffffff",
             textAlign: "center",
@@ -126,7 +126,7 @@ export const Scene7Introducing: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 44,
             fontWeight: 700,
             color: "#a855f7",
             textAlign: "center",

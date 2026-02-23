@@ -65,7 +65,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -90,7 +90,7 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 40,
                   color: "#ffffff",
                   fontWeight: 600,
                   fontFamily: poppins,
@@ -131,7 +131,7 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 32,
+                  fontSize: 40,
                   color: "#ffffff",
                   fontWeight: 600,
                   fontFamily: poppins,
@@ -186,7 +186,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Footer text */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",

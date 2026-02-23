@@ -100,7 +100,7 @@ export const Scene11Step3: React.FC = () => {
         {/* STEP 3 label */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             letterSpacing: 6,
             textTransform: "uppercase",
@@ -131,7 +131,7 @@ export const Scene11Step3: React.FC = () => {
         {/* Description: fade + scale */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,

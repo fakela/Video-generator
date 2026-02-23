@@ -97,7 +97,7 @@ export const Scene6BigPharma: React.FC = () => {
               key={i}
               style={{
                 fontFamily: poppins,
-                fontSize: 36,
+                fontSize: 44,
                 fontWeight: 400,
                 color: "#ffffff",
                 textAlign: "center",
@@ -111,7 +111,7 @@ export const Scene6BigPharma: React.FC = () => {
                   opacity: emojiOpacity,
                   transform: `scale(${emojiScale})`,
                   display: "inline-block",
-                  fontSize: 36,
+                  fontSize: 44,
                 }}
               >
                 {"\u274C"}

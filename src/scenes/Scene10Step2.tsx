@@ -91,7 +91,7 @@ export const Scene10Step2: React.FC = () => {
         {/* STEP 2 label */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             letterSpacing: labelLetterSpacing,
             textTransform: "uppercase",
@@ -121,7 +121,7 @@ export const Scene10Step2: React.FC = () => {
         {/* Staggered word reveal */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,

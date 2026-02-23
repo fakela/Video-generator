@@ -94,7 +94,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 2. Contribute and earn */}
         <div
           style={{
-            fontSize: 34,
+            fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
             fontFamily: poppins,
@@ -149,7 +149,7 @@ export const Scene25CTA: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    fontSize: 22,
+                    fontSize: 34,
                     fontWeight: 600,
                     color: "#ffffff",
                     fontFamily: poppins,
@@ -178,7 +178,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 5. COMMUNITY MEDICINE. ONCHAIN. */}
         <div
           style={{
-            fontSize: 22,
+            fontSize: 36,
             letterSpacing: 8,
             fontWeight: 600,
             color: "#c4b5fd",
@@ -203,10 +203,10 @@ export const Scene25CTA: React.FC = () => {
             transform: `translateY(${logoTranslateY}px)`,
           }}
         >
-          <CuretopiaLogo size={80} />
+          <CuretopiaLogo size={100} />
           <div
             style={{
-              fontSize: 28,
+              fontSize: 40,
               color: "#a855f7",
               fontFamily: poppins,
               textAlign: "center",

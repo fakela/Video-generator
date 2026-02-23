@@ -101,7 +101,7 @@ export const SceneRaptor: React.FC = () => {
         {/* "The first Coin-to-Company spin-out in history." */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#ffffff",
             fontWeight: 600,
             fontFamily: poppins,
@@ -117,7 +117,7 @@ export const SceneRaptor: React.FC = () => {
         {/* "From a token to a full C-suite powerhouse." */}
         <div
           style={{
-            fontSize: 34,
+            fontSize: 44,
             color: "#c4b5fd",
             fontFamily: poppins,
             opacity: line2Opacity,
@@ -132,7 +132,7 @@ export const SceneRaptor: React.FC = () => {
         {/* "The Curetopia model. Proven at scale." */}
         <div
           style={{
-            fontSize: 38,
+            fontSize: 46,
             color: "#22c55e",
             fontWeight: 700,
             fontFamily: poppins,

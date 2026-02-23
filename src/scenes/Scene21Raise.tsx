@@ -123,7 +123,7 @@ export const Scene21Raise: React.FC = () => {
         {/* "March 2025. In brutal market conditions." — letter-spacing */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontFamily: poppins,
             marginTop: 12,
