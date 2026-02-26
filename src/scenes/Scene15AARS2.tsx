@@ -47,7 +47,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Context line */}
         <div
           style={{
-            fontSize: 24,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
             textAlign: "center",
@@ -62,11 +62,11 @@ export const Scene15AARS2: React.FC = () => {
         {/* PROJECT 001 pill */}
         <div
           style={{
-            fontSize: 18,
+            fontSize: 32,
             color: "#ffffff",
             fontWeight: 700,
             background: "#a855f7",
-            padding: "8px 28px",
+            padding: "10px 32px",
             borderRadius: 24,
             letterSpacing: 4,
             fontFamily: poppins,
@@ -96,7 +96,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Fatal mitochondrial disease */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#ffffff",
             fontFamily: poppins,
             textAlign: "center",
@@ -110,7 +110,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Zero approved treatments */}
         <div
           style={{
-            fontSize: 32,
+            fontSize: 42,
             color: "#ef4444",
             fontWeight: 600,
             fontFamily: poppins,

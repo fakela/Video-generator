@@ -95,7 +95,7 @@ export const Scene9Step1: React.FC = () => {
         {/* STEP 1 label */}
         <div
           style={{
-            fontSize: 28,
+            fontSize: 40,
             color: "#c4b5fd",
             letterSpacing: 6,
             textTransform: "uppercase",
@@ -125,7 +125,7 @@ export const Scene9Step1: React.FC = () => {
         {/* Description with blur-in */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontWeight: 400,
             fontFamily: poppins,

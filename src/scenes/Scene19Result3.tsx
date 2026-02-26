@@ -121,7 +121,7 @@ export const Scene19Result3: React.FC = () => {
         {/* "$SASHA — the world's first Curestream" */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#22c55e",
             fontWeight: 600,
             fontFamily: poppins,
@@ -137,7 +137,7 @@ export const Scene19Result3: React.FC = () => {
 
         <div
           style={{
-            fontSize: 26,
+            fontSize: 40,
             color: "#c4b5fd",
             fontFamily: poppins,
             marginTop: 4,

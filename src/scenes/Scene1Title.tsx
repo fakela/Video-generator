@@ -202,7 +202,7 @@ export const Scene1Title: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 34,
+            fontSize: 44,
             letterSpacing: tagsLetterSpacing,
             fontWeight: 600,
             color: "#c4b5fd",

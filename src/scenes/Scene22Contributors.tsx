@@ -158,7 +158,7 @@ export const Scene22Contributors: React.FC = () => {
               <div
                 key={i}
                 style={{
-                  fontSize: 36,
+                  fontSize: 44,
                   color: "#c4b5fd",
                   fontFamily: poppins,
                   opacity: wordOpacity,

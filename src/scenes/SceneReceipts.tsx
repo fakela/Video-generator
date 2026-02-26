@@ -64,7 +64,7 @@ export const SceneReceipts: React.FC = () => {
         {/* "Not promises. Proof." */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 44,
             color: "#c4b5fd",
             fontFamily: poppins,
             opacity: subtitleOpacity,
@@ -104,7 +104,7 @@ export const SceneReceipts: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 36,
+                  fontSize: 44,
                   color: "#fbbf24",
                   fontWeight: 700,
                   fontFamily: poppins,
@@ -124,7 +124,7 @@ export const SceneReceipts: React.FC = () => {
               />
               <div
                 style={{
-                  fontSize: 28,
+                  fontSize: 38,
                   color: "#c4b5fd",
                   fontFamily: poppins,
                   textAlign: "left",

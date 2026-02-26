@@ -93,7 +93,7 @@ export const Scene5Market: React.FC = () => {
         <div
           style={{
             fontFamily: poppins,
-            fontSize: 36,
+            fontSize: 44,
             fontWeight: 600,
             fontStyle: "italic",
             color: "#ef4444",
