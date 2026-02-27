@@ -29,6 +29,8 @@ import { Scene17Result1 } from "./scenes/Scene17Result1";
 import { Scene18Result2 } from "./scenes/Scene18Result2";
 import { Scene20Result4 } from "./scenes/Scene20Result4";
 import { SceneSpinoutsIntro } from "./scenes/SceneSpinoutsIntro";
+import { SceneProofOfCuresModel } from "./scenes/SceneProofOfCuresModel";
+import { SceneProofOfCuresLive } from "./scenes/SceneProofOfCuresLive";
 import { SceneRaptor } from "./scenes/SceneRaptor";
 import { SceneSasha } from "./scenes/SceneSasha";
 import { SceneReceipts } from "./scenes/SceneReceipts";
@@ -195,9 +197,21 @@ export const CuretopiaCase: React.FC = () => {
 
         {/* ═══ ACT 5: PROOF OF CURES ═══ */}
 
-        {/* PROOF OF CURES INTRO */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        {/* PROOF OF CURES — THE PROBLEM */}
+        <TransitionSeries.Sequence durationInFrames={120}>
           <SceneSpinoutsIntro />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* PROOF OF CURES — THE MODEL */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <SceneProofOfCuresModel />
+        </TransitionSeries.Sequence>
+        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+
+        {/* PROOF OF CURES — LIVE IMPLEMENTATIONS */}
+        <TransitionSeries.Sequence durationInFrames={110}>
+          <SceneProofOfCuresLive />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
