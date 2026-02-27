@@ -116,7 +116,7 @@ export const Scene24Opportunity: React.FC = () => {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                backgroundColor: "#a855f7",
+                backgroundColor: "#7c3aed",
                 opacity: dotOpacity,
               }}
             />

@@ -117,10 +117,10 @@ export const Scene1Title: React.FC = () => {
           style={{
             transform: `scale(${logoScale * logoBreath})`,
             opacity: logoOpacity,
-            filter: `drop-shadow(0 0 ${logoGlow}px rgba(168, 85, 247, 0.6))`,
+            filter: `drop-shadow(0 0 ${logoGlow}px rgba(124, 58, 237, 0.6))`,
           }}
         >
-          <CuretopiaLogo size={160} showText textColor="#ffffff" />
+          <CuretopiaLogo size={200} />
         </div>
 
         {/* 2. "What If" — blur-in */}
@@ -175,7 +175,7 @@ export const Scene1Title: React.FC = () => {
           style={{
             width: `${lineWidth}%`,
             height: 3,
-            background: "linear-gradient(90deg, #ec4899, #a855f7, #6366f1)",
+            background: "linear-gradient(90deg, #a855f7, #7c3aed, #6d28d9)",
             marginTop: 24,
             marginBottom: 24,
             borderRadius: 2,
@@ -188,11 +188,11 @@ export const Scene1Title: React.FC = () => {
             fontFamily: poppins,
             fontSize: 56,
             fontWeight: 600,
-            color: "#a855f7",
+            color: "#a78bfa",
             textAlign: "center",
             opacity: rewriteOpacity,
             transform: `scale(${rewriteScale})`,
-            textShadow: `0 0 ${rewriteGlow}px rgba(168, 85, 247, 0.6)`,
+            textShadow: `0 0 ${rewriteGlow}px rgba(124, 58, 237, 0.6)`,
           }}
         >
           Curetopia is rewriting it.

@@ -60,7 +60,7 @@ export const Scene23Pipeline: React.FC = () => {
           style={{
             fontSize: 200,
             fontWeight: 900,
-            color: "#c084fc",
+            color: "#a78bfa",
             fontFamily: poppins,
             textAlign: "center",
             transform: `scale(${punchScale})`,

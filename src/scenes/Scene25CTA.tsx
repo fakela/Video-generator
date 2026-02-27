@@ -129,8 +129,8 @@ export const Scene25CTA: React.FC = () => {
               <div
                 key={i}
                 style={{
-                  background: "rgba(168,85,247,0.1)",
-                  border: "1px solid rgba(168,85,247,0.3)",
+                  background: "rgba(124,58,237,0.1)",
+                  border: "1px solid rgba(124,58,237,0.3)",
                   borderRadius: 18,
                   padding: "24px 36px",
                   display: "flex",
@@ -170,7 +170,7 @@ export const Scene25CTA: React.FC = () => {
             width: `${lineWidth}%`,
             height: 1,
             background:
-              "linear-gradient(90deg, transparent, #a855f7, transparent)",
+              "linear-gradient(90deg, transparent, #7c3aed, transparent)",
             marginTop: 28,
           }}
         />
@@ -203,11 +203,11 @@ export const Scene25CTA: React.FC = () => {
             transform: `translateY(${logoTranslateY}px)`,
           }}
         >
-          <CuretopiaLogo size={100} />
+          <CuretopiaLogo size={120} />
           <div
             style={{
               fontSize: 40,
-              color: "#a855f7",
+              color: "#a78bfa",
               fontFamily: poppins,
               textAlign: "center",
               marginTop: 10,

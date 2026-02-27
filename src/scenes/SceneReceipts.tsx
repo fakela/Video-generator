@@ -118,7 +118,7 @@ export const SceneReceipts: React.FC = () => {
                 style={{
                   width: 3,
                   height: 36,
-                  background: "rgba(168,85,247,0.5)",
+                  background: "rgba(124,58,237,0.5)",
                   borderRadius: 2,
                 }}
               />

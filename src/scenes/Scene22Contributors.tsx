@@ -86,7 +86,7 @@ export const Scene22Contributors: React.FC = () => {
             borderRadius: "50%",
             transform: `translate(-50%, -55%) scale(${glowScale})`,
             background:
-              "radial-gradient(circle, rgba(168,85,247,0.35) 0%, rgba(168,85,247,0.1) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(124,58,237,0.35) 0%, rgba(124,58,237,0.1) 40%, transparent 70%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -104,7 +104,7 @@ export const Scene22Contributors: React.FC = () => {
             opacity: punchOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(168,85,247,0.4), 0 0 80px rgba(168,85,247,0.15)",
+            textShadow: "0 0 40px rgba(124,58,237,0.4), 0 0 80px rgba(124,58,237,0.15)",
           }}
         >
           {displayNum.toLocaleString()}+

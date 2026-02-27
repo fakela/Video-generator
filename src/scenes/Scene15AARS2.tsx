@@ -65,7 +65,7 @@ export const Scene15AARS2: React.FC = () => {
             fontSize: 32,
             color: "#ffffff",
             fontWeight: 700,
-            background: "#a855f7",
+            background: "#7c3aed",
             padding: "10px 32px",
             borderRadius: 24,
             letterSpacing: 4,

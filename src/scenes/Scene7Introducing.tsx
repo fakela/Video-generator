@@ -63,7 +63,7 @@ export const Scene7Introducing: React.FC = () => {
           transform: "translate(-50%, -50%)",
           width: 1000,
           height: 1000,
-          background: `radial-gradient(circle, rgba(168,85,247,${bgPulse}) 0%, transparent 60%)`,
+          background: `radial-gradient(circle, rgba(124,58,237,${bgPulse}) 0%, transparent 60%)`,
           pointerEvents: "none",
         }}
       />
@@ -128,7 +128,7 @@ export const Scene7Introducing: React.FC = () => {
             fontFamily: poppins,
             fontSize: 44,
             fontWeight: 700,
-            color: "#a855f7",
+            color: "#a78bfa",
             textAlign: "center",
             opacity: tagOpacity,
             transform: `scale(${tagScale})`,
