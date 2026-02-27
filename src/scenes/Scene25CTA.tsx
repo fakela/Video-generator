@@ -1,7 +1,6 @@
 import React from "react";
-import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
+import { useCurrentFrame, useVideoConfig, spring, interpolate, Img, staticFile } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { CuretopiaLogo } from "../components/CuretopiaLogo";
 import { poppins } from "../fonts";
 
 export const Scene25CTA: React.FC = () => {
@@ -203,7 +202,10 @@ export const Scene25CTA: React.FC = () => {
             transform: `translateY(${logoTranslateY}px)`,
           }}
         >
-          <CuretopiaLogo size={120} />
+          <Img
+            src={staticFile("Curetopia Logo Primary Dark Mode 1@2x.png")}
+            style={{ height: 80 }}
+          />
           <div
             style={{
               fontSize: 40,

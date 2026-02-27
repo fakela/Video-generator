@@ -2,15 +2,15 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 // ---------- Dust Particles ----------
-const NUM_PARTICLES = 400;
+const NUM_PARTICLES = 500;
 
 const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
   x: (i * 137.508) % 100,
   y: (i * 73.137) % 100,
-  size: 0.8 + (i % 6) * 0.5,
-  speed: 0.01 + (i % 9) * 0.005,
+  size: 0.9 + (i % 7) * 0.55,
+  speed: 0.008 + (i % 11) * 0.004,
   phase: i * 0.83,
-  hasGlow: i % 8 === 0,
+  hasGlow: i % 6 === 0,
   colorType: i % 10, // 0-4 = muted white, 5-7 = light purple, 8-9 = purple
 }));
 
@@ -57,13 +57,15 @@ const DustField: React.FC = () => {
 
 // ---------- Nebula Glow Layers ----------
 const nebulaPatches = [
-  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(124,58,237,0.14)", rot: -15 },
-  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(168,85,247,0.10)", rot: 25 },
-  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(192,132,252,0.08)", rot: 0 },
-  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(147,51,234,0.12)", rot: 40 },
-  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(109,40,217,0.10)", rot: -30 },
-  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(139,92,246,0.08)", rot: 10 },
-  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(124,58,237,0.09)", rot: -20 },
+  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(124,58,237,0.18)", rot: -15 },
+  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(168,85,247,0.13)", rot: 25 },
+  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(192,132,252,0.10)", rot: 0 },
+  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(147,51,234,0.15)", rot: 40 },
+  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(109,40,217,0.12)", rot: -30 },
+  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(139,92,246,0.10)", rot: 10 },
+  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(124,58,237,0.11)", rot: -20 },
+  { x: "45%", y: "55%", w: 1000, h: 600, color: "rgba(147,51,234,0.09)", rot: 15 },
+  { x: "75%", y: "30%", w: 500, h: 500, color: "rgba(192,132,252,0.07)", rot: -45 },
 ];
 
 const NebulaField: React.FC = () => {
