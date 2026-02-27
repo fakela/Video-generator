@@ -2,16 +2,16 @@ import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
 // ---------- Dust Particles ----------
-const NUM_PARTICLES = 180;
+const NUM_PARTICLES = 400;
 
 const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
   x: (i * 137.508) % 100,
   y: (i * 73.137) % 100,
-  size: 0.6 + (i % 5) * 0.4,
-  speed: 0.012 + (i % 7) * 0.006,
+  size: 0.8 + (i % 6) * 0.5,
+  speed: 0.01 + (i % 9) * 0.005,
   phase: i * 0.83,
-  hasGlow: i % 14 === 0,
-  colorType: i % 10, // 0-5 = muted white, 6-8 = light purple, 9 = purple
+  hasGlow: i % 8 === 0,
+  colorType: i % 10, // 0-4 = muted white, 5-7 = light purple, 8-9 = purple
 }));
 
 const DustField: React.FC = () => {
@@ -24,12 +24,12 @@ const DustField: React.FC = () => {
           Math.sin(frame * p.speed + p.phase) * 0.3 + 0.5;
 
         let color: string;
-        if (p.colorType <= 5) {
-          color = "rgba(255,255,255,0.6)";
-        } else if (p.colorType <= 8) {
-          color = "rgba(196,181,253,0.5)";
+        if (p.colorType <= 4) {
+          color = "rgba(255,255,255,0.7)";
+        } else if (p.colorType <= 7) {
+          color = "rgba(196,181,253,0.6)";
         } else {
-          color = "rgba(168,85,247,0.4)";
+          color = "rgba(168,85,247,0.5)";
         }
 
         return (
@@ -43,9 +43,9 @@ const DustField: React.FC = () => {
               height: p.size,
               borderRadius: "50%",
               backgroundColor: color,
-              opacity: twinkle * 0.6,
+              opacity: twinkle * 0.8,
               boxShadow: p.hasGlow
-                ? `0 0 ${p.size * 4}px rgba(168,85,247,0.25)`
+                ? `0 0 ${p.size * 6}px rgba(168,85,247,0.4)`
                 : "none",
             }}
           />
@@ -57,10 +57,13 @@ const DustField: React.FC = () => {
 
 // ---------- Nebula Glow Layers ----------
 const nebulaPatches = [
-  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(124,58,237,0.10)", rot: -15 },
-  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(168,85,247,0.07)", rot: 25 },
-  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(192,132,252,0.05)", rot: 0 },
-  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(147,51,234,0.08)", rot: 40 },
+  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(124,58,237,0.14)", rot: -15 },
+  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(168,85,247,0.10)", rot: 25 },
+  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(192,132,252,0.08)", rot: 0 },
+  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(147,51,234,0.12)", rot: 40 },
+  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(109,40,217,0.10)", rot: -30 },
+  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(139,92,246,0.08)", rot: 10 },
+  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(124,58,237,0.09)", rot: -20 },
 ];
 
 const NebulaField: React.FC = () => {

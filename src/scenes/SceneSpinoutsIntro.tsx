@@ -7,18 +7,45 @@ export const SceneSpinoutsIntro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "But we didn't stop there." — spring punch
-  const mainSpring = spring({
-    frame: frame - 12,
+  // 1. "Proof of Cures" — 3D rotateX flip-in
+  const titleSpring = spring({
+    frame: frame - 8,
     fps,
-    config: { damping: 8, stiffness: 140 },
+    config: { damping: 10, stiffness: 120 },
   });
-  const mainScale = interpolate(mainSpring, [0, 1], [0.5, 1]);
-  const mainOpacity = interpolate(mainSpring, [0, 1], [0, 1]);
+  const titleRotateX = interpolate(titleSpring, [0, 1], [-90, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const titleOpacity = interpolate(frame, [8, 16], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Pulsing glow
-  const glowPulse = Math.sin(frame * 0.07) * 0.3 + 0.7;
-  const glowEntrance = interpolate(frame, [15, 45], [0, 1], {
+  // Pulsing green glow
+  const glowPulse = Math.sin(frame * 0.07) * 0.25 + 0.75;
+
+  // 2. "Playing on Proof of Work..." — fade + blur-in
+  const line1Opacity = interpolate(frame, [30, 50], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const line1Blur = interpolate(frame, [30, 50], [8, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // 3. "If you get funding..." — spring scale punch
+  const punchSpring = spring({
+    frame: frame - 55,
+    fps,
+    config: { damping: 8, stiffness: 150 },
+  });
+  const punchScale = interpolate(punchSpring, [0, 1], [0.5, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const punchOpacity = interpolate(frame, [55, 62], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -38,37 +65,79 @@ export const SceneSpinoutsIntro: React.FC = () => {
           position: "relative",
         }}
       >
-        {/* Glow ring */}
+        {/* Green glow */}
         <div
           style={{
             position: "absolute",
-            width: 500,
-            height: 500,
+            width: 600,
+            height: 600,
             borderRadius: "50%",
-            border: "2px solid #fbbf24",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            opacity: glowPulse * glowEntrance * 0.4,
-            boxShadow: "0 0 60px rgba(251,191,36,0.3)",
+            background:
+              "radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 60%)",
+            opacity: glowPulse,
             pointerEvents: "none",
           }}
         />
 
+        {/* 1. "Proof of Cures" — 3D rotateX flip */}
         <div
           style={{
-            fontSize: 80,
-            color: "#ffffff",
-            fontWeight: 800,
+            fontSize: 88,
+            color: "#22c55e",
+            fontWeight: 900,
             fontFamily: poppins,
-            transform: `scale(${mainScale})`,
-            opacity: mainOpacity,
+            opacity: titleOpacity,
+            transform: `perspective(800px) rotateX(${titleRotateX}deg)`,
+            transformOrigin: "center bottom",
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(251,191,36,0.4)",
+            textShadow:
+              "0 0 40px rgba(34,197,94,0.5), 0 0 80px rgba(34,197,94,0.2)",
           }}
         >
-          But we didn't stop there.
+          Proof of Cures
+        </div>
+
+        {/* 2. "Playing on Proof of Work and Proof of Stake..." */}
+        <div
+          style={{
+            fontSize: 40,
+            color: "#ffffff",
+            fontFamily: poppins,
+            maxWidth: 950,
+            opacity: line1Opacity,
+            filter: `blur(${line1Blur}px)`,
+            marginTop: 24,
+            position: "relative",
+            zIndex: 1,
+            lineHeight: 1.4,
+          }}
+        >
+          Playing on Proof of Work and Proof of Stake, we created{" "}
+          <span style={{ color: "#22c55e", fontWeight: 700 }}>
+            Proof of Cures
+          </span>
+          .
+        </div>
+
+        {/* 3. "If you get funding, you make everything public." */}
+        <div
+          style={{
+            fontSize: 48,
+            color: "#c4b5fd",
+            fontWeight: 700,
+            fontFamily: poppins,
+            opacity: punchOpacity,
+            transform: `scale(${punchScale})`,
+            marginTop: 24,
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          If you get funding, you make everything public.
         </div>
       </div>
     </SceneWrapper>

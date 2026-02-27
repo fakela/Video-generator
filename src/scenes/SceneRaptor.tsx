@@ -26,7 +26,7 @@ export const SceneRaptor: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // "From a token to a full C-suite powerhouse." — fade up at frame 58
+  // "Research focus: autophagy-related drug repurposing." — fade up at frame 58
   const line2Opacity = interpolate(frame, [58, 78], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -114,7 +114,7 @@ export const SceneRaptor: React.FC = () => {
           The first Coin-to-Company spin-out in history.
         </div>
 
-        {/* "From a token to a full C-suite powerhouse." */}
+        {/* "Research focus: autophagy-related drug repurposing." */}
         <div
           style={{
             fontSize: 44,
@@ -124,12 +124,13 @@ export const SceneRaptor: React.FC = () => {
             transform: `translateY(${line2TranslateY}px)`,
             position: "relative",
             zIndex: 1,
+            maxWidth: 900,
           }}
         >
-          From a token to a full C-suite powerhouse.
+          Research focus: autophagy-related drug repurposing.
         </div>
 
-        {/* "The Curetopia model. Proven at scale." */}
+        {/* Longevity tagline */}
         <div
           style={{
             fontSize: 46,
@@ -143,7 +144,7 @@ export const SceneRaptor: React.FC = () => {
             zIndex: 1,
           }}
         >
-          The Curetopia model. Proven at scale.
+          Targeting longevity pathways, one coin at a time.
         </div>
       </div>
     </SceneWrapper>
