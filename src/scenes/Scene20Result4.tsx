@@ -85,7 +85,7 @@ export const Scene20Result4: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 60%)",
             pointerEvents: "none",
           }}
         />
@@ -101,7 +101,7 @@ export const Scene20Result4: React.FC = () => {
             opacity: numberOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(168,85,247,0.4)",
+            textShadow: "0 0 40px rgba(124,58,237,0.4)",
           }}
         >
           {displayNum}
@@ -144,7 +144,7 @@ export const Scene20Result4: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#a855f7",
+            color: "#a78bfa",
             fontFamily: poppins,
             marginTop: 8,
             opacity: taglineOpacity,

@@ -49,7 +49,7 @@ export const Scene3Affected: React.FC = () => {
           transform: "translate(-50%, -50%)",
           width: 800,
           height: 800,
-          background: `radial-gradient(circle, rgba(139,92,246,${glowPulse}) 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(124,58,237,${glowPulse}) 0%, transparent 70%)`,
           pointerEvents: "none",
         }}
       />

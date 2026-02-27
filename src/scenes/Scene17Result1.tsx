@@ -47,7 +47,7 @@ export const Scene17Result1: React.FC = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            background: `radial-gradient(circle, rgba(168,85,247,${glowPulse}) 0%, transparent 60%)`,
+            background: `radial-gradient(circle, rgba(124,58,237,${glowPulse}) 0%, transparent 60%)`,
             pointerEvents: "none",
           }}
         />
