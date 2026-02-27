@@ -7,7 +7,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // 1. "Proof of Cures" — 3D rotateX flip-in
+  // "Proof of Cures" title — 3D rotateX flip-in
   const titleSpring = spring({
     frame: frame - 8,
     fps,
@@ -25,27 +25,27 @@ export const SceneSpinoutsIntro: React.FC = () => {
   // Pulsing green glow
   const glowPulse = Math.sin(frame * 0.07) * 0.25 + 0.75;
 
-  // 2. "Playing on Proof of Work..." — fade + blur-in
-  const line1Opacity = interpolate(frame, [30, 50], [0, 1], {
+  // Problem text — fade + blur-in
+  const problemOpacity = interpolate(frame, [30, 50], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const line1Blur = interpolate(frame, [30, 50], [8, 0], {
+  const problemBlur = interpolate(frame, [30, 50], [8, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // 3. "If you get funding..." — spring scale punch
-  const punchSpring = spring({
-    frame: frame - 55,
+  // "Designed to close that gap" — spring punch
+  const gapSpring = spring({
+    frame: frame - 60,
     fps,
     config: { damping: 8, stiffness: 150 },
   });
-  const punchScale = interpolate(punchSpring, [0, 1], [0.5, 1], {
+  const gapScale = interpolate(gapSpring, [0, 1], [0.5, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const punchOpacity = interpolate(frame, [55, 62], [0, 1], {
+  const gapOpacity = interpolate(frame, [60, 68], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
@@ -82,7 +82,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
           }}
         />
 
-        {/* 1. "Proof of Cures" — 3D rotateX flip */}
+        {/* "Proof of Cures" */}
         <div
           style={{
             fontSize: 88,
@@ -101,47 +101,46 @@ export const SceneSpinoutsIntro: React.FC = () => {
           Proof of Cures
         </div>
 
-        {/* 2. "Contributors often have limited visibility..." */}
+        {/* Problem statement */}
         <div
           style={{
             fontSize: 36,
             color: "#c4b5fd",
             fontFamily: poppins,
             maxWidth: 950,
-            opacity: line1Opacity,
-            filter: `blur(${line1Blur}px)`,
-            marginTop: 24,
+            opacity: problemOpacity,
+            filter: `blur(${problemBlur}px)`,
+            marginTop: 28,
             position: "relative",
             zIndex: 1,
-            lineHeight: 1.4,
+            lineHeight: 1.45,
           }}
         >
-          But contributors often have limited visibility into how funds are
-          used, what milestones are being pursued, or what progress is being
-          made.
+          Many DeSci projects raise capital quickly — but contributors often
+          have limited visibility into how funds are used, what milestones are
+          being pursued, or what progress is being made.
         </div>
 
-        {/* 3. "Playing on Proof of Work..." */}
+        {/* Close the gap */}
         <div
           style={{
-            fontSize: 42,
+            fontSize: 44,
             color: "#ffffff",
             fontWeight: 600,
             fontFamily: poppins,
-            opacity: punchOpacity,
-            transform: `scale(${punchScale})`,
-            marginTop: 24,
+            opacity: gapOpacity,
+            transform: `scale(${gapScale})`,
+            marginTop: 28,
             position: "relative",
             zIndex: 1,
             maxWidth: 950,
             lineHeight: 1.4,
           }}
         >
-          Playing on Proof of Work and Proof of Stake, we created{" "}
           <span style={{ color: "#22c55e", fontWeight: 700 }}>
             Proof of Cures
-          </span>
-          : if you get funding, you make everything public.
+          </span>{" "}
+          was designed to close that gap.
         </div>
       </div>
     </SceneWrapper>
