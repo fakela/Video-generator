@@ -1,7 +1,6 @@
 import React from "react";
-import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
+import { useCurrentFrame, useVideoConfig, spring, interpolate, Img, staticFile } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { CuretopiaLogo } from "../components/CuretopiaLogo";
 import { poppins } from "../fonts";
 
 export const Scene1Title: React.FC = () => {
@@ -112,7 +111,7 @@ export const Scene1Title: React.FC = () => {
           height: "100%",
         }}
       >
-        {/* 1. Curetopia logo — SVG with spring entrance + breathing */}
+        {/* 1. Curetopia full PNG logo — spring entrance + breathing */}
         <div
           style={{
             transform: `scale(${logoScale * logoBreath})`,
@@ -120,7 +119,10 @@ export const Scene1Title: React.FC = () => {
             filter: `drop-shadow(0 0 ${logoGlow}px rgba(124, 58, 237, 0.6))`,
           }}
         >
-          <CuretopiaLogo size={200} />
+          <Img
+            src={staticFile("Curetopia Logo Primary Dark Mode 1@2x.png")}
+            style={{ height: 120 }}
+          />
         </div>
 
         {/* 2. "What If" — blur-in */}

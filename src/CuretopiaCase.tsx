@@ -193,10 +193,10 @@ export const CuretopiaCase: React.FC = () => {
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
 
-        {/* ═══ ACT 5: $RAPTOR & $SASHA ═══ */}
+        {/* ═══ ACT 5: PROOF OF CURES ═══ */}
 
-        {/* SPINOUTS INTRO */}
-        <TransitionSeries.Sequence durationInFrames={80}>
+        {/* PROOF OF CURES INTRO */}
+        <TransitionSeries.Sequence durationInFrames={110}>
           <SceneSpinoutsIntro />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
@@ -207,7 +207,7 @@ export const CuretopiaCase: React.FC = () => {
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={fade()} timing={t()} />
 
-        {/* $SASHA — PROOF OF CURES */}
+        {/* $SASHA — ONE PATIENT, ONE MISSION */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <SceneSasha />
         </TransitionSeries.Sequence>
