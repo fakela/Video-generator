@@ -101,11 +101,11 @@ export const SceneSpinoutsIntro: React.FC = () => {
           Proof of Cures
         </div>
 
-        {/* 2. "Playing on Proof of Work and Proof of Stake..." */}
+        {/* 2. "Contributors often have limited visibility..." */}
         <div
           style={{
-            fontSize: 40,
-            color: "#ffffff",
+            fontSize: 36,
+            color: "#c4b5fd",
             fontFamily: poppins,
             maxWidth: 950,
             opacity: line1Opacity,
@@ -116,28 +116,32 @@ export const SceneSpinoutsIntro: React.FC = () => {
             lineHeight: 1.4,
           }}
         >
-          Playing on Proof of Work and Proof of Stake, we created{" "}
-          <span style={{ color: "#22c55e", fontWeight: 700 }}>
-            Proof of Cures
-          </span>
-          .
+          But contributors often have limited visibility into how funds are
+          used, what milestones are being pursued, or what progress is being
+          made.
         </div>
 
-        {/* 3. "If you get funding, you make everything public." */}
+        {/* 3. "Playing on Proof of Work..." */}
         <div
           style={{
-            fontSize: 48,
-            color: "#c4b5fd",
-            fontWeight: 700,
+            fontSize: 42,
+            color: "#ffffff",
+            fontWeight: 600,
             fontFamily: poppins,
             opacity: punchOpacity,
             transform: `scale(${punchScale})`,
             marginTop: 24,
             position: "relative",
             zIndex: 1,
+            maxWidth: 950,
+            lineHeight: 1.4,
           }}
         >
-          If you get funding, you make everything public.
+          Playing on Proof of Work and Proof of Stake, we created{" "}
+          <span style={{ color: "#22c55e", fontWeight: 700 }}>
+            Proof of Cures
+          </span>
+          : if you get funding, you make everything public.
         </div>
       </div>
     </SceneWrapper>

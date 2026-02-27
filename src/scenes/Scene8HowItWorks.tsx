@@ -28,7 +28,7 @@ export const Scene8HowItWorks: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // 3. "5 steps. Zero bureaucracy." — scale punch from 0.3
+  // 3. "7 steps. Zero bureaucracy." — scale punch from 0.3
   const punchSpring = spring({
     frame: frame - 55,
     fps,
@@ -86,7 +86,7 @@ export const Scene8HowItWorks: React.FC = () => {
           From community funding to FDA approval.
         </div>
 
-        {/* 3. "5 steps. Zero bureaucracy." — scale punch */}
+        {/* 3. "7 steps. Zero bureaucracy." — scale punch */}
         <div
           style={{
             fontFamily: poppins,
@@ -99,7 +99,7 @@ export const Scene8HowItWorks: React.FC = () => {
             marginTop: 24,
           }}
         >
-          5 steps. Zero bureaucracy.
+          7 steps. Zero bureaucracy.
         </div>
       </div>
     </SceneWrapper>

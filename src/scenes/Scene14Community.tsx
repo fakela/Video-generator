@@ -118,7 +118,7 @@ export const Scene14Community: React.FC = () => {
               "0 0 40px rgba(124,58,237,0.5), 0 0 80px rgba(124,58,237,0.3)",
           }}
         >
-          Community Medicine.
+          That's Community Medicine.
         </div>
 
         {/* "Onchain." */}
