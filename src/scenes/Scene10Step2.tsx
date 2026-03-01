@@ -92,7 +92,7 @@ export const Scene10Step2: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#CC44FF",
             letterSpacing: labelLetterSpacing,
             textTransform: "uppercase",
             fontWeight: 600,
@@ -122,7 +122,7 @@ export const Scene10Step2: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontWeight: 400,
             fontFamily: poppins,
             maxWidth: 900,

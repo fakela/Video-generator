@@ -77,7 +77,7 @@ export const Scene18Result2: React.FC = () => {
             left: "50%",
             borderRadius: "50%",
             transform: `translate(-50%, -50%) scale(${glowScale})`,
-            background: `radial-gradient(circle, rgba(124,58,237,${glowPulse}) 0%, rgba(109,40,217,${glowPulse * 0.4}) 35%, transparent 65%)`,
+            background: `radial-gradient(circle, rgba(123,47,190,${glowPulse}) 0%, rgba(123,47,190,${glowPulse * 0.4}) 35%, transparent 65%)`,
             pointerEvents: "none",
           }}
         />
@@ -93,7 +93,7 @@ export const Scene18Result2: React.FC = () => {
             opacity: provisionalOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 30px rgba(124,58,237,0.4)",
+            textShadow: "0 0 30px rgba(123,47,190,0.4)",
           }}
         >
           Provisional
@@ -104,13 +104,13 @@ export const Scene18Result2: React.FC = () => {
           style={{
             fontSize: 72,
             fontWeight: 700,
-            color: "#a78bfa",
+            color: "#E040FB",
             fontFamily: poppins,
             transform: `perspective(800px) rotateY(${patentRotateY}deg)`,
             opacity: patentOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 30px rgba(124,58,237,0.5)",
+            textShadow: "0 0 30px rgba(123,47,190,0.5)",
           }}
         >
           patent
@@ -120,7 +120,7 @@ export const Scene18Result2: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             marginTop: 20,
             opacity: descOpacity,

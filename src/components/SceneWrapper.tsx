@@ -1,36 +1,31 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
-// ---------- Dust Particles ----------
+// ---------- Star Particles ----------
+// White dots, opacity 5–20%, sizes 1–3px, some with magenta/purple glow
 const NUM_PARTICLES = 500;
 
 const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => ({
   x: (i * 137.508) % 100,
   y: (i * 73.137) % 100,
-  size: 0.9 + (i % 7) * 0.55,
+  // mostly 1px, some 2px, rare 3px
+  size: i % 12 === 0 ? 3 : i % 5 === 0 ? 2 : 1,
   speed: 0.008 + (i % 11) * 0.004,
   phase: i * 0.83,
-  hasGlow: i % 6 === 0,
-  colorType: i % 10, // 0-4 = muted white, 5-7 = light purple, 8-9 = purple
+  // Some dots have a soft glow in #CC44FF or #9B30D0
+  hasGlow: i % 7 === 0,
+  glowColor: i % 14 === 0 ? "rgba(204,68,255,0.35)" : "rgba(155,48,208,0.3)",
 }));
 
-const DustField: React.FC = () => {
+const StarField: React.FC = () => {
   const frame = useCurrentFrame();
 
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       {particles.map((p, i) => {
+        // Slight twinkle/shimmer — opacity between 5% and 20%
         const twinkle =
-          Math.sin(frame * p.speed + p.phase) * 0.3 + 0.5;
-
-        let color: string;
-        if (p.colorType <= 4) {
-          color = "rgba(255,255,255,0.7)";
-        } else if (p.colorType <= 7) {
-          color = "rgba(196,181,253,0.6)";
-        } else {
-          color = "rgba(168,85,247,0.5)";
-        }
+          Math.sin(frame * p.speed + p.phase) * 0.075 + 0.125;
 
         return (
           <div
@@ -42,10 +37,10 @@ const DustField: React.FC = () => {
               width: p.size,
               height: p.size,
               borderRadius: "50%",
-              backgroundColor: color,
-              opacity: twinkle * 0.8,
+              backgroundColor: "#FFFFFF",
+              opacity: twinkle,
               boxShadow: p.hasGlow
-                ? `0 0 ${p.size * 6}px rgba(168,85,247,0.4)`
+                ? `0 0 ${p.size * 5}px ${p.glowColor}`
                 : "none",
             }}
           />
@@ -57,15 +52,15 @@ const DustField: React.FC = () => {
 
 // ---------- Nebula Glow Layers ----------
 const nebulaPatches = [
-  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(124,58,237,0.18)", rot: -15 },
-  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(168,85,247,0.13)", rot: 25 },
-  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(192,132,252,0.10)", rot: 0 },
-  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(147,51,234,0.15)", rot: 40 },
-  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(109,40,217,0.12)", rot: -30 },
-  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(139,92,246,0.10)", rot: 10 },
-  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(124,58,237,0.11)", rot: -20 },
-  { x: "45%", y: "55%", w: 1000, h: 600, color: "rgba(147,51,234,0.09)", rot: 15 },
-  { x: "75%", y: "30%", w: 500, h: 500, color: "rgba(192,132,252,0.07)", rot: -45 },
+  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(123,47,190,0.14)", rot: -15 },
+  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(155,48,208,0.10)", rot: 25 },
+  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(204,68,255,0.07)", rot: 0 },
+  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(123,47,190,0.12)", rot: 40 },
+  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(155,48,208,0.09)", rot: -30 },
+  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(224,64,251,0.06)", rot: 10 },
+  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(123,47,190,0.08)", rot: -20 },
+  { x: "45%", y: "55%", w: 1000, h: 600, color: "rgba(155,48,208,0.07)", rot: 15 },
+  { x: "75%", y: "30%", w: 500, h: 500, color: "rgba(204,68,255,0.05)", rot: -45 },
 ];
 
 const NebulaField: React.FC = () => {
@@ -104,11 +99,11 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
     <AbsoluteFill
       style={{
         background:
-          "radial-gradient(ellipse at 50% 50%, #150025 0%, #0D0019 50%, #06000F 100%)",
+          "radial-gradient(ellipse at 50% 50%, #1A1640 0%, #080818 60%, #080818 100%)",
       }}
     >
       <NebulaField />
-      <DustField />
+      <StarField />
       <div
         style={{
           position: "absolute",

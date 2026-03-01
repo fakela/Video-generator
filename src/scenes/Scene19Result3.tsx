@@ -122,7 +122,7 @@ export const Scene19Result3: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 600,
             fontFamily: poppins,
             marginTop: 16,
@@ -138,7 +138,7 @@ export const Scene19Result3: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             marginTop: 4,
             opacity: sashaOpacity,

@@ -128,9 +128,10 @@ export const Scene25CTA: React.FC = () => {
               <div
                 key={i}
                 style={{
-                  background: "rgba(124,58,237,0.1)",
-                  border: "1px solid rgba(124,58,237,0.3)",
-                  borderRadius: 18,
+                  background: "#0F0E2A",
+                  border: "1px solid rgba(74,26,122,0.5)",
+                  borderRadius: 12,
+                  boxShadow: "inset 0 0 20px rgba(123,47,190,0.2)",
                   padding: "24px 36px",
                   display: "flex",
                   flexDirection: "column",
@@ -169,7 +170,7 @@ export const Scene25CTA: React.FC = () => {
             width: `${lineWidth}%`,
             height: 1,
             background:
-              "linear-gradient(90deg, transparent, #7c3aed, transparent)",
+              "linear-gradient(90deg, transparent, #7B2FBE, transparent)",
             marginTop: 28,
           }}
         />
@@ -180,7 +181,7 @@ export const Scene25CTA: React.FC = () => {
             fontSize: 36,
             letterSpacing: 8,
             fontWeight: 600,
-            color: "#c4b5fd",
+            color: "#CC44FF",
             fontFamily: poppins,
             textAlign: "center",
             marginTop: 24,
@@ -209,7 +210,7 @@ export const Scene25CTA: React.FC = () => {
           <div
             style={{
               fontSize: 40,
-              color: "#a78bfa",
+              color: "#E040FB",
               fontFamily: poppins,
               textAlign: "center",
               marginTop: 10,

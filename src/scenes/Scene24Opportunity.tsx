@@ -88,7 +88,7 @@ export const Scene24Opportunity: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             marginTop: 12,
@@ -116,7 +116,7 @@ export const Scene24Opportunity: React.FC = () => {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                backgroundColor: "#7c3aed",
+                backgroundColor: "#7B2FBE",
                 opacity: dotOpacity,
               }}
             />
@@ -126,7 +126,7 @@ export const Scene24Opportunity: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             marginTop: 20,

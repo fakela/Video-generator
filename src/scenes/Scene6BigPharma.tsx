@@ -133,11 +133,11 @@ export const Scene6BigPharma: React.FC = () => {
             fontFamily: poppins,
             fontSize: 100,
             fontWeight: 900,
-            color: "#22c55e",
+            color: "#E040FB",
             textAlign: "center",
             opacity: weWillOpacity,
             transform: `scale(${weWillScale})`,
-            textShadow: `0 0 ${weWillGlow}px rgba(34, 197, 94, 0.7), 0 0 ${weWillGlow * 2}px rgba(34, 197, 94, 0.3)`,
+            textShadow: `0 0 ${weWillGlow}px rgba(224, 64, 251, 0.7), 0 0 ${weWillGlow * 2}px rgba(224, 64, 251, 0.3)`,
             marginTop: 24,
           }}
         >

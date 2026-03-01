@@ -47,7 +47,7 @@ export const Scene17Result1: React.FC = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            background: `radial-gradient(circle, rgba(124,58,237,${glowPulse}) 0%, transparent 60%)`,
+            background: `radial-gradient(circle, rgba(123,47,190,${glowPulse}) 0%, transparent 60%)`,
             pointerEvents: "none",
           }}
         />
@@ -88,7 +88,7 @@ export const Scene17Result1: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             opacity: detailOpacity,

@@ -48,7 +48,7 @@ export const Scene15AARS2: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             opacity: pillOpacity,
@@ -65,7 +65,7 @@ export const Scene15AARS2: React.FC = () => {
             fontSize: 32,
             color: "#ffffff",
             fontWeight: 700,
-            background: "#7c3aed",
+            background: "#7B2FBE",
             padding: "10px 32px",
             borderRadius: 24,
             letterSpacing: 4,
@@ -126,7 +126,7 @@ export const Scene15AARS2: React.FC = () => {
         <div
           style={{
             fontSize: 52,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 700,
             fontFamily: poppins,
             textAlign: "center",

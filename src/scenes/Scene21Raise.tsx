@@ -124,7 +124,7 @@ export const Scene21Raise: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             marginTop: 12,
             letterSpacing: marchLetterSpacing,

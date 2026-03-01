@@ -65,7 +65,7 @@ export const SceneReceipts: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             opacity: subtitleOpacity,
             marginBottom: 24,
@@ -118,14 +118,14 @@ export const SceneReceipts: React.FC = () => {
                 style={{
                   width: 3,
                   height: 36,
-                  background: "rgba(124,58,237,0.5)",
+                  background: "rgba(123,47,190,0.5)",
                   borderRadius: 2,
                 }}
               />
               <div
                 style={{
                   fontSize: 38,
-                  color: "#c4b5fd",
+                  color: "#A89BC2",
                   fontFamily: poppins,
                   textAlign: "left",
                 }}
