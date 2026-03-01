@@ -136,7 +136,7 @@ export const Scene18Result2: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#ef4444",
+            color: "#E040FB",
             fontWeight: 600,
             fontFamily: poppins,
             opacity: pharmaOpacity,

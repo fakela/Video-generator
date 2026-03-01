@@ -67,7 +67,7 @@ export const Scene4TreatmentGap: React.FC = () => {
             fontFamily: poppins,
             fontSize: 220,
             fontWeight: 900,
-            color: "#ef4444",
+            color: "#E040FB",
             textAlign: "center",
             transform: `scale(${statScale})`,
             opacity: statOpacity,

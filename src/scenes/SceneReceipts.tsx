@@ -105,7 +105,7 @@ export const SceneReceipts: React.FC = () => {
               <div
                 style={{
                   fontSize: 44,
-                  color: "#fbbf24",
+                  color: "#E040FB",
                   fontWeight: 700,
                   fontFamily: poppins,
                   minWidth: 340,

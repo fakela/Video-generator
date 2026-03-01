@@ -141,13 +141,13 @@ export const Scene24Opportunity: React.FC = () => {
           style={{
             fontSize: 120,
             fontWeight: 900,
-            color: "#fbbf24",
+            color: "#E040FB",
             fontFamily: poppins,
             textAlign: "center",
             marginTop: 12,
             transform: `scale(${trillionScale})`,
             opacity: trillionOpacity,
-            textShadow: `0 0 ${goldGlow}px rgba(251, 191, 36, 0.6), 0 0 ${goldGlow * 2}px rgba(251, 191, 36, 0.3)`,
+            textShadow: `0 0 ${goldGlow}px rgba(224, 64, 251, 0.6), 0 0 ${goldGlow * 2}px rgba(224, 64, 251, 0.3)`,
           }}
         >
           $1.5 Trillion

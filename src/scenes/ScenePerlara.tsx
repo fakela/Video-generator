@@ -93,7 +93,7 @@ export const ScenePerlara: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#fbbf24",
+            color: "#E040FB",
             fontWeight: 700,
             fontFamily: poppins,
             opacity: line2Opacity,
