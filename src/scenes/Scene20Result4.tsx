@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene20Result4: React.FC = () => {
   const frame = useCurrentFrame();
@@ -69,7 +69,7 @@ export const Scene20Result4: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
           position: "relative",
@@ -96,7 +96,7 @@ export const Scene20Result4: React.FC = () => {
             fontSize: 180,
             fontWeight: 700,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             lineHeight: 1,
             opacity: numberOpacity,
             position: "relative",
@@ -112,7 +112,7 @@ export const Scene20Result4: React.FC = () => {
           style={{
             fontSize: 56,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontWeight: 600,
             transform: `scale(${compoundScale})`,
             opacity: compoundOpacity,
@@ -129,7 +129,7 @@ export const Scene20Result4: React.FC = () => {
             fontSize: 48,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 12,
             filter: `blur(${blurAmount}px)`,
             opacity: hitsOpacity,
@@ -145,7 +145,7 @@ export const Scene20Result4: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#E040FB",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 8,
             opacity: taglineOpacity,
             transform: `scale(${taglineScale})`,

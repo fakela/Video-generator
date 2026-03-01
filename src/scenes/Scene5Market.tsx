@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene5Market: React.FC = () => {
   const frame = useCurrentFrame();
@@ -62,7 +62,7 @@ export const Scene5Market: React.FC = () => {
         {/* 1. "$1 Trillion" — counter + scale + gold glow */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 160,
             fontWeight: 900,
             color: "#E040FB",
@@ -78,7 +78,7 @@ export const Scene5Market: React.FC = () => {
         {/* 2. "market sitting unclaimed" */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
@@ -92,7 +92,7 @@ export const Scene5Market: React.FC = () => {
         {/* 3. "Sitting there. Untouched." — letter-spacing shrink */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             fontWeight: 600,
             fontStyle: "italic",

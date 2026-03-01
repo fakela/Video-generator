@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene19Result3: React.FC = () => {
   const frame = useCurrentFrame();
@@ -61,7 +61,7 @@ export const Scene19Result3: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
           position: "relative",
@@ -90,7 +90,7 @@ export const Scene19Result3: React.FC = () => {
             fontSize: 200,
             fontWeight: 700,
             color: "#E040FB",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             lineHeight: 1,
             transform: `scale(${numberScale})`,
             opacity: numberOpacity,
@@ -108,7 +108,7 @@ export const Scene19Result3: React.FC = () => {
             fontSize: 56,
             fontWeight: 700,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${familiesScale})`,
             opacity: familiesOpacity,
             position: "relative",
@@ -124,7 +124,7 @@ export const Scene19Result3: React.FC = () => {
             fontSize: 44,
             color: "#E040FB",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 16,
             opacity: sashaOpacity,
             transform: `translateY(${sashaTranslateY}px)`,
@@ -139,7 +139,7 @@ export const Scene19Result3: React.FC = () => {
           style={{
             fontSize: 40,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 4,
             opacity: sashaOpacity,
             transform: `translateY(${sashaTranslateY}px)`,

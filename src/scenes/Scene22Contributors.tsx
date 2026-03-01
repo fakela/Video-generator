@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene22Contributors: React.FC = () => {
   const frame = useCurrentFrame();
@@ -69,7 +69,7 @@ export const Scene22Contributors: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
           position: "relative",
@@ -98,7 +98,7 @@ export const Scene22Contributors: React.FC = () => {
             fontSize: 180,
             fontWeight: 700,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             lineHeight: 1,
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
@@ -116,7 +116,7 @@ export const Scene22Contributors: React.FC = () => {
             fontSize: 56,
             fontWeight: 700,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${contribScale})`,
             opacity: contribOpacity,
             position: "relative",
@@ -160,7 +160,7 @@ export const Scene22Contributors: React.FC = () => {
                 style={{
                   fontSize: 44,
                   color: "#A89BC2",
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                   opacity: wordOpacity,
                   transform: `translateY(${wordY}px)`,
                 }}

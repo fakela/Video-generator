@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate, Img, staticFile } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene1Title: React.FC = () => {
   const frame = useCurrentFrame();
@@ -128,7 +128,7 @@ export const Scene1Title: React.FC = () => {
         {/* 2. "What If" — blur-in */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 60,
             fontStyle: "italic",
             color: "#A89BC2",
@@ -144,7 +144,7 @@ export const Scene1Title: React.FC = () => {
         {/* 3. "'Too Rare'" — explosive spring scale + rotation wobble */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 150,
             fontWeight: 900,
             color: "#ffffff",
@@ -160,7 +160,7 @@ export const Scene1Title: React.FC = () => {
         {/* 4. "Wasn't the End of the Story?" — typewriter clip */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 72,
             fontWeight: 700,
             color: "#ffffff",
@@ -187,7 +187,7 @@ export const Scene1Title: React.FC = () => {
         {/* 6. "Curetopia is rewriting it." — scale + glow intensify */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 56,
             fontWeight: 600,
             color: "#E040FB",
@@ -203,7 +203,7 @@ export const Scene1Title: React.FC = () => {
         {/* 7. Tags — letter-spacing animation */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             letterSpacing: tagsLetterSpacing,
             fontWeight: 600,

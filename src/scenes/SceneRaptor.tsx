@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneRaptor: React.FC = () => {
   const frame = useCurrentFrame();
@@ -58,7 +58,7 @@ export const SceneRaptor: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
           position: "relative",
@@ -86,7 +86,7 @@ export const SceneRaptor: React.FC = () => {
             fontSize: 72,
             color: "#E040FB",
             fontWeight: 900,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${titleScale})`,
             opacity: titleOpacity,
             position: "relative",
@@ -104,7 +104,7 @@ export const SceneRaptor: React.FC = () => {
             fontSize: 48,
             color: "#ffffff",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: line1Opacity,
             transform: `translateY(${line1TranslateY}px)`,
             position: "relative",
@@ -119,7 +119,7 @@ export const SceneRaptor: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: line2Opacity,
             transform: `translateY(${line2TranslateY}px)`,
             position: "relative",
@@ -136,7 +136,7 @@ export const SceneRaptor: React.FC = () => {
             fontSize: 46,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 12,
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,

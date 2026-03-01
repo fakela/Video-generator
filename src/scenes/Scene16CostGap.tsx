@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene16CostGap: React.FC = () => {
   const frame = useCurrentFrame();
@@ -42,7 +42,7 @@ export const Scene16CostGap: React.FC = () => {
           justifyContent: "center",
           width: "100%",
           height: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -52,7 +52,7 @@ export const Scene16CostGap: React.FC = () => {
             fontSize: 64,
             color: "#ffffff",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: titleOpacity,
             transform: `translateY(${titleTranslateY}px)`,
@@ -67,7 +67,7 @@ export const Scene16CostGap: React.FC = () => {
           style={{
             fontSize: 40,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: subtitleOpacity,
             transform: `translateY(${subtitleTranslateY}px)`,
@@ -93,7 +93,7 @@ export const Scene16CostGap: React.FC = () => {
                   fontSize: 40,
                   color: "#ffffff",
                   fontWeight: 600,
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                 }}
               >
                 Industry Standard
@@ -103,7 +103,7 @@ export const Scene16CostGap: React.FC = () => {
                   fontSize: 40,
                   color: "#E040FB",
                   fontWeight: 900,
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                 }}
               >
                 $100M+
@@ -134,7 +134,7 @@ export const Scene16CostGap: React.FC = () => {
                   fontSize: 40,
                   color: "#ffffff",
                   fontWeight: 600,
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                 }}
               >
                 Curetopia
@@ -144,7 +144,7 @@ export const Scene16CostGap: React.FC = () => {
                   fontSize: 40,
                   color: "#E040FB",
                   fontWeight: 900,
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                 }}
               >
                 $5M
@@ -168,7 +168,7 @@ export const Scene16CostGap: React.FC = () => {
             fontSize: 48,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             background: "rgba(224,64,251,0.15)",
             border: "2px solid #E040FB",
@@ -188,7 +188,7 @@ export const Scene16CostGap: React.FC = () => {
           style={{
             fontSize: 40,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: footerOpacity,
             transform: `translateY(${footerTranslateY}px)`,

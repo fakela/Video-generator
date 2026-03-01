@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneSpinoutsIntro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -60,7 +60,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
         }}
@@ -88,7 +88,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
             fontSize: 88,
             color: "#E040FB",
             fontWeight: 900,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: titleOpacity,
             transform: `perspective(800px) rotateX(${titleRotateX}deg)`,
             transformOrigin: "center bottom",
@@ -106,7 +106,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
           style={{
             fontSize: 36,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 950,
             opacity: problemOpacity,
             filter: `blur(${problemBlur}px)`,
@@ -127,7 +127,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
             fontSize: 44,
             color: "#ffffff",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: gapOpacity,
             transform: `scale(${gapScale})`,
             marginTop: 28,

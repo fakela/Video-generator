@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const ScenePerlara: React.FC = () => {
   const frame = useCurrentFrame();
@@ -55,7 +55,7 @@ export const ScenePerlara: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 20,
         }}
@@ -66,7 +66,7 @@ export const ScenePerlara: React.FC = () => {
             fontSize: 60,
             color: "#E040FB",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${titleScale})`,
             opacity: titleOpacity,
           }}
@@ -79,7 +79,7 @@ export const ScenePerlara: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 1000,
             opacity: line1Opacity,
             transform: `translateY(${line1TranslateY}px)`,
@@ -95,7 +95,7 @@ export const ScenePerlara: React.FC = () => {
             fontSize: 44,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: line2Opacity,
             transform: `translateY(${line2TranslateY}px)`,
           }}
@@ -108,7 +108,7 @@ export const ScenePerlara: React.FC = () => {
           style={{
             fontSize: 42,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontStyle: "italic",
             marginTop: 8,
             transform: `scale(${punchScale})`,

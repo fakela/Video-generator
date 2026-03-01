@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneReceipts: React.FC = () => {
   const frame = useCurrentFrame();
@@ -42,7 +42,7 @@ export const SceneReceipts: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
         }}
@@ -53,7 +53,7 @@ export const SceneReceipts: React.FC = () => {
             fontSize: 80,
             color: "#ffffff",
             fontWeight: 900,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${titleScale})`,
             opacity: titleOpacity,
           }}
@@ -66,7 +66,7 @@ export const SceneReceipts: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: subtitleOpacity,
             marginBottom: 24,
           }}
@@ -107,7 +107,7 @@ export const SceneReceipts: React.FC = () => {
                   fontSize: 44,
                   color: "#E040FB",
                   fontWeight: 700,
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                   minWidth: 340,
                   textAlign: "right",
                 }}
@@ -126,7 +126,7 @@ export const SceneReceipts: React.FC = () => {
                 style={{
                   fontSize: 38,
                   color: "#A89BC2",
-                  fontFamily: poppins,
+                  fontFamily: ldTechD,
                   textAlign: "left",
                 }}
               >

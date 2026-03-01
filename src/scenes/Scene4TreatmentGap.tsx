@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene4TreatmentGap: React.FC = () => {
   const frame = useCurrentFrame();
@@ -64,7 +64,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         {/* 1. "95%" — dramatic scale punch + red pulse glow */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 220,
             fontWeight: 900,
             color: "#E040FB",
@@ -80,7 +80,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         {/* 2. Description */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
@@ -95,7 +95,7 @@ export const Scene4TreatmentGap: React.FC = () => {
         {/* 3. "Not even one option." — spring punch */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             fontWeight: 700,
             color: "#A89BC2",

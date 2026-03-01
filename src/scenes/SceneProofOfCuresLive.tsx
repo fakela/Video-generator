@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneProofOfCuresLive: React.FC = () => {
   const frame = useCurrentFrame();
@@ -50,7 +50,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
         }}
@@ -78,7 +78,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
             fontSize: 32,
             color: "#CC44FF",
             fontWeight: 500,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             letterSpacing: 6,
             textTransform: "uppercase",
             opacity: headerOpacity,
@@ -117,7 +117,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
                 fontSize: 72,
                 fontWeight: 900,
                 color: "#E040FB",
-                fontFamily: poppins,
+                fontFamily: ldTechD,
                 textShadow:
                   "0 0 30px rgba(224,64,251,0.4), 0 0 60px rgba(224,64,251,0.15)",
               }}
@@ -128,7 +128,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
               style={{
                 fontSize: 28,
                 color: "#A89BC2",
-                fontFamily: poppins,
+                fontFamily: ldTechD,
               }}
             >
               Coin-to-Company spin-out
@@ -162,7 +162,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
                 fontSize: 72,
                 fontWeight: 900,
                 color: "#E040FB",
-                fontFamily: poppins,
+                fontFamily: ldTechD,
                 textShadow:
                   "0 0 30px rgba(224,64,251,0.4), 0 0 60px rgba(224,64,251,0.15)",
               }}
@@ -173,7 +173,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
               style={{
                 fontSize: 28,
                 color: "#A89BC2",
-                fontFamily: poppins,
+                fontFamily: ldTechD,
               }}
             >
               One patient, one mission
@@ -187,7 +187,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
             fontSize: 40,
             color: "#ffffff",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 48,
             opacity: taglineOpacity,
             position: "relative",

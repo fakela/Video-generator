@@ -1,31 +1,37 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
 
-// ---------- Star Particles ----------
-// Heavy density — flood the entire background with cosmic dots
-// White #FFFFFF, opacity 5–20%, sizes mostly 1px, some 2px, rare 3px
-// Some dots have a soft blur/glow in #CC44FF or #9B30D0
-const NUM_PARTICLES = 1200;
+// ---------- Cosmic Star Particles ----------
+// HEAVY density — bright, very visible, flooding the entire background
+// White #FFFFFF at 30-80% opacity, sizes 1-3px
+// Many dots have soft blur/glow in #CC44FF or #9B30D0
+// Slight twinkle/shimmer feel
+const NUM_PARTICLES = 1800;
 
+// Use multiple offset seeds for truly random-feeling distribution
 const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => {
-  // Use two different golden-ratio offsets for better spatial distribution
-  const x = (i * 137.508 + (i % 3) * 31.7) % 100;
-  const y = (i * 73.137 + (i % 5) * 17.3) % 100;
+  const seed1 = (i * 137.508 + Math.sin(i * 0.1) * 50) % 100;
+  const seed2 = (i * 73.137 + Math.cos(i * 0.17) * 40) % 100;
+  const x = (seed1 + (i % 7) * 14.28) % 100;
+  const y = (seed2 + (i % 11) * 9.09) % 100;
+
   return {
     x,
     y,
     // mostly 1px, some 2px, rare 3px
-    size: i % 18 === 0 ? 3 : i % 6 === 0 ? 2 : 1,
-    speed: 0.006 + (i % 13) * 0.003,
-    phase: i * 0.67,
-    // ~25% of dots have a soft glow in #CC44FF or #9B30D0
-    hasGlow: i % 4 === 0,
+    size: i % 15 === 0 ? 3 : i % 4 === 0 ? 2 : 1,
+    speed: 0.005 + (i % 17) * 0.002,
+    phase: i * 0.53,
+    // ~35% of dots have a glow
+    hasGlow: i % 3 === 0,
     glowColor:
-      i % 8 === 0
-        ? "rgba(204,68,255,0.45)"
-        : i % 4 === 0
-          ? "rgba(155,48,208,0.35)"
+      i % 6 === 0
+        ? "rgba(204,68,255,0.6)" // bright #CC44FF glow
+        : i % 3 === 0
+          ? "rgba(155,48,208,0.5)" // #9B30D0 glow
           : "none",
+    // Base opacity varies per particle — 30% to 80%
+    baseOpacity: 0.3 + (i % 10) * 0.05,
   };
 });
 
@@ -35,9 +41,9 @@ const StarField: React.FC = () => {
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       {particles.map((p, i) => {
-        // Slight twinkle/shimmer — opacity oscillates between 5% and 20%
+        // Twinkle/shimmer — oscillates around the particle's base opacity
         const twinkle =
-          Math.sin(frame * p.speed + p.phase) * 0.075 + 0.125;
+          Math.sin(frame * p.speed + p.phase) * 0.15 + p.baseOpacity;
 
         return (
           <div
@@ -52,7 +58,7 @@ const StarField: React.FC = () => {
               backgroundColor: "#FFFFFF",
               opacity: twinkle,
               boxShadow: p.hasGlow
-                ? `0 0 ${p.size * 6}px ${p.glowColor}`
+                ? `0 0 ${p.size * 8}px ${p.glowColor}`
                 : "none",
             }}
           />
@@ -62,19 +68,30 @@ const StarField: React.FC = () => {
   );
 };
 
-// ---------- Nebula Glow Layers ----------
+// ---------- Nebula / Purple Atmosphere ----------
+// Rich, visible purple-pink haze throughout — NOT subtle
 const nebulaPatches = [
-  { x: "30%", y: "40%", w: 900, h: 700, color: "rgba(123,47,190,0.16)", rot: -15 },
-  { x: "72%", y: "62%", w: 700, h: 500, color: "rgba(155,48,208,0.12)", rot: 25 },
-  { x: "50%", y: "18%", w: 1200, h: 350, color: "rgba(204,68,255,0.08)", rot: 0 },
-  { x: "14%", y: "78%", w: 500, h: 500, color: "rgba(123,47,190,0.14)", rot: 40 },
-  { x: "85%", y: "25%", w: 600, h: 600, color: "rgba(155,48,208,0.10)", rot: -30 },
-  { x: "20%", y: "15%", w: 800, h: 400, color: "rgba(224,64,251,0.07)", rot: 10 },
-  { x: "60%", y: "85%", w: 700, h: 350, color: "rgba(123,47,190,0.10)", rot: -20 },
-  { x: "45%", y: "55%", w: 1000, h: 600, color: "rgba(155,48,208,0.08)", rot: 15 },
-  { x: "75%", y: "30%", w: 500, h: 500, color: "rgba(204,68,255,0.06)", rot: -45 },
-  { x: "10%", y: "50%", w: 900, h: 500, color: "rgba(123,47,190,0.09)", rot: 20 },
-  { x: "88%", y: "70%", w: 600, h: 400, color: "rgba(155,48,208,0.07)", rot: -10 },
+  // Large central glow — very visible light purple
+  { x: "50%", y: "50%", w: 1600, h: 1200, color: "rgba(123,47,190,0.25)", rot: 0 },
+  // Strong upper-left purple cloud
+  { x: "25%", y: "30%", w: 1000, h: 800, color: "rgba(155,48,208,0.22)", rot: -15 },
+  // Right-side magenta wash
+  { x: "75%", y: "55%", w: 900, h: 700, color: "rgba(204,68,255,0.16)", rot: 25 },
+  // Bottom-left deep purple
+  { x: "15%", y: "80%", w: 700, h: 600, color: "rgba(123,47,190,0.20)", rot: 40 },
+  // Top-right bright pink cloud
+  { x: "85%", y: "20%", w: 800, h: 600, color: "rgba(224,64,251,0.14)", rot: -30 },
+  // Mid-left soft purple
+  { x: "10%", y: "50%", w: 900, h: 500, color: "rgba(155,48,208,0.18)", rot: 10 },
+  // Bottom-right
+  { x: "70%", y: "85%", w: 800, h: 500, color: "rgba(123,47,190,0.15)", rot: -20 },
+  // Top wide band — light purple haze
+  { x: "50%", y: "15%", w: 1400, h: 400, color: "rgba(204,68,255,0.12)", rot: 0 },
+  // Additional depth patches
+  { x: "40%", y: "65%", w: 1100, h: 700, color: "rgba(155,48,208,0.14)", rot: 15 },
+  { x: "65%", y: "35%", w: 700, h: 700, color: "rgba(224,64,251,0.10)", rot: -45 },
+  { x: "30%", y: "90%", w: 600, h: 400, color: "rgba(204,68,255,0.12)", rot: 5 },
+  { x: "90%", y: "50%", w: 500, h: 800, color: "rgba(123,47,190,0.16)", rot: -10 },
 ];
 
 const NebulaField: React.FC = () => {
@@ -83,7 +100,7 @@ const NebulaField: React.FC = () => {
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       {nebulaPatches.map((patch, i) => {
-        const pulse = Math.sin(frame * 0.015 + i * 1.5) * 0.3 + 0.7;
+        const pulse = Math.sin(frame * 0.012 + i * 1.3) * 0.2 + 0.8;
         return (
           <div
             key={i}
@@ -113,7 +130,7 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
     <AbsoluteFill
       style={{
         background:
-          "radial-gradient(ellipse at 50% 50%, #1A1640 0%, #080818 60%, #080818 100%)",
+          "radial-gradient(ellipse at 50% 50%, #1E0A3C 0%, #130828 40%, #080818 80%)",
       }}
     >
       <NebulaField />

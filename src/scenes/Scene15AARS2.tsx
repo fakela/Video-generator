@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene15AARS2: React.FC = () => {
   const frame = useCurrentFrame();
@@ -40,7 +40,7 @@ export const Scene15AARS2: React.FC = () => {
           gap: 16,
           width: "100%",
           height: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -49,7 +49,7 @@ export const Scene15AARS2: React.FC = () => {
           style={{
             fontSize: 40,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: pillOpacity,
             transform: `translateX(${pillTranslateX}px)`,
@@ -69,7 +69,7 @@ export const Scene15AARS2: React.FC = () => {
             padding: "10px 32px",
             borderRadius: 24,
             letterSpacing: 4,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: pillOpacity,
             transform: `translateX(${pillTranslateX}px)`,
@@ -84,7 +84,7 @@ export const Scene15AARS2: React.FC = () => {
             fontSize: 100,
             color: "#ffffff",
             fontWeight: 900,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: titleOpacity,
             transform: `scale(${titleScale})`,
@@ -98,7 +98,7 @@ export const Scene15AARS2: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: desc1Opacity,
             transform: `translateY(${desc1TranslateY}px)`,
@@ -113,7 +113,7 @@ export const Scene15AARS2: React.FC = () => {
             fontSize: 42,
             color: "#E040FB",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: desc2Opacity,
             transform: `translateY(${desc2TranslateY}px)`,
@@ -128,7 +128,7 @@ export const Scene15AARS2: React.FC = () => {
             fontSize: 52,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: cureOpacity,
             transform: `scale(${cureScale})`,

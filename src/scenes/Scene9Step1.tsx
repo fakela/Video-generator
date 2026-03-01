@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene9Step1: React.FC = () => {
   const frame = useCurrentFrame();
@@ -77,7 +77,7 @@ export const Scene9Step1: React.FC = () => {
           gap: 20,
           width: "100%",
           height: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -100,7 +100,7 @@ export const Scene9Step1: React.FC = () => {
             letterSpacing: 6,
             textTransform: "uppercase",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: labelOpacity,
             transform: `scale(${labelScale})`,
           }}
@@ -114,7 +114,7 @@ export const Scene9Step1: React.FC = () => {
             fontSize: 72,
             color: "#ffffff",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: titleOpacity,
             transform: `scale(${titleScale})`,
           }}
@@ -128,7 +128,7 @@ export const Scene9Step1: React.FC = () => {
             fontSize: 44,
             color: "#A89BC2",
             fontWeight: 400,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 900,
             opacity: descOpacity,
             filter: `blur(${descBlur}px)`,
