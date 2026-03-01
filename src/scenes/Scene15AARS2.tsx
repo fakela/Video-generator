@@ -111,7 +111,7 @@ export const Scene15AARS2: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#ef4444",
+            color: "#E040FB",
             fontWeight: 600,
             fontFamily: poppins,
             textAlign: "center",

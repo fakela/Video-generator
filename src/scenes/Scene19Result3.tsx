@@ -78,7 +78,7 @@ export const Scene19Result3: React.FC = () => {
             borderRadius: "50%",
             transform: `translate(-50%, -50%) scale(${glowScale})`,
             background:
-              "radial-gradient(circle, rgba(251,191,36,0.35) 0%, rgba(251,191,36,0.1) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(224,64,251,0.35) 0%, rgba(224,64,251,0.1) 40%, transparent 70%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -89,14 +89,14 @@ export const Scene19Result3: React.FC = () => {
           style={{
             fontSize: 200,
             fontWeight: 700,
-            color: "#fbbf24",
+            color: "#E040FB",
             fontFamily: poppins,
             lineHeight: 1,
             transform: `scale(${numberScale})`,
             opacity: numberOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(251,191,36,0.5), 0 0 80px rgba(251,191,36,0.2)",
+            textShadow: "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
           }}
         >
           2

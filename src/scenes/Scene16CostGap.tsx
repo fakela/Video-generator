@@ -101,7 +101,7 @@ export const Scene16CostGap: React.FC = () => {
               <div
                 style={{
                   fontSize: 40,
-                  color: "#ef4444",
+                  color: "#E040FB",
                   fontWeight: 900,
                   fontFamily: poppins,
                 }}
@@ -112,10 +112,10 @@ export const Scene16CostGap: React.FC = () => {
             <div
               style={{
                 height: 80,
-                background: "linear-gradient(90deg, #ef4444, #dc2626)",
+                background: "linear-gradient(90deg, #E040FB, #C030D0)",
                 borderRadius: 12,
                 width: `${industryBarWidth}%`,
-                boxShadow: "0 0 30px rgba(239,68,68,0.4)",
+                boxShadow: "0 0 30px rgba(224,64,251,0.4)",
               }}
             />
           </div>

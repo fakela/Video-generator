@@ -74,7 +74,7 @@ export const SceneRaptor: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(251,191,36,0.2) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.2) 0%, transparent 60%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -84,7 +84,7 @@ export const SceneRaptor: React.FC = () => {
         <div
           style={{
             fontSize: 72,
-            color: "#fbbf24",
+            color: "#E040FB",
             fontWeight: 900,
             fontFamily: poppins,
             transform: `scale(${titleScale})`,
@@ -92,7 +92,7 @@ export const SceneRaptor: React.FC = () => {
             position: "relative",
             zIndex: 1,
             textShadow:
-              "0 0 40px rgba(251,191,36,0.5), 0 0 80px rgba(251,191,36,0.2)",
+              "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
           }}
         >
           $RAPTOR → RaptorCo

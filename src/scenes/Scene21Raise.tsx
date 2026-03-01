@@ -81,7 +81,7 @@ export const Scene21Raise: React.FC = () => {
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -55%)",
-            background: `radial-gradient(circle, rgba(251,191,36,${glowPulse}) 0%, rgba(251,191,36,${glowPulse * 0.3}) 35%, transparent 65%)`,
+            background: `radial-gradient(circle, rgba(224,64,251,${glowPulse}) 0%, rgba(224,64,251,${glowPulse * 0.3}) 35%, transparent 65%)`,
             pointerEvents: "none",
           }}
         />
@@ -91,14 +91,14 @@ export const Scene21Raise: React.FC = () => {
           style={{
             fontSize: 180,
             fontWeight: 900,
-            color: "#fbbf24",
+            color: "#E040FB",
             fontFamily: poppins,
             lineHeight: 1,
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(251,191,36,0.5), 0 0 80px rgba(251,191,36,0.2)",
+            textShadow: "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
           }}
         >
           ${displayValue}M

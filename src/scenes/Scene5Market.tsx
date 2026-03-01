@@ -65,11 +65,11 @@ export const Scene5Market: React.FC = () => {
             fontFamily: poppins,
             fontSize: 160,
             fontWeight: 900,
-            color: "#fbbf24",
+            color: "#E040FB",
             textAlign: "center",
             transform: `scale(${statScale})`,
             opacity: statOpacity,
-            textShadow: `0 0 ${goldGlow}px rgba(251, 191, 36, 0.6), 0 0 ${goldGlow * 2}px rgba(251, 191, 36, 0.3)`,
+            textShadow: `0 0 ${goldGlow}px rgba(224, 64, 251, 0.6), 0 0 ${goldGlow * 2}px rgba(224, 64, 251, 0.3)`,
           }}
         >
           {displayText}
@@ -96,7 +96,7 @@ export const Scene5Market: React.FC = () => {
             fontSize: 44,
             fontWeight: 600,
             fontStyle: "italic",
-            color: "#ef4444",
+            color: "#E040FB",
             textAlign: "center",
             opacity: subOpacity,
             letterSpacing: subLetterSpacing,

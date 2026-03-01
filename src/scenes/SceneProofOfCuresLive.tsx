@@ -116,10 +116,10 @@ export const SceneProofOfCuresLive: React.FC = () => {
               style={{
                 fontSize: 72,
                 fontWeight: 900,
-                color: "#fbbf24",
+                color: "#E040FB",
                 fontFamily: poppins,
                 textShadow:
-                  "0 0 30px rgba(251,191,36,0.4), 0 0 60px rgba(251,191,36,0.15)",
+                  "0 0 30px rgba(224,64,251,0.4), 0 0 60px rgba(224,64,251,0.15)",
               }}
             >
               $RAPTOR
