@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene8HowItWorks: React.FC = () => {
   const frame = useCurrentFrame();
@@ -58,7 +58,7 @@ export const Scene8HowItWorks: React.FC = () => {
         {/* 1. Title — 3D rotateY door opening */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 80,
             fontWeight: 800,
             color: "#ffffff",
@@ -74,7 +74,7 @@ export const Scene8HowItWorks: React.FC = () => {
         {/* 2. Description */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 48,
             fontWeight: 400,
             color: "#ffffff",
@@ -89,7 +89,7 @@ export const Scene8HowItWorks: React.FC = () => {
         {/* 3. "7 steps. Zero bureaucracy." — scale punch */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 48,
             fontWeight: 700,
             color: "#E040FB",

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate, Img, staticFile } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene25CTA: React.FC = () => {
   const frame = useCurrentFrame();
@@ -71,7 +71,7 @@ export const Scene25CTA: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -81,7 +81,7 @@ export const Scene25CTA: React.FC = () => {
             fontSize: 88,
             fontWeight: 800,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: titleOpacity,
             transform: `translateY(${titleTranslateY}px)`,
@@ -96,7 +96,7 @@ export const Scene25CTA: React.FC = () => {
             fontSize: 44,
             fontWeight: 400,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 16,
             opacity: sub1Opacity,
@@ -152,7 +152,7 @@ export const Scene25CTA: React.FC = () => {
                     fontSize: 34,
                     fontWeight: 600,
                     color: "#ffffff",
-                    fontFamily: poppins,
+                    fontFamily: ldTechD,
                     textAlign: "center",
                     marginTop: 10,
                   }}
@@ -182,7 +182,7 @@ export const Scene25CTA: React.FC = () => {
             letterSpacing: 8,
             fontWeight: 600,
             color: "#CC44FF",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 24,
             opacity: taglineOpacity,
@@ -211,7 +211,7 @@ export const Scene25CTA: React.FC = () => {
             style={{
               fontSize: 40,
               color: "#E040FB",
-              fontFamily: poppins,
+              fontFamily: ldTechD,
               textAlign: "center",
               marginTop: 10,
             }}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneStep6PatientFamilies: React.FC = () => {
   const frame = useCurrentFrame();
@@ -54,7 +54,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 14,
         }}
@@ -75,7 +75,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
             color: "#CC44FF",
             fontWeight: 700,
             letterSpacing: 6,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${labelScale})`,
             opacity: labelOpacity,
           }}
@@ -88,7 +88,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
             fontSize: 56,
             color: "#ffffff",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${titleScale})`,
             opacity: titleOpacity,
           }}
@@ -100,7 +100,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
           style={{
             fontSize: 42,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 900,
             filter: `blur(${descBlur}px)`,
             opacity: descOpacity,

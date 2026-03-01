@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene24Opportunity: React.FC = () => {
   const frame = useCurrentFrame();
@@ -67,7 +67,7 @@ export const Scene24Opportunity: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -76,7 +76,7 @@ export const Scene24Opportunity: React.FC = () => {
             fontSize: 72,
             fontWeight: 800,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             opacity: titleOpacity,
             transform: `translateY(${titleTranslateY}px)`,
@@ -89,7 +89,7 @@ export const Scene24Opportunity: React.FC = () => {
           style={{
             fontSize: 42,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 12,
             opacity: sub1Opacity,
@@ -127,7 +127,7 @@ export const Scene24Opportunity: React.FC = () => {
           style={{
             fontSize: 40,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 20,
             opacity: sub2Opacity,
@@ -142,7 +142,7 @@ export const Scene24Opportunity: React.FC = () => {
             fontSize: 120,
             fontWeight: 900,
             color: "#E040FB",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 12,
             transform: `scale(${trillionScale})`,

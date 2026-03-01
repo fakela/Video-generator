@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneProofOfCuresModel: React.FC = () => {
   const frame = useCurrentFrame();
@@ -47,7 +47,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
         }}
@@ -75,7 +75,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
             fontSize: 32,
             color: "#CC44FF",
             fontWeight: 500,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             letterSpacing: 6,
             textTransform: "uppercase",
             opacity: subtitleOpacity,
@@ -92,7 +92,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
           style={{
             fontSize: 38,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 950,
             opacity: analogyOpacity,
             transform: `translateY(${analogyY}px)`,
@@ -119,7 +119,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
             fontSize: 48,
             color: "#ffffff",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: ruleOpacity,
             transform: `scale(${ruleScale})`,
             marginTop: 36,

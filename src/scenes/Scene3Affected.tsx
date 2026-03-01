@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene3Affected: React.FC = () => {
   const frame = useCurrentFrame();
@@ -69,7 +69,7 @@ export const Scene3Affected: React.FC = () => {
         {/* 1. "1 in 10" — 3D rotateX */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 200,
             fontWeight: 900,
             color: "#ffffff",
@@ -85,7 +85,7 @@ export const Scene3Affected: React.FC = () => {
         {/* 2. Staggered word appearance */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
@@ -128,7 +128,7 @@ export const Scene3Affected: React.FC = () => {
         {/* 3. Sub text */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             fontWeight: 400,
             color: "#A89BC2",

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene23Pipeline: React.FC = () => {
   const frame = useCurrentFrame();
@@ -52,7 +52,7 @@ export const Scene23Pipeline: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
         }}
       >
@@ -61,7 +61,7 @@ export const Scene23Pipeline: React.FC = () => {
             fontSize: 200,
             fontWeight: 900,
             color: "#E040FB",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             transform: `scale(${punchScale})`,
             opacity: punchOpacity,
@@ -76,7 +76,7 @@ export const Scene23Pipeline: React.FC = () => {
             fontSize: 48,
             color: "#ffffff",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 16,
             opacity: sub1Opacity,
@@ -90,7 +90,7 @@ export const Scene23Pipeline: React.FC = () => {
           style={{
             fontSize: 42,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 14,
             opacity: sub2Opacity,
@@ -105,7 +105,7 @@ export const Scene23Pipeline: React.FC = () => {
             fontSize: 40,
             color: "#E040FB",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             textAlign: "center",
             marginTop: 20,
             opacity: sub3Opacity,

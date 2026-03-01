@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene14Community: React.FC = () => {
   const frame = useCurrentFrame();
@@ -64,7 +64,7 @@ export const Scene14Community: React.FC = () => {
           justifyContent: "center",
           width: "100%",
           height: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
         }}
@@ -109,7 +109,7 @@ export const Scene14Community: React.FC = () => {
             fontSize: 80,
             color: "#ffffff",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: line1Opacity,
             transform: `scale(${line1Scale})`,
             position: "relative",
@@ -127,7 +127,7 @@ export const Scene14Community: React.FC = () => {
             fontSize: 80,
             color: "#E040FB",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: line2Opacity,
             transform: `scale(${line2Scale})`,
             position: "relative",

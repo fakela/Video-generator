@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene18Result2: React.FC = () => {
   const frame = useCurrentFrame();
@@ -61,7 +61,7 @@ export const Scene18Result2: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 16,
           position: "relative",
@@ -88,7 +88,7 @@ export const Scene18Result2: React.FC = () => {
             fontSize: 72,
             fontWeight: 700,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `perspective(800px) rotateY(${provisionalRotateY}deg)`,
             opacity: provisionalOpacity,
             position: "relative",
@@ -105,7 +105,7 @@ export const Scene18Result2: React.FC = () => {
             fontSize: 72,
             fontWeight: 700,
             color: "#E040FB",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `perspective(800px) rotateY(${patentRotateY}deg)`,
             opacity: patentOpacity,
             position: "relative",
@@ -121,7 +121,7 @@ export const Scene18Result2: React.FC = () => {
           style={{
             fontSize: 44,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 20,
             opacity: descOpacity,
             filter: `blur(${blurAmount}px)`,
@@ -138,7 +138,7 @@ export const Scene18Result2: React.FC = () => {
             fontSize: 44,
             color: "#E040FB",
             fontWeight: 600,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: pharmaOpacity,
             transform: `translateY(${pharmaTranslateY}px)`,
             position: "relative",

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneResultsIntro: React.FC = () => {
   const frame = useCurrentFrame();
@@ -33,7 +33,7 @@ export const SceneResultsIntro: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
         }}
@@ -60,7 +60,7 @@ export const SceneResultsIntro: React.FC = () => {
             fontSize: 80,
             color: "#ffffff",
             fontWeight: 800,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${mainScale})`,
             opacity: mainOpacity,
             position: "relative",

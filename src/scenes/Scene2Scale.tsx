@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene2Scale: React.FC = () => {
   const frame = useCurrentFrame();
@@ -86,7 +86,7 @@ export const Scene2Scale: React.FC = () => {
         {/* 1. "10,000+" — counter + scale punch */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 200,
             fontWeight: 900,
             color: "#ffffff",
@@ -101,7 +101,7 @@ export const Scene2Scale: React.FC = () => {
         {/* 2. Description — blur-in */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
@@ -116,7 +116,7 @@ export const Scene2Scale: React.FC = () => {
         {/* 3. Sub text — fade + scale */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 42,
             fontWeight: 400,
             color: "#A89BC2",

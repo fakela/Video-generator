@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene6BigPharma: React.FC = () => {
   const frame = useCurrentFrame();
@@ -59,7 +59,7 @@ export const Scene6BigPharma: React.FC = () => {
         {/* 1. Title */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 72,
             fontWeight: 700,
             color: "#ffffff",
@@ -96,7 +96,7 @@ export const Scene6BigPharma: React.FC = () => {
             <div
               key={i}
               style={{
-                fontFamily: poppins,
+                fontFamily: ldTechD,
                 fontSize: 44,
                 fontWeight: 400,
                 color: "#ffffff",
@@ -130,7 +130,7 @@ export const Scene6BigPharma: React.FC = () => {
         {/* 3. "We will." — explosive spring scale + green glow */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 100,
             fontWeight: 900,
             color: "#E040FB",

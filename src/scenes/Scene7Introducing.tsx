@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const Scene7Introducing: React.FC = () => {
   const frame = useCurrentFrame();
@@ -94,7 +94,7 @@ export const Scene7Introducing: React.FC = () => {
         {/* 2. "Meet Curetopia." — letter-spacing animation */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 88,
             fontWeight: 800,
             color: "#ffffff",
@@ -109,7 +109,7 @@ export const Scene7Introducing: React.FC = () => {
         {/* 3. Description — fade in */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 48,
             fontWeight: 400,
             color: "#ffffff",
@@ -125,7 +125,7 @@ export const Scene7Introducing: React.FC = () => {
         {/* 4. Tagline — spring scale */}
         <div
           style={{
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             fontSize: 44,
             fontWeight: 700,
             color: "#E040FB",

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
-import { poppins } from "../fonts";
+import { ldTechD } from "../fonts";
 
 export const SceneSasha: React.FC = () => {
   const frame = useCurrentFrame();
@@ -64,7 +64,7 @@ export const SceneSasha: React.FC = () => {
           justifyContent: "center",
           height: "100%",
           width: "100%",
-          fontFamily: poppins,
+          fontFamily: ldTechD,
           textAlign: "center",
           gap: 14,
           position: "relative",
@@ -92,7 +92,7 @@ export const SceneSasha: React.FC = () => {
             fontSize: 96,
             color: "#E040FB",
             fontWeight: 900,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${titleScale})`,
             opacity: titleOpacity,
             position: "relative",
@@ -110,7 +110,7 @@ export const SceneSasha: React.FC = () => {
             fontSize: 52,
             color: "#ffffff",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             opacity: proofOpacity,
             transform: `translateY(${proofTranslateY}px)`,
             position: "relative",
@@ -125,7 +125,7 @@ export const SceneSasha: React.FC = () => {
           style={{
             fontSize: 42,
             color: "#A89BC2",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             maxWidth: 900,
             opacity: streamOpacity,
             transform: `translateY(${streamTranslateY}px)`,
@@ -142,7 +142,7 @@ export const SceneSasha: React.FC = () => {
           style={{
             fontSize: 48,
             color: "#ffffff",
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             marginTop: 16,
             opacity: firstOpacity,
             position: "relative",
@@ -158,7 +158,7 @@ export const SceneSasha: React.FC = () => {
             fontSize: 44,
             color: "#E040FB",
             fontWeight: 700,
-            fontFamily: poppins,
+            fontFamily: ldTechD,
             transform: `scale(${lastScale})`,
             opacity: lastOpacity,
             position: "relative",
