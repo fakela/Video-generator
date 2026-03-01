@@ -63,7 +63,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.15) 0%, transparent 60%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -73,7 +73,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
         <div
           style={{
             fontSize: 32,
-            color: "rgba(196,181,253,0.7)",
+            color: "#CC44FF",
             fontWeight: 500,
             fontFamily: poppins,
             letterSpacing: 6,
@@ -91,7 +91,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
         <div
           style={{
             fontSize: 38,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             maxWidth: 950,
             opacity: analogyOpacity,
@@ -107,7 +107,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
           </span>{" "}
           showed that blockchain networks could operate through transparent,
           rule-based participation —{" "}
-          <span style={{ color: "#22c55e", fontWeight: 600 }}>
+          <span style={{ color: "#E040FB", fontWeight: 600 }}>
             Proof of Cures
           </span>{" "}
           applies the same principles to scientific funding.
@@ -132,7 +132,7 @@ export const SceneProofOfCuresModel: React.FC = () => {
           Funding is tied to milestones.
           <br />
           Progress is{" "}
-          <span style={{ color: "#22c55e" }}>public</span>.
+          <span style={{ color: "#E040FB" }}>public</span>.
         </div>
       </div>
     </SceneWrapper>

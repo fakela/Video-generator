@@ -80,7 +80,7 @@ export const SceneSasha: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(34,197,94,0.2) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.2) 0%, transparent 60%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -90,7 +90,7 @@ export const SceneSasha: React.FC = () => {
         <div
           style={{
             fontSize: 96,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 900,
             fontFamily: poppins,
             transform: `scale(${titleScale})`,
@@ -98,7 +98,7 @@ export const SceneSasha: React.FC = () => {
             position: "relative",
             zIndex: 1,
             textShadow:
-              "0 0 40px rgba(34,197,94,0.5), 0 0 80px rgba(34,197,94,0.2)",
+              "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
           }}
         >
           $SASHA
@@ -124,7 +124,7 @@ export const SceneSasha: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             maxWidth: 900,
             opacity: streamOpacity,
@@ -156,7 +156,7 @@ export const SceneSasha: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 700,
             fontFamily: poppins,
             transform: `scale(${lastScale})`,

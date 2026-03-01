@@ -92,7 +92,7 @@ export const Scene8HowItWorks: React.FC = () => {
             fontFamily: poppins,
             fontSize: 48,
             fontWeight: 700,
-            color: "#22c55e",
+            color: "#E040FB",
             textAlign: "center",
             opacity: punchOpacity,
             transform: `scale(${punchScale})`,

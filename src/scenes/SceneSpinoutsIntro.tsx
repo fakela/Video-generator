@@ -76,7 +76,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.15) 0%, transparent 60%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -86,7 +86,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
         <div
           style={{
             fontSize: 88,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 900,
             fontFamily: poppins,
             opacity: titleOpacity,
@@ -95,7 +95,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
             position: "relative",
             zIndex: 1,
             textShadow:
-              "0 0 40px rgba(34,197,94,0.5), 0 0 80px rgba(34,197,94,0.2)",
+              "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
           }}
         >
           Proof of Cures
@@ -105,7 +105,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
         <div
           style={{
             fontSize: 36,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             maxWidth: 950,
             opacity: problemOpacity,
@@ -137,7 +137,7 @@ export const SceneSpinoutsIntro: React.FC = () => {
             lineHeight: 1.4,
           }}
         >
-          <span style={{ color: "#22c55e", fontWeight: 700 }}>
+          <span style={{ color: "#E040FB", fontWeight: 700 }}>
             Proof of Cures
           </span>{" "}
           was designed to close that gap.

@@ -66,7 +66,7 @@ export const Scene16CostGap: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             opacity: subtitleOpacity,
@@ -142,7 +142,7 @@ export const Scene16CostGap: React.FC = () => {
               <div
                 style={{
                   fontSize: 40,
-                  color: "#22c55e",
+                  color: "#E040FB",
                   fontWeight: 900,
                   fontFamily: poppins,
                 }}
@@ -153,10 +153,10 @@ export const Scene16CostGap: React.FC = () => {
             <div
               style={{
                 height: 80,
-                background: "linear-gradient(90deg, #22c55e, #16a34a)",
+                background: "linear-gradient(90deg, #E040FB, #C030D0)",
                 borderRadius: 12,
                 width: `${curetopiaBarWidth}%`,
-                boxShadow: "0 0 20px rgba(34,197,94,0.3)",
+                boxShadow: "0 0 20px rgba(224,64,251,0.3)",
               }}
             />
           </div>
@@ -166,12 +166,12 @@ export const Scene16CostGap: React.FC = () => {
         <div
           style={{
             fontSize: 48,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 700,
             fontFamily: poppins,
             textAlign: "center",
-            background: "rgba(34,197,94,0.15)",
-            border: "2px solid #22c55e",
+            background: "rgba(224,64,251,0.15)",
+            border: "2px solid #E040FB",
             padding: "10px 40px",
             borderRadius: 14,
             opacity: badgeOpacity,
@@ -187,7 +187,7 @@ export const Scene16CostGap: React.FC = () => {
         <div
           style={{
             fontSize: 40,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             textAlign: "center",
             opacity: footerOpacity,

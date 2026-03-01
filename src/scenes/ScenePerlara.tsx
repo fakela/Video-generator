@@ -64,7 +64,7 @@ export const ScenePerlara: React.FC = () => {
         <div
           style={{
             fontSize: 60,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 800,
             fontFamily: poppins,
             transform: `scale(${titleScale})`,
@@ -107,7 +107,7 @@ export const ScenePerlara: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             fontStyle: "italic",
             marginTop: 8,

@@ -76,13 +76,13 @@ export const Scene14Community: React.FC = () => {
             width: 500,
             height: 500,
             borderRadius: "50%",
-            border: "3px solid #7c3aed",
+            border: "3px solid #7B2FBE",
             top: "50%",
             left: "50%",
             transform: `translate(-50%, -50%) scale(${ringScale})`,
             opacity: ringOpacity * ringEntrance,
             boxShadow:
-              "0 0 40px rgba(124,58,237,0.4), inset 0 0 40px rgba(124,58,237,0.2)",
+              "0 0 40px rgba(123,47,190,0.4), inset 0 0 40px rgba(123,47,190,0.2)",
             pointerEvents: "none",
           }}
         />
@@ -94,7 +94,7 @@ export const Scene14Community: React.FC = () => {
             width: 650,
             height: 650,
             borderRadius: "50%",
-            border: "2px solid rgba(124,58,237,0.3)",
+            border: "2px solid rgba(123,47,190,0.3)",
             top: "50%",
             left: "50%",
             transform: `translate(-50%, -50%) scale(${interpolate(ringPulse, [0, 1], [1.1, 0.9], { extrapolateRight: "clamp", extrapolateLeft: "clamp" })})`,
@@ -115,7 +115,7 @@ export const Scene14Community: React.FC = () => {
             position: "relative",
             zIndex: 1,
             textShadow:
-              "0 0 40px rgba(124,58,237,0.5), 0 0 80px rgba(124,58,237,0.3)",
+              "0 0 40px rgba(123,47,190,0.5), 0 0 80px rgba(123,47,190,0.3)",
           }}
         >
           That's Community Medicine.
@@ -125,7 +125,7 @@ export const Scene14Community: React.FC = () => {
         <div
           style={{
             fontSize: 80,
-            color: "#a78bfa",
+            color: "#E040FB",
             fontWeight: 800,
             fontFamily: poppins,
             opacity: line2Opacity,
@@ -134,7 +134,7 @@ export const Scene14Community: React.FC = () => {
             zIndex: 1,
             marginTop: 8,
             textShadow:
-              "0 0 30px rgba(124,58,237,0.6), 0 0 60px rgba(124,58,237,0.3)",
+              "0 0 30px rgba(123,47,190,0.6), 0 0 60px rgba(123,47,190,0.3)",
           }}
         >
           Onchain.

@@ -116,7 +116,7 @@ export const Scene1Title: React.FC = () => {
           style={{
             transform: `scale(${logoScale * logoBreath})`,
             opacity: logoOpacity,
-            filter: `drop-shadow(0 0 ${logoGlow}px rgba(124, 58, 237, 0.6))`,
+            filter: `drop-shadow(0 0 ${logoGlow}px rgba(123, 47, 190, 0.6))`,
           }}
         >
           <Img
@@ -131,7 +131,7 @@ export const Scene1Title: React.FC = () => {
             fontFamily: poppins,
             fontSize: 60,
             fontStyle: "italic",
-            color: "#c4b5fd",
+            color: "#A89BC2",
             textAlign: "center",
             opacity: whatIfOpacity,
             filter: `blur(${whatIfBlur}px)`,
@@ -177,7 +177,7 @@ export const Scene1Title: React.FC = () => {
           style={{
             width: `${lineWidth}%`,
             height: 3,
-            background: "linear-gradient(90deg, #a855f7, #7c3aed, #6d28d9)",
+            background: "linear-gradient(90deg, #9B30D0, #7B2FBE, #7B2FBE)",
             marginTop: 24,
             marginBottom: 24,
             borderRadius: 2,
@@ -190,11 +190,11 @@ export const Scene1Title: React.FC = () => {
             fontFamily: poppins,
             fontSize: 56,
             fontWeight: 600,
-            color: "#a78bfa",
+            color: "#E040FB",
             textAlign: "center",
             opacity: rewriteOpacity,
             transform: `scale(${rewriteScale})`,
-            textShadow: `0 0 ${rewriteGlow}px rgba(124, 58, 237, 0.6)`,
+            textShadow: `0 0 ${rewriteGlow}px rgba(123, 47, 190, 0.6)`,
           }}
         >
           Curetopia is rewriting it.
@@ -207,7 +207,7 @@ export const Scene1Title: React.FC = () => {
             fontSize: 44,
             letterSpacing: tagsLetterSpacing,
             fontWeight: 600,
-            color: "#c4b5fd",
+            color: "#CC44FF",
             textAlign: "center",
             opacity: tagsOpacity,
           }}

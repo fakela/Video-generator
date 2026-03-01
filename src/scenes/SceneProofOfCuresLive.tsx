@@ -66,7 +66,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.12) 0%, transparent 60%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
@@ -76,7 +76,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
         <div
           style={{
             fontSize: 32,
-            color: "rgba(196,181,253,0.7)",
+            color: "#CC44FF",
             fontWeight: 500,
             fontFamily: poppins,
             letterSpacing: 6,
@@ -127,7 +127,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
             <div
               style={{
                 fontSize: 28,
-                color: "#c4b5fd",
+                color: "#A89BC2",
                 fontFamily: poppins,
               }}
             >
@@ -141,7 +141,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
               width: 2,
               height: 120,
               background:
-                "linear-gradient(to bottom, transparent, rgba(34,197,94,0.5), transparent)",
+                "linear-gradient(to bottom, transparent, rgba(224,64,251,0.5), transparent)",
               opacity: Math.min(raptorOpacity, sashaOpacity),
             }}
           />
@@ -161,10 +161,10 @@ export const SceneProofOfCuresLive: React.FC = () => {
               style={{
                 fontSize: 72,
                 fontWeight: 900,
-                color: "#22c55e",
+                color: "#E040FB",
                 fontFamily: poppins,
                 textShadow:
-                  "0 0 30px rgba(34,197,94,0.4), 0 0 60px rgba(34,197,94,0.15)",
+                  "0 0 30px rgba(224,64,251,0.4), 0 0 60px rgba(224,64,251,0.15)",
               }}
             >
               $SASHA
@@ -172,7 +172,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
             <div
               style={{
                 fontSize: 28,
-                color: "#c4b5fd",
+                color: "#A89BC2",
                 fontFamily: poppins,
               }}
             >
@@ -196,7 +196,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
           }}
         >
           The first live implementations of{" "}
-          <span style={{ color: "#22c55e" }}>Proof of Cures</span>.
+          <span style={{ color: "#E040FB" }}>Proof of Cures</span>.
         </div>
       </div>
     </SceneWrapper>

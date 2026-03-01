@@ -66,7 +66,7 @@ export const Scene2Scale: React.FC = () => {
           transform: "translate(-50%, -50%)",
           width: 900,
           height: 900,
-          background: `radial-gradient(circle, rgba(124,58,237,${glowPulse}) 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(123,47,190,${glowPulse}) 0%, transparent 70%)`,
           pointerEvents: "none",
         }}
       />
@@ -119,7 +119,7 @@ export const Scene2Scale: React.FC = () => {
             fontFamily: poppins,
             fontSize: 42,
             fontWeight: 400,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             textAlign: "center",
             opacity: subOpacity,
             transform: `scale(${subScale})`,

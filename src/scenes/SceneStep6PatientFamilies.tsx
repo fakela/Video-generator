@@ -72,7 +72,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
         <div
           style={{
             fontSize: 36,
-            color: "#c4b5fd",
+            color: "#CC44FF",
             fontWeight: 700,
             letterSpacing: 6,
             fontFamily: poppins,
@@ -99,7 +99,7 @@ export const SceneStep6PatientFamilies: React.FC = () => {
         <div
           style={{
             fontSize: 42,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             maxWidth: 900,
             filter: `blur(${descBlur}px)`,

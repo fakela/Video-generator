@@ -118,7 +118,7 @@ export const SceneRaptor: React.FC = () => {
         <div
           style={{
             fontSize: 44,
-            color: "#c4b5fd",
+            color: "#A89BC2",
             fontFamily: poppins,
             opacity: line2Opacity,
             transform: `translateY(${line2TranslateY}px)`,
@@ -134,7 +134,7 @@ export const SceneRaptor: React.FC = () => {
         <div
           style={{
             fontSize: 46,
-            color: "#22c55e",
+            color: "#E040FB",
             fontWeight: 700,
             fontFamily: poppins,
             marginTop: 12,

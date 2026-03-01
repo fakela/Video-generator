@@ -45,12 +45,12 @@ export const SceneResultsIntro: React.FC = () => {
             width: 500,
             height: 500,
             borderRadius: "50%",
-            border: "2px solid #22c55e",
+            border: "2px solid #E040FB",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             opacity: ringPulse * ringEntrance * 0.4,
-            boxShadow: "0 0 60px rgba(34,197,94,0.3)",
+            boxShadow: "0 0 60px rgba(224,64,251,0.3)",
             pointerEvents: "none",
           }}
         />
@@ -65,7 +65,7 @@ export const SceneResultsIntro: React.FC = () => {
             opacity: mainOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow: "0 0 40px rgba(34,197,94,0.4)",
+            textShadow: "0 0 40px rgba(224,64,251,0.4)",
           }}
         >
           And here's what happened.
