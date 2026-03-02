@@ -3,7 +3,6 @@ import { AbsoluteFill, Audio } from "remotion";
 import { TransitionSeries } from "@remotion/transitions";
 import { linearTiming } from "@remotion/transitions";
 import { fade } from "@remotion/transitions/fade";
-import { wipe } from "@remotion/transitions/wipe";
 
 import { Scene1Title } from "./scenes/Scene1Title";
 import { Scene2Scale } from "./scenes/Scene2Scale";
@@ -42,7 +41,8 @@ import { Scene25CTA } from "./scenes/Scene25CTA";
 
 const audio = require("../nastelbom-corporate.mp3");
 
-const t = (d = 18) => linearTiming({ durationInFrames: d });
+// Smooth crossfade — 30 frames default (~1s), longer for act breaks
+const smooth = (d = 30) => linearTiming({ durationInFrames: d });
 
 export const CuretopiaCase: React.FC = () => {
   return (
@@ -55,37 +55,37 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene1Title />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 2 — SCALE */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene2Scale />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 3 — AFFECTED */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene3Affected />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 4 — TREATMENT GAP */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene4TreatmentGap />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 5 — MARKET */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene5Market />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 6 — BIG PHARMA */}
         <TransitionSeries.Sequence durationInFrames={170}>
           <Scene6BigPharma />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 2: THE SOLUTION ═══ */}
 
@@ -93,55 +93,55 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene7Introducing />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* Scene 8 — HOW IT WORKS */}
         <TransitionSeries.Sequence durationInFrames={90}>
           <Scene8HowItWorks />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* Scene 9 — STEP 1 */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene9Step1 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* Scene 10 — STEP 2 */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene10Step2 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* Scene 11 — STEP 3 */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene11Step3 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* Scene 12 — STEP 4 */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene12Step4 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* Scene 13 — STEP 5 */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene13Step5 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* STEP 6 — PATIENT FAMILIES */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <SceneStep6PatientFamilies />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(15)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(25)} />
 
         {/* STEP 7 — REVENUE FLOWS BACK */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <SceneStep7Revenue />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 3: REAL-WORLD PROOF — AARS2 ═══ */}
 
@@ -149,25 +149,25 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={90}>
           <Scene14Community />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(20)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* PROJECT 001 — AARS2 */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene15AARS2 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* PERLARA — YEAST-AVATAR DRUG SCREENING */}
         <TransitionSeries.Sequence durationInFrames={130}>
           <ScenePerlara />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* COST GAP */}
         <TransitionSeries.Sequence durationInFrames={180}>
           <Scene16CostGap />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 4: THE RESULTS ═══ */}
 
@@ -175,25 +175,25 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={80}>
           <SceneResultsIntro />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* 2 DRUG CANDIDATES */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene17Result1 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* PROVISIONAL PATENT */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <Scene18Result2 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* 28 DRUG HITS / 84K TESTS */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene20Result4 />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 5: PROOF OF CURES ═══ */}
 
@@ -201,31 +201,31 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={120}>
           <SceneSpinoutsIntro />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* PROOF OF CURES — THE MODEL */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <SceneProofOfCuresModel />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* PROOF OF CURES — LIVE IMPLEMENTATIONS */}
         <TransitionSeries.Sequence durationInFrames={110}>
           <SceneProofOfCuresLive />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* $RAPTOR → RAPTORCO */}
         <TransitionSeries.Sequence durationInFrames={130}>
           <SceneRaptor />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* $SASHA — ONE PATIENT, ONE MISSION */}
         <TransitionSeries.Sequence durationInFrames={150}>
           <SceneSasha />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={wipe()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 6: THE RECEIPTS ═══ */}
 
@@ -233,25 +233,25 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={140}>
           <SceneReceipts />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* $1.77M RAISE */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene21Raise />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* 1,000+ PIONEERS */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene22Contributors />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t()} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth()} />
 
         {/* 10 DISEASE PROGRAMS */}
         <TransitionSeries.Sequence durationInFrames={120}>
           <Scene23Pipeline />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(40)} />
 
         {/* ═══ ACT 7: FINALE ═══ */}
 
@@ -259,7 +259,7 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={150}>
           <Scene24Opportunity />
         </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={fade()} timing={t(22)} />
+        <TransitionSeries.Transition presentation={fade()} timing={smooth(35)} />
 
         {/* CTA */}
         <TransitionSeries.Sequence durationInFrames={180}>
