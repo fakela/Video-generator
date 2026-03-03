@@ -1,5 +1,6 @@
 import React from "react";
 import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { useTransitionProgress } from "@remotion/transitions";
 
 // ---------- Cosmic Star Particles ----------
 // HEAVY density — bright, very visible, flooding the entire background
@@ -68,6 +69,38 @@ const StarField: React.FC = () => {
   );
 };
 
+// ---------- Galaxy Spiral ----------
+// Subtle rotating conic gradient — cosmic atmosphere
+const GalaxySpiral: React.FC = () => {
+  const frame = useCurrentFrame();
+  const rotation = frame * 0.15; // slow rotation
+
+  return (
+    <AbsoluteFill
+      style={{
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        pointerEvents: "none",
+      }}
+    >
+      <div
+        style={{
+          width: 1400,
+          height: 1400,
+          borderRadius: "50%",
+          background:
+            "conic-gradient(from 0deg, transparent 0deg, rgba(123,47,190,0.12) 30deg, transparent 90deg, rgba(204,68,255,0.08) 150deg, transparent 210deg, rgba(155,48,208,0.10) 270deg, transparent 330deg, rgba(123,47,190,0.12) 360deg)",
+          transform: `rotate(${rotation}deg)`,
+          filter: "blur(40px)",
+          opacity: 0.7,
+        }}
+      />
+    </AbsoluteFill>
+  );
+};
+
 // ---------- Nebula / Purple Atmosphere ----------
 // Rich, visible purple-pink haze throughout — NOT subtle
 const nebulaPatches = [
@@ -126,6 +159,11 @@ const NebulaField: React.FC = () => {
 export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  // Transition progress — controls content-only opacity
+  // Background stays solid, only text/content cross-fades
+  const { entering, exiting } = useTransitionProgress();
+  const contentOpacity = entering * (1 - exiting);
+
   return (
     <AbsoluteFill
       style={{
@@ -134,6 +172,7 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
       }}
     >
       <NebulaField />
+      <GalaxySpiral />
       <StarField />
       <div
         style={{
@@ -149,6 +188,7 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
           justifyContent: "center",
           textAlign: "center",
           flexDirection: "column",
+          opacity: contentOpacity,
         }}
       >
         {children}
