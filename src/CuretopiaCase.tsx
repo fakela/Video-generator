@@ -106,43 +106,43 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 9 — STEP 1 */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <Scene9Step1 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 10 — STEP 2 */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <Scene10Step2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 11 — STEP 3 */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <Scene11Step3 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 12 — STEP 4 */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <Scene12Step4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 13 — STEP 5 */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <Scene13Step5 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* STEP 6 — PATIENT FAMILIES */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <SceneStep6PatientFamilies />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* STEP 7 — REVENUE FLOWS BACK */}
-        <TransitionSeries.Sequence durationInFrames={110}>
+        <TransitionSeries.Sequence durationInFrames={165}>
           <SceneStep7Revenue />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={actBreak()} />

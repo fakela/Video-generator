@@ -134,7 +134,7 @@ export const Scene10Step2: React.FC = () => {
           }}
         >
           {words.map((word, i) => {
-            const wordDelay = 48 + i * 3;
+            const wordDelay = 40 + i * 2;
             const wordOpacity = interpolate(
               frame,
               [wordDelay, wordDelay + 8],

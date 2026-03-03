@@ -70,10 +70,11 @@ const StarField: React.FC = () => {
 };
 
 // ---------- Galaxy Spiral ----------
-// Subtle rotating conic gradient — cosmic atmosphere
+// Dual rotating conic gradients — cosmic atmosphere with purple-pink
 const GalaxySpiral: React.FC = () => {
   const frame = useCurrentFrame();
-  const rotation = frame * 0.15; // slow rotation
+  const rotation1 = frame * 0.15; // slow rotation
+  const rotation2 = -frame * 0.08; // counter-rotation, slower
 
   return (
     <AbsoluteFill
@@ -85,16 +86,88 @@ const GalaxySpiral: React.FC = () => {
         pointerEvents: "none",
       }}
     >
+      {/* Primary galaxy disc — purple tones */}
       <div
         style={{
+          position: "absolute",
           width: 1400,
           height: 1400,
           borderRadius: "50%",
           background:
             "conic-gradient(from 0deg, transparent 0deg, rgba(123,47,190,0.12) 30deg, transparent 90deg, rgba(204,68,255,0.08) 150deg, transparent 210deg, rgba(155,48,208,0.10) 270deg, transparent 330deg, rgba(123,47,190,0.12) 360deg)",
-          transform: `rotate(${rotation}deg)`,
+          transform: `rotate(${rotation1}deg)`,
           filter: "blur(40px)",
           opacity: 0.7,
+        }}
+      />
+      {/* Secondary galaxy disc — pink-magenta tones, counter-rotating */}
+      <div
+        style={{
+          position: "absolute",
+          width: 1100,
+          height: 1100,
+          borderRadius: "50%",
+          background:
+            "conic-gradient(from 45deg, transparent 0deg, rgba(224,64,251,0.10) 40deg, transparent 100deg, rgba(204,68,255,0.12) 180deg, transparent 240deg, rgba(224,64,251,0.08) 310deg, transparent 360deg)",
+          transform: `rotate(${rotation2}deg)`,
+          filter: "blur(50px)",
+          opacity: 0.6,
+        }}
+      />
+    </AbsoluteFill>
+  );
+};
+
+// ---------- Aurora Streaks ----------
+// Slow-moving diagonal light streaks in purple-pink
+const AuroraStreaks: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  return (
+    <AbsoluteFill style={{ overflow: "hidden", pointerEvents: "none" }}>
+      {/* Top-left to center aurora */}
+      <div
+        style={{
+          position: "absolute",
+          left: "-10%",
+          top: "5%",
+          width: "70%",
+          height: 180,
+          background:
+            "linear-gradient(135deg, transparent 0%, rgba(155,48,208,0.08) 30%, rgba(204,68,255,0.12) 50%, rgba(155,48,208,0.06) 70%, transparent 100%)",
+          transform: `translateX(${Math.sin(frame * 0.008) * 60}px) translateY(${Math.cos(frame * 0.006) * 30}px)`,
+          filter: "blur(30px)",
+          borderRadius: "50%",
+        }}
+      />
+      {/* Bottom-right aurora */}
+      <div
+        style={{
+          position: "absolute",
+          right: "-5%",
+          bottom: "10%",
+          width: "60%",
+          height: 140,
+          background:
+            "linear-gradient(-135deg, transparent 0%, rgba(224,64,251,0.07) 30%, rgba(204,68,255,0.10) 55%, rgba(123,47,190,0.06) 75%, transparent 100%)",
+          transform: `translateX(${Math.cos(frame * 0.007) * 50}px) translateY(${Math.sin(frame * 0.009) * 25}px)`,
+          filter: "blur(35px)",
+          borderRadius: "50%",
+        }}
+      />
+      {/* Center-left faint aurora */}
+      <div
+        style={{
+          position: "absolute",
+          left: "5%",
+          top: "40%",
+          width: "50%",
+          height: 100,
+          background:
+            "linear-gradient(90deg, transparent 0%, rgba(204,68,255,0.06) 40%, rgba(224,64,251,0.09) 60%, transparent 100%)",
+          transform: `translateX(${Math.sin(frame * 0.005 + 2) * 40}px)`,
+          filter: "blur(25px)",
+          borderRadius: "50%",
         }}
       />
     </AbsoluteFill>
@@ -173,6 +246,7 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({
     >
       <NebulaField />
       <GalaxySpiral />
+      <AuroraStreaks />
       <StarField />
       <div
         style={{
