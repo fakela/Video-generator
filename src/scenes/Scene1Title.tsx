@@ -212,7 +212,7 @@ export const Scene1Title: React.FC = () => {
             opacity: tagsOpacity,
           }}
         >
-          DECENTRALIZED SCIENCE {"\u00B7"} RARE DISEASE {"\u00B7"} BIODAO
+          DeSCI {"\u00B7"} RARE DISEASE {"\u00B7"} BIODAO
         </div>
       </div>
     </SceneWrapper>

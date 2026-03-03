@@ -136,7 +136,7 @@ export const Scene13Step5: React.FC = () => {
         >
           {words.map((word, i) => {
             const wordSpring = spring({
-              frame: frame - (48 + i * 4),
+              frame: frame - (40 + i * 2),
               fps,
               config: { damping: 12, stiffness: 100 },
             });

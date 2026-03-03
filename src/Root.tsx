@@ -7,7 +7,7 @@ export const Root: React.FC = () => {
     <Composition
       id="CuretopiaCase"
       component={CuretopiaCase}
-      durationInFrames={3750}
+      durationInFrames={4135}
       fps={30}
       width={1920}
       height={1080}
