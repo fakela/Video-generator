@@ -94,8 +94,8 @@ export const Scene8HowItWorks: React.FC = () => {
             fontWeight: 700,
             color: "#E040FB",
             textAlign: "center",
-            opacity: punchOpacity,
-            transform: `scale(${punchScale})`,
+            opacity: descOpacity,
+            transform: `perspective(1000px) rotateY(${titleRotateY}deg)`,
             marginTop: 24,
           }}
         >

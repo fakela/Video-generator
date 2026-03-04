@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
 import { ldTechD } from "../fonts";

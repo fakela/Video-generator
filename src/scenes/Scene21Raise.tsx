@@ -41,20 +41,22 @@ export const Scene21Raise: React.FC = () => {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const raisedOpacity = interpolate(raisedSpring, [0, 1], [0, 1], {
+  const raisedOpacity = interpolate(raisedSpring, [0, 1], [1, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
   // "March 2025. In brutal market conditions." — letter-spacing animation
-  const marchLetterSpacing = interpolate(frame, [75, 112], [14, 2], {
+  const marchLetterSpacing = interpolate(frame, [75, 180], [14, 2], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const marchOpacity = interpolate(frame, [75, 95], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
+
+// Fade IN fast (frame 75→100), HOLD fully visible until end of scene
+const marchOpacity = interpolate(frame, [75, 100], [0, 1], {
+  extrapolateRight: "clamp",
+  extrapolateLeft: "clamp",
+});
 
   return (
     <SceneWrapper>

@@ -106,43 +106,43 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 9 — STEP 1 */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={130}>
           <Scene9Step1 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 10 — STEP 2 */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={130}>
           <Scene10Step2 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 11 — STEP 3 */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={140}>
           <Scene11Step3 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 12 — STEP 4 */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={130}>
           <Scene12Step4 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* Scene 13 — STEP 5 */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={140}>
           <Scene13Step5 />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* STEP 6 — PATIENT FAMILIES */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={130}>
           <SceneStep6PatientFamilies />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* STEP 7 — REVENUE FLOWS BACK */}
-        <TransitionSeries.Sequence durationInFrames={165}>
+        <TransitionSeries.Sequence durationInFrames={130}>
           <SceneStep7Revenue />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={actBreak()} />
@@ -220,13 +220,13 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* $RAPTOR → RAPTORCO */}
-        <TransitionSeries.Sequence durationInFrames={130}>
+        <TransitionSeries.Sequence durationInFrames={150}>
           <SceneRaptor />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* $SASHA — ONE PATIENT, ONE MISSION */}
-        <TransitionSeries.Sequence durationInFrames={150}>
+        <TransitionSeries.Sequence durationInFrames={160}>
           <SceneSasha />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={actBreak()} />
@@ -234,36 +234,30 @@ export const CuretopiaCase: React.FC = () => {
         {/* ═══ ACT 6: THE RECEIPTS ═══ */}
 
         {/* THE RECEIPTS */}
-        <TransitionSeries.Sequence durationInFrames={140}>
+        <TransitionSeries.Sequence durationInFrames={160}>
           <SceneReceipts />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* $1.77M RAISE */}
-        <TransitionSeries.Sequence durationInFrames={120}>
+        <TransitionSeries.Sequence durationInFrames={150}>
           <Scene21Raise />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* 1,000+ PIONEERS */}
-        <TransitionSeries.Sequence durationInFrames={120}>
+        <TransitionSeries.Sequence durationInFrames={140}>
           <Scene22Contributors />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={smooth()} />
 
         {/* 10 DISEASE PROGRAMS */}
-        <TransitionSeries.Sequence durationInFrames={120}>
+        <TransitionSeries.Sequence durationInFrames={140}>
           <Scene23Pipeline />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition presentation={none()} timing={actBreak()} />
 
         {/* ═══ ACT 7: FINALE ═══ */}
-
-        {/* THE OPPORTUNITY */}
-        <TransitionSeries.Sequence durationInFrames={150}>
-          <Scene24Opportunity />
-        </TransitionSeries.Sequence>
-        <TransitionSeries.Transition presentation={none()} timing={actBreak()} />
 
         {/* CTA */}
         <TransitionSeries.Sequence durationInFrames={180}>
