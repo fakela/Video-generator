@@ -1,1 +1,4 @@
-export {Intro} from './Intro';
+import {registerRoot} from 'remotion';
+import {IntroRoot} from './Root';
+
+registerRoot(IntroRoot);
