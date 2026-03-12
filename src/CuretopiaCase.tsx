@@ -36,7 +36,6 @@ import { SceneReceipts } from "./scenes/SceneReceipts";
 import { Scene21Raise } from "./scenes/Scene21Raise";
 import { Scene22Contributors } from "./scenes/Scene22Contributors";
 import { Scene23Pipeline } from "./scenes/Scene23Pipeline";
-import { Scene24Opportunity } from "./scenes/Scene24Opportunity";
 import { Scene25CTA } from "./scenes/Scene25CTA";
 
 const audio = require("../nastelbom-corporate.mp3");
