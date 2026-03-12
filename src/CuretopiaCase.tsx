@@ -3,7 +3,6 @@ import { AbsoluteFill, Audio } from "remotion";
 import { TransitionSeries } from "@remotion/transitions";
 import { springTiming } from "@remotion/transitions";
 import { none } from "@remotion/transitions/none";
-
 import { Scene01ColdOpen } from "./scenes/Scene01ColdOpen";
 import { Scene02Scale } from "./scenes/Scene02Scale";
 import { Scene03TreatmentGap } from "./scenes/Scene03TreatmentGap";
@@ -34,7 +33,7 @@ const actBreak = () =>
 export const CuretopiaCase: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: "#080818" }}>
-      <CosmicBackground />  
+      <CosmicBackground />
       <Audio src={audio} volume={0.4} />
       <TransitionSeries>
 
@@ -136,7 +135,6 @@ export const CuretopiaCase: React.FC = () => {
         <TransitionSeries.Sequence durationInFrames={360}>
           <Scene13CTA />
         </TransitionSeries.Sequence>
-
       </TransitionSeries>
     </AbsoluteFill>
   );
