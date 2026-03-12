@@ -3,37 +3,43 @@ import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
 import { ldTechD } from "../fonts";
 
-export const SceneProofOfCuresModel: React.FC = () => {
+export const SceneProofOfCuresAnalogy: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "PROOF OF CURES" tag — fade in at frame 5
-  const titleOpacity = interpolate(frame, [5, 18], [0, 1], {
+  // Frame 5: Tag "THE ANALOGY" fades in
+  const tagOpacity = interpolate(frame, [5, 18], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // Context line — fade up at frame 22
-  const contextOpacity = interpolate(frame, [22, 40], [0, 1], {
+  // Frame 22: Body line fades up
+  const bodyOpacity = interpolate(frame, [22, 42], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const contextY = interpolate(frame, [22, 40], [24, 0], {
+  const bodyY = interpolate(frame, [22, 42], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // "Proof of Cures" — spring punch at frame 60
-  const pocSpring = spring({
-    frame: frame - 60,
+  // Frame 65: Punch line spring-in
+  const punchSpring = spring({
+    frame: frame - 65,
     fps,
     config: { damping: 10, stiffness: 160 },
   });
-  const pocScale = interpolate(pocSpring, [0, 1], [0.5, 1]);
-  const pocOpacity = interpolate(pocSpring, [0, 1], [0, 1]);
+  const punchScale = interpolate(punchSpring, [0, 1], [0.7, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const punchOpacity = interpolate(punchSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Pulsing purple glow
-  const glowPulse = Math.sin(frame * 0.07) * 0.25 + 0.75;
+  // Subtle glow pulse
+  const glowPulse = Math.sin(frame * 0.05) * 0.15 + 0.85;
 
   return (
     <SceneWrapper>
@@ -47,17 +53,17 @@ export const SceneProofOfCuresModel: React.FC = () => {
           width: "100%",
           fontFamily: ldTechD,
           textAlign: "center",
-          position: "relative",
           gap: 32,
+          position: "relative",
+          padding: "0 80px",
         }}
       >
-        {/* Purple glow */}
+        {/* Radial glow */}
         <div
           style={{
             position: "absolute",
-            width: 700,
-            height: 700,
-            borderRadius: "50%",
+            width: 800,
+            height: 800,
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
@@ -68,56 +74,61 @@ export const SceneProofOfCuresModel: React.FC = () => {
           }}
         />
 
-        {/* "THE NEW MODEL" tag */}
+        {/* Tag: "THE ANALOGY" */}
         <div
           style={{
             fontSize: 40,
             color: "#CC44FF",
-            fontWeight: 500,
+            fontWeight: 700,
             fontFamily: ldTechD,
             letterSpacing: 8,
             textTransform: "uppercase",
-            opacity: titleOpacity,
+            opacity: tagOpacity,
             position: "relative",
             zIndex: 1,
+            willChange: "transform, opacity",
           }}
         >
-          THE NEW MODEL
+          THE ANALOGY
         </div>
 
-        {/* Context line */}
+        {/* Body line */}
         <div
           style={{
             fontSize: 52,
             color: "#A89BC2",
+            fontWeight: 500,
             fontFamily: ldTechD,
             maxWidth: 1000,
-            opacity: contextOpacity,
-            transform: `translateY(${contextY}px)`,
+            lineHeight: 1.4,
+            opacity: bodyOpacity,
+            transform: `translateY(${bodyY}px)`,
             position: "relative",
             zIndex: 1,
             willChange: "transform, opacity",
           }}
         >
-          A funding model built on radical transparency — progress is public, and money follows proof.
+          Like Proof of Work and Proof of Stake, Proof of Cures is a consensus
+          mechanism —
         </div>
 
-        {/* "Proof of Cures" — dramatic center-punch reveal */}
+        {/* Punch line */}
         <div
           style={{
-            fontSize: 130,
+            fontSize: 62,
             color: "#E040FB",
             fontWeight: 900,
             fontFamily: ldTechD,
-            opacity: pocOpacity,
-            transform: `scale(${pocScale})`,
+            maxWidth: 1000,
+            lineHeight: 1.3,
+            transform: `scale(${punchScale})`,
+            opacity: punchOpacity,
             position: "relative",
             zIndex: 1,
             willChange: "transform, opacity",
-            lineHeight: 1.1,
           }}
         >
-          Proof of Cures
+          but it hinges on visibility into how funds are used.
         </div>
       </div>
     </SceneWrapper>

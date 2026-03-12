@@ -7,51 +7,64 @@ export const SceneSasha: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "$SASHA" — spring punch at frame 10
+  // "$SASHA" — drops from top with elastic bounce (high stiffness, low damping)
   const titleSpring = spring({
-    frame: frame - 10,
+    frame: frame - 8,
     fps,
-    config: { damping: 8, stiffness: 160 },
+    config: { stiffness: 200, damping: 6 },
   });
-  const titleScale = interpolate(titleSpring, [0, 1], [0.5, 1]);
-  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1]);
+  const titleY = interpolate(titleSpring, [0, 1], [-180, 0]);
+  const titleOpacity = interpolate(frame, [8, 22], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
   // "Proof of Cures." — fade up at frame 30
   const proofOpacity = interpolate(frame, [30, 50], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const proofTranslateY = interpolate(frame, [30, 50], [30, 0], {
+  const proofY = interpolate(frame, [30, 50], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // "The world's first Curestream..." — fade up at frame 55
-  const streamOpacity = interpolate(frame, [55, 75], [0, 1], {
+  // "The world's first Curestream..." — fade up at frame 58
+  const streamOpacity = interpolate(frame, [58, 78], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const streamTranslateY = interpolate(frame, [55, 75], [30, 0], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-
-  // "She is the first." — fade at frame 82
-  const firstOpacity = interpolate(frame, [82, 100], [0, 1], {
+  const streamY = interpolate(frame, [58, 78], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // "But she won't be the last." — spring punch at frame 105
+  // "She is the first." — fade at frame 88
+  const firstOpacity = interpolate(frame, [88, 106], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const firstY = interpolate(frame, [88, 106], [30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // "But she won't be the last." — spring punch at frame 115
   const lastSpring = spring({
-    frame: frame - 105,
+    frame: frame - 115,
     fps,
     config: { damping: 10, stiffness: 180 },
   });
-  const lastScale = interpolate(lastSpring, [0, 1], [0.7, 1]);
-  const lastOpacity = interpolate(lastSpring, [0, 1], [0, 1]);
+  const lastScale = interpolate(lastSpring, [0, 1], [0.7, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const lastOpacity = interpolate(lastSpring, [0, 1], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
 
-  // Green pulsing glow
+  // Pulsing glow — opacity only (no blur)
   const glowPulse = Math.sin(frame * 0.06) * 0.2 + 0.8;
 
   return (
@@ -66,11 +79,11 @@ export const SceneSasha: React.FC = () => {
           width: "100%",
           fontFamily: ldTechD,
           textAlign: "center",
-          gap: 14,
+          gap: 18,
           position: "relative",
         }}
       >
-        {/* Green radial glow */}
+        {/* Radial glow — single gradient, no stacked box-shadows */}
         <div
           style={{
             position: "absolute",
@@ -86,19 +99,18 @@ export const SceneSasha: React.FC = () => {
           }}
         />
 
-        {/* "$SASHA" */}
+        {/* "$SASHA" — elastic drop from top */}
         <div
           style={{
-            fontSize: 96,
+            fontSize: 110,
             color: "#E040FB",
             fontWeight: 900,
             fontFamily: ldTechD,
-            transform: `scale(${titleScale})`,
+            transform: `translateY(${titleY}px)`,
             opacity: titleOpacity,
             position: "relative",
             zIndex: 1,
-            textShadow:
-              "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
+            willChange: "transform, opacity",
           }}
         >
           $SASHA
@@ -107,14 +119,15 @@ export const SceneSasha: React.FC = () => {
         {/* "Proof of Cures." */}
         <div
           style={{
-            fontSize: 52,
+            fontSize: 60,
             color: "#ffffff",
             fontWeight: 700,
             fontFamily: ldTechD,
             opacity: proofOpacity,
-            transform: `translateY(${proofTranslateY}px)`,
+            transform: `translateY(${proofY}px)`,
             position: "relative",
             zIndex: 1,
+            willChange: "transform, opacity",
           }}
         >
           Proof of Cures.
@@ -123,14 +136,16 @@ export const SceneSasha: React.FC = () => {
         {/* "The world's first Curestream..." */}
         <div
           style={{
-            fontSize: 42,
-            color: "#A89BC2",
+            fontSize: 50,
+            color: "#ffffff",
+            fontWeight: 600,
             fontFamily: ldTechD,
             maxWidth: 900,
             opacity: streamOpacity,
-            transform: `translateY(${streamTranslateY}px)`,
+            transform: `translateY(${streamY}px)`,
             position: "relative",
             zIndex: 1,
+            willChange: "transform, opacity",
           }}
         >
           The world's first Curestream — a live onchain record of a cure in
@@ -140,13 +155,16 @@ export const SceneSasha: React.FC = () => {
         {/* "She is the first." */}
         <div
           style={{
-            fontSize: 48,
+            fontSize: 56,
             color: "#ffffff",
+            fontWeight: 700,
             fontFamily: ldTechD,
-            marginTop: 16,
+            marginTop: 12,
             opacity: firstOpacity,
+            transform: `translateY(${firstY}px)`,
             position: "relative",
             zIndex: 1,
+            willChange: "transform, opacity",
           }}
         >
           She is the first.
@@ -155,14 +173,15 @@ export const SceneSasha: React.FC = () => {
         {/* "But she won't be the last." */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 52,
             color: "#E040FB",
-            fontWeight: 700,
+            fontWeight: 900,
             fontFamily: ldTechD,
             transform: `scale(${lastScale})`,
             opacity: lastOpacity,
             position: "relative",
             zIndex: 1,
+            willChange: "transform, opacity",
           }}
         >
           But she won't be the last.

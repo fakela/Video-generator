@@ -65,7 +65,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Subtitle */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#A89BC2",
             fontFamily: ldTechD,
             textAlign: "center",
@@ -90,7 +90,7 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 40,
+                  fontSize: 48,
                   color: "#ffffff",
                   fontWeight: 600,
                   fontFamily: ldTechD,
@@ -100,7 +100,7 @@ export const Scene16CostGap: React.FC = () => {
               </div>
               <div
                 style={{
-                  fontSize: 40,
+                  fontSize: 52,
                   color: "#E040FB",
                   fontWeight: 900,
                   fontFamily: ldTechD,
@@ -131,7 +131,7 @@ export const Scene16CostGap: React.FC = () => {
             >
               <div
                 style={{
-                  fontSize: 40,
+                  fontSize: 48,
                   color: "#ffffff",
                   fontWeight: 600,
                   fontFamily: ldTechD,
@@ -141,7 +141,7 @@ export const Scene16CostGap: React.FC = () => {
               </div>
               <div
                 style={{
-                  fontSize: 40,
+                  fontSize: 52,
                   color: "#E040FB",
                   fontWeight: 900,
                   fontFamily: ldTechD,
@@ -165,7 +165,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* 20x cheaper badge */}
         <div
           style={{
-            fontSize: 48,
+            fontSize: 52,
             color: "#E040FB",
             fontWeight: 700,
             fontFamily: ldTechD,
@@ -186,7 +186,7 @@ export const Scene16CostGap: React.FC = () => {
         {/* Footer text */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#A89BC2",
             fontFamily: ldTechD,
             textAlign: "center",

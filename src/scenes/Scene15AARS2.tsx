@@ -47,7 +47,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Context line */}
         <div
           style={{
-            fontSize: 40,
+            fontSize: 48,
             color: "#A89BC2",
             fontFamily: ldTechD,
             textAlign: "center",
@@ -62,7 +62,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* PROJECT 001 pill */}
         <div
           style={{
-            fontSize: 32,
+            fontSize: 40,
             color: "#ffffff",
             fontWeight: 700,
             background: "#7B2FBE",
@@ -96,7 +96,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Fatal mitochondrial disease */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 52,
             color: "#ffffff",
             fontFamily: ldTechD,
             textAlign: "center",
@@ -110,7 +110,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Zero approved treatments */}
         <div
           style={{
-            fontSize: 42,
+            fontSize: 52,
             color: "#E040FB",
             fontWeight: 600,
             fontFamily: ldTechD,
@@ -125,7 +125,7 @@ export const Scene15AARS2: React.FC = () => {
         {/* Until Curetopia */}
         <div
           style={{
-            fontSize: 52,
+            fontSize: 60,
             color: "#E040FB",
             fontWeight: 700,
             fontFamily: ldTechD,

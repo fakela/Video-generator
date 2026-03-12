@@ -131,7 +131,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
                 fontFamily: ldTechD,
               }}
             >
-              Coin-to-Company spin-out
+              Coin-to-Company spin-out: $RAPTOR → RaptorCo
             </div>
           </div>
 
@@ -176,7 +176,7 @@ export const SceneProofOfCuresLive: React.FC = () => {
                 fontFamily: ldTechD,
               }}
             >
-              One patient, one mission
+              One patient, one mission — live onchain
             </div>
           </div>
         </div>

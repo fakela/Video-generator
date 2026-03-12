@@ -1,8 +1,8 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 import { useTransitionProgress } from "@remotion/transitions";
 
-const NUM_PARTICLES = 3000;
+const NUM_PARTICLES = 4000;
 const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => {
   const seed1 = (i * 137.508 + Math.sin(i * 0.1) * 50) % 100;
   const seed2 = (i * 73.137 + Math.cos(i * 0.17) * 40) % 100;
@@ -10,28 +10,40 @@ const particles = Array.from({ length: NUM_PARTICLES }, (_, i) => {
   const y = (seed2 + (i % 11) * 9.09) % 100;
   return {
     x, y,
-    size: i % 8 === 0 ? 4 : i % 4 === 0 ? 3 : i % 2 === 0 ? 2 : 1,
-    speed: 0.005 + (i % 17) * 0.002,
+    size: i % 12 === 0 ? 3 : i % 4 === 0 ? 2 : 1,
+    speed: 0.003 + (i % 17) * 0.002,
     phase: i * 0.53,
-    hasGlow: i % 2 === 0,
-    glowColor: i % 5 === 0 ? "rgba(255,100,255,0.8)" : i % 4 === 0 ? "rgba(204,68,255,0.7)" : i % 3 === 0 ? "rgba(155,48,208,0.6)" : "rgba(224,64,251,0.5)",
-    baseOpacity: 0.4 + (i % 10) * 0.06,
+    baseOpacity: 0.3 + (i % 8) * 0.07,
+    yBias: Math.min(y, 72),
+    driftX: Math.sin(i * 2.3) * 0.06,
+    driftY: (Math.cos(i * 1.7) * 0.04) - 0.015,
+    layer: i % 3,
   };
 });
 
 const StarField: React.FC = () => {
   const frame = useCurrentFrame();
+  const layerSpeeds = [0.3, 0.7, 1.3];
+
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       {particles.map((p, i) => {
-        const twinkle = Math.sin(frame * p.speed + p.phase) * 0.2 + p.baseOpacity;
+        const twinkle = Math.sin(frame * p.speed + p.phase) * 0.18 + p.baseOpacity;
+        const speed = layerSpeeds[p.layer];
+        const dx = ((p.driftX * frame * speed) % 100 + 100) % 100;
+        const dy = ((p.driftY * frame * speed) % 100 + 100) % 100;
+        const cx = (p.x + dx) % 100;
+        const cy = (p.yBias + dy) % 72;
         return (
           <div key={i} style={{
-            position: "absolute", left: `${p.x}%`, top: `${p.y}%`,
-            width: p.size, height: p.size, borderRadius: "50%",
-            backgroundColor: i % 6 === 0 ? "#FF88FF" : i % 4 === 0 ? "#DD88FF" : "#FFFFFF",
+            position: "absolute",
+            left: `${cx}%`,
+            top: `${cy}%`,
+            width: p.size,
+            height: p.size,
+            borderRadius: "50%",
+            backgroundColor: i % 8 === 0 ? "#CCB8FF" : "#FFFFFF",
             opacity: Math.min(twinkle, 1),
-            boxShadow: p.hasGlow ? `0 0 ${p.size * 6}px ${p.glowColor}` : "none",
           }} />
         );
       })}
@@ -39,96 +51,198 @@ const StarField: React.FC = () => {
   );
 };
 
-const GalaxyRing: React.FC = () => {
-  const frame = useCurrentFrame();
-  const rotation = frame * 0.2;
-  return (
-    <AbsoluteFill style={{ overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-      {/* Outer ring — thick bright visible border */}
-      <div style={{
-        position: "absolute", width: 1300, height: 650, borderRadius: "50%",
-        border: "3px solid rgba(220,80,255,0.60)",
-        boxShadow: "0 0 30px 14px rgba(204,68,255,0.40), 0 0 80px 35px rgba(204,68,255,0.20), inset 0 0 30px 14px rgba(204,68,255,0.22)",
-        transform: `rotate(${rotation}deg) rotateX(70deg)`,
-      }} />
-      {/* Inner ring */}
-      <div style={{
-        position: "absolute", width: 900, height: 450, borderRadius: "50%",
-        border: "2px solid rgba(255,100,255,0.50)",
-        boxShadow: "0 0 20px 10px rgba(224,64,251,0.35), inset 0 0 20px 10px rgba(224,64,251,0.20)",
-        transform: `rotate(${-rotation * 0.7 + 30}deg) rotateX(65deg)`,
-      }} />
-      {/* Wide outer faint ring */}
-      <div style={{
-        position: "absolute", width: 1600, height: 500, borderRadius: "50%",
-        border: "1px solid rgba(180,60,255,0.35)",
-        boxShadow: "0 0 40px 18px rgba(150,40,220,0.22)",
-        transform: `rotate(${rotation * 0.4 + 60}deg) rotateX(75deg)`,
-      }} />
-      {/* Spinning arc highlight */}
-      <div style={{
-        position: "absolute", width: 1100, height: 550, borderRadius: "50%",
-        background: `conic-gradient(from ${rotation}deg, rgba(255,130,255,0.60) 0deg, rgba(220,80,255,0.35) 25deg, transparent 70deg, transparent 290deg, rgba(220,80,255,0.30) 335deg, rgba(255,130,255,0.60) 360deg)`,
-        transform: "rotateX(68deg)", filter: "blur(5px)",
-      }} />
-    </AbsoluteFill>
-  );
-};
+const ORBS = [
+  { x: 78, y: 18, size: 90,  speed: 0.006, phase: 0,   color: "rgba(80,160,255,0.9)",   glowColor: "rgba(80,160,255,0.5)"  },
+  { x: 12, y: 55, size: 110, speed: 0.005, phase: 1.2, color: "rgba(100,180,255,0.85)", glowColor: "rgba(100,180,255,0.4)" },
+  { x: 88, y: 62, size: 70,  speed: 0.007, phase: 2.4, color: "rgba(60,140,255,0.8)",   glowColor: "rgba(60,140,255,0.4)"  },
+  { x: 5,  y: 30, size: 55,  speed: 0.004, phase: 0.8, color: "rgba(120,200,255,0.7)",  glowColor: "rgba(120,200,255,0.3)" },
+];
 
-const GalaxySpiral: React.FC = () => {
-  const frame = useCurrentFrame();
-  const r1 = frame * 0.15, r2 = -frame * 0.08;
-  return (
-    <AbsoluteFill style={{ overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none" }}>
-      <div style={{ position: "absolute", width: 1500, height: 1500, borderRadius: "50%", background: "conic-gradient(from 0deg, transparent 0deg, rgba(123,47,190,0.22) 30deg, transparent 90deg, rgba(204,68,255,0.16) 150deg, transparent 210deg, rgba(155,48,208,0.20) 270deg, transparent 330deg, rgba(123,47,190,0.22) 360deg)", transform: `rotate(${r1}deg)`, filter: "blur(35px)", opacity: 0.9 }} />
-      <div style={{ position: "absolute", width: 1200, height: 1200, borderRadius: "50%", background: "conic-gradient(from 45deg, transparent 0deg, rgba(224,64,251,0.20) 40deg, transparent 100deg, rgba(255,80,255,0.18) 180deg, transparent 240deg, rgba(224,64,251,0.16) 310deg, transparent 360deg)", transform: `rotate(${r2}deg)`, filter: "blur(40px)", opacity: 0.85 }} />
-      <div style={{ position: "absolute", width: 900, height: 900, borderRadius: "50%", background: "conic-gradient(from 90deg, rgba(80,0,160,0.14) 0deg, rgba(180,60,255,0.18) 60deg, rgba(80,0,160,0.10) 120deg, rgba(220,80,255,0.16) 200deg, rgba(80,0,160,0.12) 280deg, rgba(180,60,255,0.14) 360deg)", transform: `rotate(${r1 * 0.5}deg)`, filter: "blur(30px)", opacity: 0.8 }} />
-    </AbsoluteFill>
-  );
-};
-
-const AuroraStreaks: React.FC = () => {
+const FloatingOrbs: React.FC = () => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ overflow: "hidden", pointerEvents: "none" }}>
-      <div style={{ position: "absolute", left: "-10%", top: "5%", width: "75%", height: 220, background: "linear-gradient(135deg, transparent 0%, rgba(155,48,208,0.12) 30%, rgba(204,68,255,0.18) 50%, rgba(155,48,208,0.10) 70%, transparent 100%)", transform: `translateX(${Math.sin(frame * 0.008) * 60}px) translateY(${Math.cos(frame * 0.006) * 30}px)`, filter: "blur(25px)", borderRadius: "50%" }} />
-      <div style={{ position: "absolute", right: "-5%", bottom: "10%", width: "65%", height: 180, background: "linear-gradient(-135deg, transparent 0%, rgba(224,64,251,0.12) 30%, rgba(255,80,255,0.16) 55%, rgba(123,47,190,0.10) 75%, transparent 100%)", transform: `translateX(${Math.cos(frame * 0.007) * 50}px) translateY(${Math.sin(frame * 0.009) * 25}px)`, filter: "blur(28px)", borderRadius: "50%" }} />
+      {ORBS.map((orb, i) => {
+        const floatY = Math.sin(frame * orb.speed + orb.phase) * 18;
+        const floatX = Math.cos(frame * orb.speed * 0.7 + orb.phase) * 10;
+        return (
+          <div key={i} style={{
+            position: "absolute",
+            left: `${orb.x}%`,
+            top: `${orb.y}%`,
+            transform: `translate(${floatX}px, ${floatY}px)`,
+          }}>
+            <div style={{
+              position: "absolute",
+              width: orb.size * 2.5,
+              height: orb.size * 2.5,
+              borderRadius: "50%",
+              background: `radial-gradient(circle, ${orb.glowColor} 0%, transparent 70%)`,
+              top: "50%", left: "50%",
+              transform: "translate(-50%, -50%)",
+            }} />
+            <div style={{
+              width: orb.size,
+              height: orb.size,
+              borderRadius: "50%",
+              background: `radial-gradient(circle at 35% 35%, rgba(255,255,255,0.6) 0%, ${orb.color} 40%, rgba(20,60,140,0.9) 100%)`,
+              boxShadow: `0 0 30px 10px ${orb.glowColor}, inset 0 0 20px rgba(255,255,255,0.2)`,
+              position: "relative",
+            }}>
+              <div style={{
+                position: "absolute", inset: 0, borderRadius: "50%",
+                background: `repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.08) 8px, rgba(255,255,255,0.08) 9px),
+                             repeating-linear-gradient(90deg, transparent, transparent 8px, rgba(255,255,255,0.08) 8px, rgba(255,255,255,0.08) 9px)`,
+                opacity: 0.6,
+              }} />
+            </div>
+          </div>
+        );
+      })}
     </AbsoluteFill>
   );
 };
 
-const nebulaPatches = [
-  { x: "50%", y: "50%", w: 1600, h: 1200, color: "rgba(123,47,190,0.20)", rot: 0 },
-  { x: "25%", y: "30%", w: 1000, h: 800, color: "rgba(155,48,208,0.16)", rot: -15 },
-  { x: "75%", y: "55%", w: 900, h: 700, color: "rgba(204,68,255,0.14)", rot: 25 },
-  { x: "15%", y: "80%", w: 700, h: 600, color: "rgba(123,47,190,0.16)", rot: 40 },
-  { x: "85%", y: "20%", w: 800, h: 600, color: "rgba(224,64,251,0.12)", rot: -30 },
-  { x: "10%", y: "50%", w: 900, h: 500, color: "rgba(155,48,208,0.14)", rot: 10 },
-  { x: "70%", y: "85%", w: 800, h: 500, color: "rgba(123,47,190,0.12)", rot: -20 },
-  { x: "50%", y: "15%", w: 1400, h: 400, color: "rgba(204,68,255,0.10)", rot: 0 },
-  { x: "40%", y: "65%", w: 1100, h: 700, color: "rgba(155,48,208,0.13)", rot: 15 },
-  { x: "65%", y: "35%", w: 700, h: 700, color: "rgba(224,64,251,0.10)", rot: -45 },
-  { x: "30%", y: "90%", w: 600, h: 400, color: "rgba(204,68,255,0.11)", rot: 5 },
-  { x: "90%", y: "50%", w: 500, h: 800, color: "rgba(123,47,190,0.14)", rot: -10 },
-  { x: "55%", y: "25%", w: 600, h: 500, color: "rgba(255,80,255,0.08)", rot: 20 },
-  { x: "20%", y: "60%", w: 800, h: 600, color: "rgba(180,60,255,0.11)", rot: -5 },
+const RockyTerrain: React.FC = () => {
+  return (
+    <AbsoluteFill style={{ pointerEvents: "none" }}>
+      <div style={{
+        position: "absolute", bottom: 0, left: 0,
+        width: "25%", height: "28%",
+        background: "linear-gradient(135deg, #0A0520 0%, #120830 50%, #1A0A3A 100%)",
+        clipPath: "polygon(0% 100%, 0% 40%, 8% 30%, 15% 45%, 22% 20%, 30% 35%, 40% 15%, 55% 30%, 65% 10%, 80% 25%, 90% 8%, 100% 20%, 100% 100%)",
+        filter: "drop-shadow(0 -10px 20px rgba(100,0,150,0.3))",
+      }} />
+      <div style={{
+        position: "absolute", bottom: 0, right: 0,
+        width: "30%", height: "32%",
+        background: "linear-gradient(225deg, #0A0520 0%, #120830 50%, #1A0A3A 100%)",
+        clipPath: "polygon(0% 20%, 10% 8%, 25% 25%, 35% 5%, 50% 18%, 60% 0%, 72% 15%, 82% 5%, 90% 20%, 100% 10%, 100% 100%, 0% 100%)",
+        filter: "drop-shadow(0 -10px 20px rgba(100,0,150,0.3))",
+      }} />
+      <div style={{
+        position: "absolute", bottom: 0, left: "35%",
+        width: "30%", height: "12%",
+        background: "#0D0620",
+        clipPath: "polygon(0% 100%, 5% 50%, 12% 70%, 20% 30%, 30% 60%, 45% 20%, 55% 50%, 65% 15%, 75% 45%, 85% 25%, 95% 55%, 100% 100%)",
+      }} />
+    </AbsoluteFill>
+  );
+};
+
+const NebulaClouds: React.FC = () => {
+  const frame = useCurrentFrame();
+  const breathe = Math.sin(frame * 0.008) * 0.04 + 1;
+
+  return (
+    <AbsoluteFill style={{ overflow: "hidden", pointerEvents: "none" }}>
+      <div style={{
+        position: "absolute",
+        bottom: "8%", left: "-10%",
+        width: "120%", height: "35%",
+        background: "radial-gradient(ellipse at 50% 100%, rgba(200,0,200,0.55) 0%, rgba(160,0,180,0.35) 30%, rgba(100,0,140,0.15) 60%, transparent 80%)",
+        transform: `scaleY(${breathe})`,
+        transformOrigin: "bottom center",
+        filter: "blur(8px)",
+      }} />
+      <div style={{
+        position: "absolute",
+        bottom: "12%", left: "-5%",
+        width: "55%", height: "30%",
+        background: "radial-gradient(ellipse at 30% 80%, rgba(180,0,220,0.50) 0%, rgba(140,0,180,0.30) 40%, transparent 70%)",
+        transform: `translate(${Math.sin(frame * 0.005) * 12}px, ${Math.cos(frame * 0.004) * 8}px) scaleY(${breathe})`,
+        transformOrigin: "bottom left",
+        filter: "blur(12px)",
+      }} />
+      <div style={{
+        position: "absolute",
+        bottom: "10%", right: "-5%",
+        width: "50%", height: "28%",
+        background: "radial-gradient(ellipse at 70% 80%, rgba(200,0,200,0.45) 0%, rgba(150,0,180,0.25) 40%, transparent 70%)",
+        transform: `translate(${Math.cos(frame * 0.006) * 10}px, ${Math.sin(frame * 0.005) * 6}px) scaleY(${breathe})`,
+        transformOrigin: "bottom right",
+        filter: "blur(14px)",
+      }} />
+      <div style={{
+        position: "absolute",
+        bottom: "14%", left: "30%",
+        width: "40%", height: "25%",
+        background: "radial-gradient(ellipse at 50% 90%, rgba(220,40,220,0.60) 0%, rgba(180,0,200,0.35) 40%, transparent 70%)",
+        transform: `scaleY(${breathe + 0.02})`,
+        transformOrigin: "bottom center",
+        filter: "blur(6px)",
+      }} />
+      <div style={{
+        position: "absolute",
+        top: "20%", left: "35%",
+        width: "30%", height: "20%",
+        background: "radial-gradient(ellipse, rgba(120,0,180,0.20) 0%, transparent 70%)",
+        filter: "blur(20px)",
+      }} />
+    </AbsoluteFill>
+  );
+};
+
+const ASTEROIDS = [
+  { x: 82, y: 55, size: 28, speed: 0.004, phase: 0   },
+  { x: 90, y: 68, size: 18, speed: 0.005, phase: 1.0 },
+  { x: 86, y: 72, size: 14, speed: 0.006, phase: 2.0 },
+  { x: 78, y: 78, size: 10, speed: 0.007, phase: 0.5 },
+  { x: 3,  y: 62, size: 22, speed: 0.004, phase: 1.5 },
 ];
 
-const NebulaField: React.FC = () => {
+const Asteroids: React.FC = () => {
   const frame = useCurrentFrame();
   return (
-    <AbsoluteFill style={{ overflow: "hidden" }}>
-      {nebulaPatches.map((patch, i) => {
-        const pulse = Math.sin(frame * 0.012 + i * 1.3) * 0.15 + 0.85;
+    <AbsoluteFill style={{ overflow: "hidden", pointerEvents: "none" }}>
+      {ASTEROIDS.map((a, i) => {
+        const floatY = Math.sin(frame * a.speed + a.phase) * 12;
+        const floatX = Math.cos(frame * a.speed * 0.8 + a.phase) * 6;
+        const rotate = frame * a.speed * 20;
         return (
           <div key={i} style={{
-            position: "absolute", left: patch.x, top: patch.y, width: patch.w, height: patch.h,
-            transform: `translate(-50%, -50%) rotate(${patch.rot}deg)`,
-            background: `radial-gradient(ellipse, ${patch.color} 0%, transparent 70%)`,
-            opacity: pulse, pointerEvents: "none",
+            position: "absolute",
+            left: `${a.x}%`,
+            top: `${a.y}%`,
+            width: a.size,
+            height: a.size,
+            transform: `translate(${floatX}px, ${floatY}px) rotate(${rotate}deg)`,
+            background: "radial-gradient(circle at 35% 35%, #2A1A3A, #0D0618)",
+            borderRadius: "40% 50% 45% 55%",
+            boxShadow: "inset -3px -3px 6px rgba(0,0,0,0.8), 0 0 8px rgba(80,0,120,0.3)",
           }} />
         );
       })}
+    </AbsoluteFill>
+  );
+};
+
+export const CosmicBackground: React.FC = () => {
+  const frame = useCurrentFrame();
+
+  const zoom = interpolate(frame, [0, 400], [1, 1.06], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  return (
+    <AbsoluteFill style={{
+      background: "linear-gradient(180deg, #050818 0%, #0A0A2A 25%, #150830 50%, #200838 70%, #180530 100%)",
+    }}>
+      <AbsoluteFill style={{
+        transform: `scale(${zoom})`,
+        transformOrigin: "center center",
+      }}>
+        <StarField />
+        <NebulaClouds />
+        <FloatingOrbs />
+        <Asteroids />
+        <RockyTerrain />
+      </AbsoluteFill>
+      <AbsoluteFill style={{
+        background: "radial-gradient(ellipse at 50% 40%, transparent 40%, rgba(2,0,10,0.55) 100%)",
+        pointerEvents: "none",
+      }} />
     </AbsoluteFill>
   );
 };
@@ -138,17 +252,7 @@ export const SceneWrapper: React.FC<{ children: React.ReactNode }> = ({ children
   const contentOpacity = entering * (1 - exiting);
 
   return (
-    <AbsoluteFill style={{ background: "radial-gradient(ellipse at 50% 50%, #2A0A50 0%, #180830 40%, #090818 80%)" }}>
-      <NebulaField />
-      <GalaxySpiral />
-      <GalaxyRing />
-      <AuroraStreaks />
-      <StarField />
-      {/* Dark centre vignette so text always contrasts against the background */}
-      <AbsoluteFill style={{
-        background: "radial-gradient(ellipse at 50% 50%, rgba(4,0,12,0.60) 0%, rgba(4,0,12,0.28) 45%, transparent 72%)",
-        pointerEvents: "none",
-      }} />
+    <AbsoluteFill style={{ background: "transparent" }}>
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, bottom: 0,
         padding: "80px 120px", boxSizing: "border-box",

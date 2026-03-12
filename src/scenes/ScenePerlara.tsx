@@ -3,47 +3,36 @@ import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
 import { ldTechD } from "../fonts";
 
+const milestones = [
+  "Luminescent growth assay assessing ALA1-ts yeast under AARS1/AARS2 deficiency conditions",
+  "384-well HTS optimized for AARS2 — ~8,400 compound repurposing screen",
+  "Repurposing candidate report + top recommendations for validation studies",
+];
+
+const BULLET_START_FRAMES = [50, 72, 94];
+
 export const ScenePerlara: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "Yeast-Avatar Drug Screening" title — spring punch at frame 8
-  const titleSpring = spring({
+  // Partnership header — spring punch at frame 8
+  const headerSpring = spring({
     frame: frame - 8,
     fps,
-    config: { damping: 10, stiffness: 180 },
+    config: { damping: 12, stiffness: 180 },
   });
-  const titleScale = interpolate(titleSpring, [0, 1], [0.7, 1]);
-  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1]);
+  const headerScale = interpolate(headerSpring, [0, 1], [0.7, 1]);
+  const headerOpacity = interpolate(headerSpring, [0, 1], [0, 1]);
 
-  // "Partner lab Perlara..." — fade up at frame 30
-  const line1Opacity = interpolate(frame, [30, 50], [0, 1], {
+  // Sub-label fade up at frame 35
+  const subOpacity = interpolate(frame, [35, 53], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const line1TranslateY = interpolate(frame, [30, 50], [30, 0], {
+  const subY = interpolate(frame, [35, 53], [24, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-
-  // "11 ARS mutations modelled. 84,000 tests." — fade up at frame 55
-  const line2Opacity = interpolate(frame, [55, 75], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-  const line2TranslateY = interpolate(frame, [55, 75], [30, 0], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-
-  // "The most comprehensive..." — spring punch at frame 85
-  const punchSpring = spring({
-    frame: frame - 85,
-    fps,
-    config: { damping: 8, stiffness: 160 },
-  });
-  const punchScale = interpolate(punchSpring, [0, 1], [0.6, 1]);
-  const punchOpacity = interpolate(punchSpring, [0, 1], [0, 1]);
 
   return (
     <SceneWrapper>
@@ -57,65 +46,97 @@ export const ScenePerlara: React.FC = () => {
           width: "100%",
           fontFamily: ldTechD,
           textAlign: "center",
-          gap: 20,
+          gap: 28,
         }}
       >
-        {/* Title */}
+        {/* Partnership header */}
         <div
           style={{
-            fontSize: 60,
+            fontSize: 68,
             color: "#E040FB",
-            fontWeight: 800,
+            fontWeight: 900,
             fontFamily: ldTechD,
-            transform: `scale(${titleScale})`,
-            opacity: titleOpacity,
+            transform: `scale(${headerScale})`,
+            opacity: headerOpacity,
+            willChange: "transform, opacity",
           }}
         >
-          Yeast-Avatar Drug Screening
+          In collaboration with Perlara PBC
         </div>
 
-        {/* Partner lab description */}
+        {/* Sub-label */}
         <div
           style={{
             fontSize: 44,
-            color: "#ffffff",
-            fontFamily: ldTechD,
-            maxWidth: 1000,
-            opacity: line1Opacity,
-            transform: `translateY(${line1TranslateY}px)`,
-          }}
-        >
-          Partner lab Perlara screens 8,500 existing compounds against yeast
-          models of the disease.
-        </div>
-
-        {/* Scaling stats */}
-        <div
-          style={{
-            fontSize: 44,
-            color: "#E040FB",
-            fontWeight: 700,
-            fontFamily: ldTechD,
-            opacity: line2Opacity,
-            transform: `translateY(${line2TranslateY}px)`,
-          }}
-        >
-          11 ARS mutations modelled. 84,000 tests.
-        </div>
-
-        {/* Punch line */}
-        <div
-          style={{
-            fontSize: 42,
             color: "#A89BC2",
             fontFamily: ldTechD,
-            fontStyle: "italic",
-            marginTop: 8,
-            transform: `scale(${punchScale})`,
-            opacity: punchOpacity,
+            opacity: subOpacity,
+            transform: `translateY(${subY}px)`,
+            willChange: "transform, opacity",
           }}
         >
-          The most comprehensive rare disease drug screen ever run.
+          Curetopia's yeast-screening laboratory partner
+        </div>
+
+        {/* Milestone bullets */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            gap: 18,
+            maxWidth: 1100,
+            width: "100%",
+          }}
+        >
+          {milestones.map((text, i) => {
+            const startF = BULLET_START_FRAMES[i];
+            const bulletOpacity = interpolate(frame, [startF, startF + 18], [0, 1], {
+              extrapolateRight: "clamp",
+              extrapolateLeft: "clamp",
+            });
+            const bulletY = interpolate(frame, [startF, startF + 18], [24, 0], {
+              extrapolateRight: "clamp",
+              extrapolateLeft: "clamp",
+            });
+            return (
+              <div
+                key={i}
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "flex-start",
+                  gap: 14,
+                  opacity: bulletOpacity,
+                  transform: `translateY(${bulletY}px)`,
+                  willChange: "transform, opacity",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: 38,
+                    color: "#CC44FF",
+                    fontWeight: 900,
+                    lineHeight: 1.35,
+                    flexShrink: 0,
+                  }}
+                >
+                  •
+                </span>
+                <span
+                  style={{
+                    fontSize: 38,
+                    color: "#ffffff",
+                    fontFamily: ldTechD,
+                    lineHeight: 1.35,
+                    textAlign: "left",
+                  }}
+                >
+                  {text}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
     </SceneWrapper>
