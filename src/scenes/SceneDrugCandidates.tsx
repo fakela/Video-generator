@@ -3,31 +3,26 @@ import { useCurrentFrame, useVideoConfig, spring, interpolate } from "remotion";
 import { SceneWrapper } from "../components/SceneWrapper";
 import { ldTechD } from "../fonts";
 
-export const SceneRaptor: React.FC = () => {
+export const SceneDrugCandidates: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "$RAPTOR → RaptorCo" — slides in from LEFT with letterSpacing expanding
-  const titleSpring = spring({
+  // Giant "2" — spring punch at frame 8
+  const numSpring = spring({
     frame: frame - 8,
     fps,
-    config: { damping: 14, stiffness: 160 },
+    config: { damping: 10, stiffness: 200 },
   });
-  const titleX = interpolate(titleSpring, [0, 1], [-200, 0], {
+  const numScale = interpolate(numSpring, [0, 1], [0.3, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const titleOpacity = interpolate(titleSpring, [0, 1], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-  // letterSpacing expands from 0 → normal as spring settles
-  const titleLetterSpacing = interpolate(titleSpring, [0, 1], [-6, 2], {
+  const numOpacity = interpolate(numSpring, [0, 1], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // "The first Coin-to-Company spin-out in history." — fade up at frame 35
+  // "drug candidates identified" — fade up at frame 35
   const line1Opacity = interpolate(frame, [35, 55], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
@@ -37,23 +32,28 @@ export const SceneRaptor: React.FC = () => {
     extrapolateLeft: "clamp",
   });
 
-  // Tagline — spring punch at frame 60
-  const punchSpring = spring({
-    frame: frame - 60,
-    fps,
-    config: { damping: 10, stiffness: 180 },
-  });
-  const punchScale = interpolate(punchSpring, [0, 1], [0.7, 1], {
+  // "for AARS2 Deficiency" — fade up at frame 55
+  const line2Opacity = interpolate(frame, [55, 73], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const punchOpacity = interpolate(punchSpring, [0, 1], [0, 1], {
+  const line2Y = interpolate(frame, [55, 73], [30, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // Pulsing glow — opacity only (no blur)
-  const glowPulse = Math.sin(frame * 0.06) * 0.2 + 0.8;
+  // "via Perlara yeast-avatar screening" — fade up at frame 75
+  const line3Opacity = interpolate(frame, [75, 93], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const line3Y = interpolate(frame, [75, 93], [30, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // Pulsing radial glow
+  const glowPulse = Math.sin(frame * 0.07) * 0.3 + 0.7;
 
   return (
     <SceneWrapper>
@@ -67,48 +67,51 @@ export const SceneRaptor: React.FC = () => {
           width: "100%",
           fontFamily: ldTechD,
           textAlign: "center",
-          gap: 20,
           position: "relative",
+          gap: 16,
         }}
       >
-        {/* Radial glow — single gradient, no stacked box-shadows */}
+        {/* Pulsing purple radial glow */}
         <div
           style={{
             position: "absolute",
-            width: 700,
-            height: 700,
+            width: 800,
+            height: 800,
+            borderRadius: "50%",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             background:
-              "radial-gradient(circle, rgba(224,64,251,0.2) 0%, transparent 60%)",
+              "radial-gradient(circle, rgba(224,64,251,0.22) 0%, transparent 65%)",
             opacity: glowPulse,
             pointerEvents: "none",
           }}
         />
 
-        {/* "$RAPTOR → RaptorCo" — slides in from left */}
+        {/* Giant "2" */}
         <div
           style={{
-            fontSize: 88,
+            fontSize: 200,
             color: "#E040FB",
             fontWeight: 900,
             fontFamily: ldTechD,
-            transform: `translateX(${titleX}px)`,
-            opacity: titleOpacity,
-            letterSpacing: titleLetterSpacing,
+            lineHeight: 1,
+            transform: `scale(${numScale})`,
+            opacity: numOpacity,
             position: "relative",
             zIndex: 1,
             willChange: "transform, opacity",
+            textShadow:
+              "0 0 60px rgba(224,64,251,0.6), 0 0 120px rgba(224,64,251,0.25)",
           }}
         >
-          $RAPTOR → RaptorCo
+          2
         </div>
 
-        {/* "The first Coin-to-Company spin-out in history." */}
+        {/* "drug candidates identified" */}
         <div
           style={{
-            fontSize: 56,
+            fontSize: 64,
             color: "#ffffff",
             fontWeight: 700,
             fontFamily: ldTechD,
@@ -119,25 +122,41 @@ export const SceneRaptor: React.FC = () => {
             willChange: "transform, opacity",
           }}
         >
-          The first Coin-to-Company spin-out in history.
+          drug candidates identified
         </div>
 
-        {/* Tagline */}
+        {/* "for AARS2 Deficiency" */}
         <div
           style={{
             fontSize: 52,
-            color: "#E040FB",
-            fontWeight: 700,
+            color: "#A89BC2",
             fontFamily: ldTechD,
-            marginTop: 12,
-            transform: `scale(${punchScale})`,
-            opacity: punchOpacity,
+            fontWeight: 600,
+            opacity: line2Opacity,
+            transform: `translateY(${line2Y}px)`,
             position: "relative",
             zIndex: 1,
             willChange: "transform, opacity",
           }}
         >
-          Targeting longevity pathways, one coin at a time.
+          for AARS2 Deficiency
+        </div>
+
+        {/* "via Perlara yeast-avatar screening" */}
+        <div
+          style={{
+            fontSize: 44,
+            color: "#CC44FF",
+            fontFamily: ldTechD,
+            fontWeight: 500,
+            opacity: line3Opacity,
+            transform: `translateY(${line3Y}px)`,
+            position: "relative",
+            zIndex: 1,
+            willChange: "transform, opacity",
+          }}
+        >
+          via Perlara yeast-avatar screening
         </div>
       </div>
     </SceneWrapper>

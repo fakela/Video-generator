@@ -93,7 +93,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 2. Contribute and earn */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 52,
             fontWeight: 400,
             color: "#ffffff",
             fontFamily: ldTechD,
@@ -149,7 +149,7 @@ export const Scene25CTA: React.FC = () => {
                 </div>
                 <div
                   style={{
-                    fontSize: 34,
+                    fontSize: 44,
                     fontWeight: 600,
                     color: "#ffffff",
                     fontFamily: ldTechD,
@@ -178,7 +178,7 @@ export const Scene25CTA: React.FC = () => {
         {/* 5. COMMUNITY MEDICINE. ONCHAIN. */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 52,
             letterSpacing: 8,
             fontWeight: 600,
             color: "#CC44FF",
@@ -209,7 +209,7 @@ export const Scene25CTA: React.FC = () => {
           />
           <div
             style={{
-              fontSize: 40,
+              fontSize: 52,
               color: "#E040FB",
               fontFamily: ldTechD,
               textAlign: "center",

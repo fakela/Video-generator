@@ -7,48 +7,37 @@ export const SceneSpinoutsIntro: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  // "Proof of Cures" title — 3D rotateX flip-in
-  const titleSpring = spring({
-    frame: frame - 8,
-    fps,
-    config: { damping: 10, stiffness: 120 },
-  });
-  const titleRotateX = interpolate(titleSpring, [0, 1], [-90, 0], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-  const titleOpacity = interpolate(frame, [8, 16], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-
-  // Pulsing green glow
+  // Pulsing purple glow
   const glowPulse = Math.sin(frame * 0.07) * 0.25 + 0.75;
 
-  // Problem text — fade + blur-in
-  const problemOpacity = interpolate(frame, [30, 50], [0, 1], {
+  // Beat 1 — "That was Project 001." — fade up at frame 8
+  const beat1Opacity = interpolate(frame, [8, 24], [0, 1], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
-  const problemBlur = interpolate(frame, [30, 50], [8, 0], {
+  const beat1Y = interpolate(frame, [8, 24], [28, 0], {
     extrapolateRight: "clamp",
     extrapolateLeft: "clamp",
   });
 
-  // "Designed to close that gap" — spring punch
-  const gapSpring = spring({
-    frame: frame - 60,
+  // Beat 2 — context line — fade up at frame 35
+  const beat2Opacity = interpolate(frame, [35, 52], [0, 1], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+  const beat2Y = interpolate(frame, [35, 52], [28, 0], {
+    extrapolateRight: "clamp",
+    extrapolateLeft: "clamp",
+  });
+
+  // Beat 3 — punch line — spring scale at frame 68
+  const beat3Spring = spring({
+    frame: frame - 68,
     fps,
-    config: { damping: 8, stiffness: 150 },
+    config: { damping: 10, stiffness: 160 },
   });
-  const gapScale = interpolate(gapSpring, [0, 1], [0.5, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
-  const gapOpacity = interpolate(frame, [60, 68], [0, 1], {
-    extrapolateRight: "clamp",
-    extrapolateLeft: "clamp",
-  });
+  const beat3Scale = interpolate(beat3Spring, [0, 1], [0.6, 1]);
+  const beat3Opacity = interpolate(beat3Spring, [0, 1], [0, 1]);
 
   return (
     <SceneWrapper>
@@ -63,14 +52,15 @@ export const SceneSpinoutsIntro: React.FC = () => {
           fontFamily: ldTechD,
           textAlign: "center",
           position: "relative",
+          gap: 32,
         }}
       >
-        {/* Green glow */}
+        {/* Purple glow */}
         <div
           style={{
             position: "absolute",
-            width: 600,
-            height: 600,
+            width: 700,
+            height: 700,
             borderRadius: "50%",
             top: "50%",
             left: "50%",
@@ -82,65 +72,59 @@ export const SceneSpinoutsIntro: React.FC = () => {
           }}
         />
 
-        {/* "Proof of Cures" */}
+        {/* Beat 1 — tag line */}
         <div
           style={{
-            fontSize: 88,
-            color: "#E040FB",
-            fontWeight: 900,
+            fontSize: 64,
+            color: "#ffffff",
+            fontWeight: 700,
             fontFamily: ldTechD,
-            opacity: titleOpacity,
-            transform: `perspective(800px) rotateX(${titleRotateX}deg)`,
-            transformOrigin: "center bottom",
+            opacity: beat1Opacity,
+            transform: `translateY(${beat1Y}px)`,
             position: "relative",
             zIndex: 1,
-            textShadow:
-              "0 0 40px rgba(224,64,251,0.5), 0 0 80px rgba(224,64,251,0.2)",
+            willChange: "transform, opacity",
           }}
         >
-          Proof of Cures
+          That was Project 001.
         </div>
 
-        {/* Problem statement */}
+        {/* Beat 2 — context */}
         <div
           style={{
-            fontSize: 36,
+            fontSize: 52,
             color: "#A89BC2",
             fontFamily: ldTechD,
-            maxWidth: 950,
-            opacity: problemOpacity,
-            filter: `blur(${problemBlur}px)`,
-            marginTop: 28,
+            maxWidth: 1000,
+            opacity: beat2Opacity,
+            transform: `translateY(${beat2Y}px)`,
             position: "relative",
             zIndex: 1,
             lineHeight: 1.45,
+            willChange: "transform, opacity",
           }}
         >
-          Many DeSci projects raise capital quickly — but contributors often
-          have limited visibility into how funds are used, what milestones are
-          being pursued, or what progress is being made.
+          Most research stalls because funding dries up before results arrive.
         </div>
 
-        {/* Close the gap */}
+        {/* Beat 3 — punch */}
         <div
           style={{
-            fontSize: 44,
+            fontSize: 64,
             color: "#ffffff",
-            fontWeight: 600,
+            fontWeight: 700,
             fontFamily: ldTechD,
-            opacity: gapOpacity,
-            transform: `scale(${gapScale})`,
-            marginTop: 28,
+            opacity: beat3Opacity,
+            transform: `scale(${beat3Scale})`,
             position: "relative",
             zIndex: 1,
-            maxWidth: 950,
+            maxWidth: 1000,
             lineHeight: 1.4,
+            willChange: "transform, opacity",
           }}
         >
-          <span style={{ color: "#E040FB", fontWeight: 700 }}>
-            Proof of Cures
-          </span>{" "}
-          was designed to close that gap.
+          So we built a new model to change that.{" "}
+          <span style={{ color: "#E040FB" }}>Proof of Cures.</span>
         </div>
       </div>
     </SceneWrapper>
